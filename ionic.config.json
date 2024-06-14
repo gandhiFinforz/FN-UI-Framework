@@ -1,0 +1,7 @@
+{
+  "name": "FN-UI-Framework",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
