@@ -1,0 +1,16 @@
+{
+  "loginPage": {
+    "title": "Page de connexion",
+    "userName": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "buttonName": "Connexion"
+  },
+  "general": {
+    "appTitle":"FN-UI",
+    "noRecordFound": "Aucun résultat trouvé"
+  },
+  "storiesSample": {
+    "name": "Nom",
+    "age": "Âge"
+  }
+}
