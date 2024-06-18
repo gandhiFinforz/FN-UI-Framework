@@ -211,43 +211,7 @@ To start using the FN-UI-Framework, run the following command to start the devel
 npm run dev
 ```
 
-Open your browser and navigate to `http://localhost:3000` to see the application in action.
-
-## Testing
-
-For end-to-end testing, run:
-
-```sh
-npm run test.e2e
-```
-
-For unit testing, run:
-
-```sh
-npm run test.unit
-```
-
-## Linting
-
-To lint the codebase, run:
-
-```sh
-npm run lint
-```
-
-## Storybook
-
-To start Storybook and explore the components:
-
-```sh
-npm run storybook
-```
-
-To build Storybook:
-
-```sh
-npm run build-storybook
-```
+Open your browser and navigate to `http://localhost:5173` to see the application in action.
 
 ## Contributing
 
@@ -259,11 +223,3 @@ Contributions are welcome! Please follow these steps to contribute:
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature-branch`).
 6. Create a new Pull Request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-This README file provides an overview of the FN-UI-Framework project, including instructions for installation, usage, and contribution. For further details, refer to the documentation or the source code.
