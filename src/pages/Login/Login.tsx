@@ -1,71 +1,77 @@
-// Login.tsx
+// src/components/Login.tsx
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import FNButton from "../../components/Button/Button";
+import InputField from "../../components/InputField/InputField";
+import { loginUser } from "../../store/authSlice";
+import { AppDispatch, RootState } from "../../store/store";
+import { Card } from "primereact/card";
+import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { t } from "i18next";
 
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import InputField from '../../components/InputField/InputField';
-import AuthService from '../../services/AuthService';
-import { IonContent, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react'; // Import IonGrid, IonRow, IonCol
-import FNButton from '../../components/Button/Button';
-import { Card } from 'primereact/card';
-import { useTranslation } from 'react-i18next';
+interface LoginFormValues {
+  username: string;
+  password: string;
+}
 
 const Login: React.FC = () => {
-    const history = useHistory();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [isLoading, setLoading] = useState(false);
-    const { t } = useTranslation();
-    const handleLogin = async () => {
-        setLoading(true);
-        try {
-            await AuthService.authenticate(username, password);
-            history.push('/home'); // Redirect to home after successful login
-        } catch (error) {
-            console.error('Authentication failed:', error);
-            setLoading(false);
-        }
-    };
+  const dispatch: AppDispatch = useDispatch();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: React.Dispatch<React.SetStateAction<string>>) => {
-        setter(e.target.value);
-    };
+  const formik = useFormik<LoginFormValues>({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Username is required"),
+      password: Yup.string().required("Password is required"),
+    }),
+    onSubmit: (values) => {
+      dispatch(loginUser(values));
+    },
+  });
 
-    return (
-        <IonPage>
-            <IonContent fullscreen>
-                <IonGrid> {/* Center align content */}
-                    <IonRow className="ion-justify-content-center ion-">
-                        <IonCol size="12" sizeSm="8" sizeMd="6"> {/* Responsive column sizes */}
-                            <Card title={t('loginPage.title')} className="p-fluid">
-                                <form onSubmit={(e) => e.preventDefault()}>
-                                    <InputField
-                                        type="text"
-                                        label="loginPage.userName"
-                                        size='sm'
-                                        value={username}
-                                        onChange={(e) => handleInputChange(e, setUsername)} name={''}                                    />
-                                    <InputField
-                                        type="password"
-                                        label="loginPage.password"
-                                        value={password}
-                                        size='sm'
-                                        onChange={(e) => handleInputChange(e, setPassword)} name={''}                                    />
-                                    <FNButton
-                                        size="small"
-                                        label="loginPage.buttonName"
-                                        className='mt-4'
-                                        onClick={handleLogin}
-                                        loading={isLoading}
-                                        disabled={!username || !password || isLoading}
-                                    />
-                                </form>
-                            </Card>
-                        </IonCol>
-                    </IonRow>
-                </IonGrid>
-            </IonContent>
-        </IonPage>
-    );
+  return (
+    <div className="flex align-items-center justify-content-center h-screen">
+      <Card title={t("loginPage.title")} className="p-fluid md:col-4">
+        <div className="login-form">
+          <form onSubmit={formik.handleSubmit}>
+            <InputField
+              type="text"
+              name="username"
+              label="Username"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.username && !!formik.errors.username}
+              helpText={formik.touched.username && formik.errors.username}
+            />
+            <InputField
+              type="password"
+              name="password"
+              label="Password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.password && !!formik.errors.password}
+              helpText={formik.touched.password && formik.errors.password}
+            />
+            {error && <div className="error">{error}</div>}
+            <FNButton
+              label="Login"
+              type="submit"
+              className="mt-3"
+              loading={loading}
+              disabled={loading}
+            />
+          </form>
+        </div>
+      </Card>
+    </div>
+  );
 };
 
 export default Login;

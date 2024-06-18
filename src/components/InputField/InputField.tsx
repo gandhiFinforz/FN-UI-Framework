@@ -28,7 +28,7 @@ export interface InputFieldProps extends InputTextProps {
     pt?: InputTextPassThroughOptions;
     ptOptions?: PassThroughOptions;
     size?: 'sm' | 'md' | 'lg';
-    helpText?: string,
+    helpText?: string | any,
     tooltip?: string | any;
     tooltipOptions?: TooltipOptions;
     unstyled?: boolean;
@@ -53,13 +53,13 @@ const InputField: FC<InputFieldProps> = ({
     validateOnly = false,
     value,
     variant = 'outlined',
-    className,
+    className = '',
     helpText,
     ...props
 }) => {
     const { t } = useTranslation();
     return (
-        <div className={label ? 'flex flex-column gap-2 ' : ''}>
+        <div className={label ? 'flex flex-column gap-1 ' : ''}>
             {label ? <label className='mt-2'>{t(label)}</label> :''}
             <InputText
                 type={type}
@@ -78,7 +78,7 @@ const InputField: FC<InputFieldProps> = ({
                 {...props}
             />
             {helpText ?
-                <small className=''>
+                <small className='text-red-400'>
                     {t(helpText)}
                 </small>
                 : ''}
