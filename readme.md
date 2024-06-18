@@ -16,7 +16,6 @@ FN-UI-Framework is an Ionic-based project designed to provide a comprehensive UI
 - [Linting](#linting)
 - [Storybook](#storybook)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
