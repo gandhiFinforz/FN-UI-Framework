@@ -1,7 +1,3 @@
-Sure, let's add Cypress setup instructions to the README document. Here is the updated README file with Cypress included:
-
----
-
 # FN-UI-Framework
 
 ## Overview
