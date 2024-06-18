@@ -1,3 +1,7 @@
+Sure, let's add Cypress setup instructions to the README document. Here is the updated README file with Cypress included:
+
+---
+
 # FN-UI-Framework
 
 ## Overview
@@ -198,6 +202,11 @@ FN-UI-Framework/
 │   └── index.tsx
 ├── .eslintrc.js
 ├── .gitignore
+├── cypress/
+│   ├── e2e/
+│   ├── fixtures/
+│   ├── support/
+│   └── cypress.config.js
 ├── package.json
 ├── README.md
 └── tsconfig.json
@@ -212,6 +221,56 @@ npm run dev
 ```
 
 Open your browser and navigate to `http://localhost:5173` to see the application in action.
+
+## Cypress Testing
+
+Cypress is used for end-to-end testing in this project. To get started with Cypress, follow these steps:
+
+### Install Cypress
+
+If Cypress is not already installed, you can install it using npm:
+
+```sh
+npm install cypress --save-dev
+```
+
+### Running Cypress Tests
+
+To open the Cypress Test Runner, run:
+
+```sh
+npx cypress open
+```
+
+This will open the Cypress Test Runner where you can run your tests interactively.
+
+To run the Cypress tests in headless mode, run:
+
+```sh
+npm run test.e2e
+```
+
+### Cypress Folder Structure
+
+The Cypress tests are organized in the `cypress/` folder as follows:
+
+```
+cypress/
+├── e2e/
+│   └── example.cy.js
+├── fixtures/
+│   └── example.json
+├── support/
+│   ├── commands.js
+│   └── e2e.js
+└── cypress.config.js
+```
+
+- `e2e/` - Contains end-to-end test files.
+- `fixtures/` - Contains test data files.
+- `support/` - Contains custom commands and other support files.
+- `cypress.config.js` - Cypress configuration file.
+
 
 ## Contributing
 
