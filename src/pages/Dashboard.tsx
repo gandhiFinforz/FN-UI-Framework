@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import PrimeDataTable, {
   DataTableProps,
 } from "../components/DataTable/DataTable";
-import ApiService from "../services/ApiService";
+import ApiService from "../services/apiService";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
