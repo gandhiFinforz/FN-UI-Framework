@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
 import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { t } from "i18next";
+import TextAreaField from "../../components/InputTextAreaField/InputTextAreaField";
 
 interface LoginFormValues {
   username: string;
@@ -59,6 +60,16 @@ const Login: React.FC = () => {
               invalid={formik.touched.password && !!formik.errors.password}
               helpText={formik.touched.password && formik.errors.password}
             />
+            <TextAreaField
+             
+             name="username"
+             label="Username"
+             value={formik.values.username}
+             onChange={formik.handleChange}
+             onBlur={formik.handleBlur}
+             invalid={formik.touched.username && !!formik.errors.username}
+             helpText={formik.touched.username && formik.errors.username}
+           />
             {error && <div className="error text-red-400">{error}</div>}
             <FNButton
               label="Login"
