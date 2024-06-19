@@ -30,7 +30,7 @@ export interface DataTableProps {
     dynamicColumns?: { field: string; header: string }[];
     value: any[] | null;
     rows?:number;
-    sortable:boolean;
+    sortable?:boolean;
 }
 
 const PrimeDataTable: React.FC<DataTableProps> = ({
@@ -59,7 +59,7 @@ const PrimeDataTable: React.FC<DataTableProps> = ({
     filterDelay = 300,
     dynamicColumns = [],
     value = [],
-    rows,
+    rows=10,
     sortable = false
 }) => {
     const { t } = useTranslation();

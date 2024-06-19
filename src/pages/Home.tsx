@@ -1,5 +1,4 @@
 import {
-  IonButton,
   IonContent,
   IonHeader,
   IonPage,
@@ -7,13 +6,9 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
-import AuthService from "../services/AuthService";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
-import { logout } from "../store/authSlice";
-import React, { useState } from "react";
-import { AutoComplete } from "primereact/autocomplete";
-import AutoCompleteField from "../components/AutoCompleteField/AutoCompleteField";
+import React from "react";
+import { Card } from "primereact/card";
+import Dashboard from "./Dashboard";
 
 interface Country {
   label: string;
@@ -22,26 +17,6 @@ interface Country {
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const dispatch: AppDispatch = useDispatch();
-  const [selectedValue, setSelectedValue] = useState<Country | null>(null);
-  const [filteredValues, setFilteredValues] = useState<Country[]>([]);
-
-  // Sample data
-  const countries: Country[] = [
-    { label: "Australia", value: "AU" },
-    { label: "Brazil", value: "BR" },
-    { label: "Canada", value: "CA" },
-    { label: "Denmark", value: "DK" },
-    { label: "France", value: "FR" },
-    { label: "Germany", value: "DE" },
-    { label: "India", value: "IN" },
-    { label: "Mexico", value: "MX" },
-    { label: "United States", value: "US" },
-  ];
-
-  
-  
-
   return (
     <IonPage>
       <IonHeader>
@@ -54,7 +29,12 @@ const Home: React.FC = () => {
           <IonToolbar>
             <IonTitle size="large">{t("general.appTitle")}</IonTitle>
           </IonToolbar>
-        </IonHeader>       
+        </IonHeader>
+        <div className="w">
+          <Card title={t("usersTable.title")}>
+            <Dashboard />
+          </Card>
+        </div>
       </IonContent>
     </IonPage>
   );

@@ -51,7 +51,6 @@ const App: React.FC = () => {
   const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
-console.log("+++>>>" , user);
 
   useEffect(() => {
     dispatch(checkAuth());

@@ -135,7 +135,6 @@ const AutoCompleteField: FC<AutoCompleteFieldProps> = ({
     useState<any[]>(suggestions);
 
   const [localValue, setLocalValue] = useState(value);
-  console.log(localValue);
 
   const search = (event: { query: string }) => {
     let filterSuggestionsItem = suggestions.filter((item) =>
@@ -150,8 +149,6 @@ const AutoCompleteField: FC<AutoCompleteFieldProps> = ({
       let filtervalue = suggestions.filter((item) =>
         item.value.toString().toLowerCase().match(value)
       );
-      console.log("filtervalue", filtervalue[0]);
-
       setLocalValue(filtervalue[0]);
     }
   }, []);

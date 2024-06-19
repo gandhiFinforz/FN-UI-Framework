@@ -1,9 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import store from "../store/store"; // Import the Redux store to access the auth state
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 class ApiService {
   private axiosInstance: AxiosInstance;
-
   constructor() {
     this.axiosInstance = axios.create({
       baseURL: import.meta.env.VITE_API_BASE_URL, // Your API base URL
@@ -16,8 +17,9 @@ class ApiService {
     this.axiosInstance.interceptors.request.use(
       (config) => {
         const state = store.getState();
-        const token = state.auth.user?.idToken;
-
+        const token = state.auth.user?.idToken?.jwtToken;
+        console.log(token);
+        
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -32,7 +34,7 @@ class ApiService {
 
   // Generic GET method
   get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.get<T>(url, config);
+    return this.axiosInstance.get<T>(BASE_URL+url, config);
   }
 
   // Generic POST method
@@ -41,7 +43,7 @@ class ApiService {
     data: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.post<T>(url, data, config);
+    return this.axiosInstance.post<T>(BASE_URL+url, data, config);
   }
 
   // Generic PUT method
@@ -50,7 +52,7 @@ class ApiService {
     data: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.put<T>(url, data, config);
+    return this.axiosInstance.put<T>(BASE_URL+url, data, config);
   }
 
   // Generic DELETE method
@@ -58,7 +60,7 @@ class ApiService {
     url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.delete<T>(url, config);
+    return this.axiosInstance.delete<T>(BASE_URL+url, config);
   }
 }
 

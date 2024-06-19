@@ -5,6 +5,9 @@
     "password":"Passsword",
     "buttonName":"Login"
   },
+  "usersTable":{
+    "title": "Users List"
+  },
   "general":{
     "appTitle":"FN-UI",
     "noRecordFound":"No results found",
