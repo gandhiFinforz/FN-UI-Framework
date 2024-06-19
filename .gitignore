@@ -34,3 +34,6 @@ yarn-error.log*
 
 # Ignore all .env files
 .env*
+
+# Ignore Screenshot
+/cypress/screenshots
