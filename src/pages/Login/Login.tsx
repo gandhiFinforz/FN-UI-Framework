@@ -1,15 +1,17 @@
 // src/components/Login.tsx
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FNButton from "../../components/Button/Button";
+import FNCheckbox from "../../components/Checkbox/Checkbox";
 import InputField from "../../components/InputField/InputField";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
 import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { t } from "i18next";
+import { CheckboxChangeEvent } from "primereact/checkbox";
 
 interface LoginFormValues {
   username: string;
@@ -34,6 +36,10 @@ const Login: React.FC = () => {
     },
   });
 
+  const [checked, setChecked] = useState<boolean>(false);
+  const handleCheckboxChange = (e: CheckboxChangeEvent) => {
+    setChecked(e.checked ?? false); // Use fallback value if e.checked is undefined
+  };
   return (
     <div className="flex align-items-center justify-content-center h-screen">
       <Card title={t("loginPage.title")} className="p-fluid md:col-4">
@@ -60,6 +66,20 @@ const Login: React.FC = () => {
               helpText={formik.touched.password && formik.errors.password}
             />
             {error && <div className="error text-red-400">{error}</div>}
+
+            <FNCheckbox
+              inputId="cb1"
+              value="Yes"
+              label={t("loginPage.checkboxLabel")}
+              checked={checked}
+              onChange={handleCheckboxChange}
+              disabled={false}
+              invalid={false}
+              className="checkbox-class"
+              style={{ margin: "8px 0 0 0px" }}
+              styleForLabel={{ margin: "8px 0 0 5px" }}
+            />
+
             <FNButton
               label="Login"
               type="submit"
