@@ -59,7 +59,7 @@ const Login: React.FC = () => {
               invalid={formik.touched.password && !!formik.errors.password}
               helpText={formik.touched.password && formik.errors.password}
             />
-            {error && <div className="error">{error}</div>}
+            {error && <div className="error text-red-400">{error}</div>}
             <FNButton
               label="Login"
               type="submit"
