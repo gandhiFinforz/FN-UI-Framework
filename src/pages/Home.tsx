@@ -10,11 +10,6 @@ import React from "react";
 import { Card } from "primereact/card";
 import Dashboard from "./Dashboard";
 
-interface Country {
-  label: string;
-  value: string;
-}
-
 const Home: React.FC = () => {
   const { t } = useTranslation();
   return (
