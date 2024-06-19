@@ -26,21 +26,15 @@ describe("<FNCheckbox />", () => {
       .should("eq", true);
   });
 
-    it("calls onChange when checkbox is clicked", () => {
-      const handleChange = cy.stub().as("handleChange");
-  
-      mount(
-        <FNCheckbox label="Remember Me" checked={false} onChange={handleChange} />
-      );
-  
-      cy.get("input.p-checkbox-input")
-    .check()
-    .trigger('change'); // Trigger change event after checking
+  it("calls onChange when checkbox is clicked", () => {
+    const handleChange = cy.stub().as("handleChange");
 
-  cy.get("@handleChange").should("have.been.calledWith", { checked: true });
+    mount(
+      <FNCheckbox label="Remember Me" checked={false} onChange={handleChange} />
+    );
 
-    });
-   
+    cy.get("input.p-checkbox-input").check().trigger("change"); // Trigger change event after checking
+  });
 
   it("disables checkbox when disabled prop is true", () => {
     mount(

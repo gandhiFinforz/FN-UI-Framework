@@ -134,12 +134,12 @@ export const CustomStyle = Template.bind({});
 CustomStyle.args = {
   label: "Custom Style Checkbox",
   checked: false,
-  styleForLabel: { marginLeft: "10px", fontWeight: "bold", color: "blue" },
+  styleForLabel: { marginLeft: "8px", fontWeight: "bold", color: "blue" },
 };
 
 export const LargeCheckbox = Template.bind({});
 LargeCheckbox.args = {
   label: "Large Checkbox",
   checked: false,
-  styleForLabel: { fontSize: "1.2rem" },
+  styleForLabel: {marginLeft: "8px", fontSize: "1.2rem" },
 };
