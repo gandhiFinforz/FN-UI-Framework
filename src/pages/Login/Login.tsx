@@ -9,7 +9,6 @@ import InputField from "../../components/InputField/InputField";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
-import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { t } from "i18next";
 import { CheckboxChangeEvent } from "primereact/checkbox";
 
