@@ -1,4 +1,4 @@
-import DateField from './DatePicker'; // Adjust the import path based on your project structure
+import DateField from './FNDate'; // Adjust the import path based on your project structure
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; 
 import { mount } from '@cypress/react';
@@ -7,7 +7,7 @@ import { mount } from '@cypress/react';
 describe('<DateField />', () => {
 
   function formatDate(date: Date) {
-    let month: any = date.getMonth() + 1; // Months are zero-based in JavaScript
+    let month: any = date.getMonth() + 1; 
     let day: any = date.getDate();
     let year = date.getFullYear();
     if (month < 10) month = '0' + month;
@@ -21,7 +21,7 @@ describe('<DateField />', () => {
   });
 
   it('displays the correct value', () => {
-    const value = new Date(); // Example date value
+    const value = new Date(); 
     const formattedValue = formatDate(value); 
     mount(<DateField value={value} id="date-input" label="Label for date" name={''} />);
     cy.get('input#fn-date-picker').should('have.value', formattedValue);
@@ -31,7 +31,7 @@ describe('<DateField />', () => {
   it('calls onSelect when value changes', () => {
     const handleChange = cy.stub().as('handleChange');
     mount(<DateField id="date-input" label="Label for date" onSelect={handleChange} name={''} />);
-    const newValue = new Date(2023, 0, 1); // Example new date value
+    const newValue = new Date(2023, 0, 1); 
     const formattedNewValue = formatDate(newValue); 
     cy.get('input#fn-date-picker').clear().type(formattedNewValue);
     cy.get('@handleChange').should('have.been.called');
@@ -41,8 +41,8 @@ describe('<DateField />', () => {
   it('calls onBlur when value changes', () => {
     const handleChange = cy.stub().as('handleChange');
     mount(<DateField id="date-input" label="Label for date" onBlur={handleChange} name={''} />);
-    const newValue = new Date(2023, 0, 1); // Example new date value
-    const formattedNewValue = formatDate(newValue); // Format the new date
+    const newValue = new Date(2023, 0, 1); 
+    const formattedNewValue = formatDate(newValue);
     cy.get('input#fn-date-picker').clear().type(formattedNewValue).blur();
     cy.get('@handleChange').should('have.been.called');
     cy.screenshot('component/DateField/calls onBlur when value changes');
@@ -81,7 +81,7 @@ describe('<DateField />', () => {
   it('renders with specified size', () => {
     mount(<DateField id="date-input" label="Label for date" size="sm" name={''} />);
     cy.get('input#fn-date-picker').should('have.class', 'p-inputtext-sm');
-    cy.screenshot('component/DateField/renders with specified size');
+   cy.screenshot('component/DateField/renders with specified size');
   });
 
   it('applies unstyled when unstyled prop is true', () => {

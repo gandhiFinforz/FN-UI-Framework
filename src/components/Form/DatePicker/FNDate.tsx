@@ -3,7 +3,7 @@ import { Calendar, CalendarBaseProps } from 'primereact/calendar';
 import { TooltipOptions } from 'primereact/tooltip/tooltipoptions';
 import { useTranslation } from 'react-i18next';
 
-export interface DatePickerProps extends CalendarBaseProps {
+export interface FNDateProps extends CalendarBaseProps {
     className?: string,
     inputId?: string,
     inputClassName?: string,
@@ -11,7 +11,7 @@ export interface DatePickerProps extends CalendarBaseProps {
     disabled?: boolean;
     invalid?: boolean;
     size?: 'sm' | 'md' | 'lg';
-    helpText?: string | any,
+    helpText?: string,
     tooltip?: string | any;
     tooltipOptions?: TooltipOptions;
     unstyled?: boolean;
@@ -21,7 +21,7 @@ export interface DatePickerProps extends CalendarBaseProps {
     name: string;
 }
 
-const DateField: FC<DatePickerProps> = ({
+const FNDate: FC<FNDateProps> = ({
     disabled = false,
     invalid = false,
     label,
@@ -62,4 +62,4 @@ const DateField: FC<DatePickerProps> = ({
     );
 };
 
-export default DateField;
+export default FNDate;
