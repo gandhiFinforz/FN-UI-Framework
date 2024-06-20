@@ -5,7 +5,7 @@ import FNCheckbox, { PrimeCheckboxProps } from "./Checkbox";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-
+import "primeflex/primeflex.css"
 export default {
   title: "Components/Checkbox",
   component: FNCheckbox,
@@ -49,17 +49,6 @@ export default {
       control: "text",
       description: "ID attribute of the checkbox input.",
     },
-    styleForLabel: {
-      control: "object",
-      description: "Style object for the label of checkbox.",
-    },
-    size: {
-      control: { type: 'select', options: ['sm', 'md', 'lg'] },
-      description: 'Specifies the size of the input field.',
-  }, className: {
-    control: 'text',
-    description: 'Custom CSS class name for styling the component.',
-},
   },
 } as Meta;
 
@@ -71,14 +60,14 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Remember Me",
   checked: false,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
   label: "Remember Me",
   checked: true,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const Disabled = Template.bind({});
@@ -86,7 +75,7 @@ Disabled.args = {
   label: "Disabled",
   checked: false,
   disabled: true,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const Invalid = Template.bind({});
@@ -94,7 +83,7 @@ Invalid.args = {
   label: "Invalid Checkbox",
   checked: false,
   invalid: true,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const WithTooltip = Template.bind({});
@@ -103,15 +92,14 @@ WithTooltip.args = {
   checked: false,
   tooltip: "Check this box",
   tooltipOptions: { position: "top" },
-  styleForLabel: { marginLeft: "8px" },
 };
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   label: "Checkbox with Icon",
   checked: false,
-  icon: "pi pi-check",
-  styleForLabel: { marginLeft: "8px" },
+  icon: "pi pi-check", 
+  labelClassName:'ml-2',
 };
 
 export const ReadOnly = Template.bind({});
@@ -119,7 +107,7 @@ ReadOnly.args = {
   label: "Read-only Checkbox",
   checked: false,
   readOnly: true,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const Required = Template.bind({});
@@ -127,21 +115,20 @@ Required.args = {
   label: "Required Checkbox",
   checked: false,
   required: true,
-  styleForLabel: { marginLeft: "8px" },
+  labelClassName:'ml-2',
 };
 
 export const CustomStyle = Template.bind({});
 CustomStyle.args = {
   label: "Custom Style Checkbox",
   checked: false,
-  styleForLabel: { marginLeft: "8px", fontWeight: "bold", color: "blue" },
+  labelClassName:'ml-2 font-semibold text-blue-500',
 };
 
 export const LargeCheckbox = Template.bind({});
 LargeCheckbox.args = {
   label: "Large Checkbox",
   checked: false,
-  className: 'default-class',
-  styleForLabel: { marginLeft: "8px" },
+  className: 'ml-2 text-lg',
+  labelClassName:'ml-2 text-lg',
 };
-

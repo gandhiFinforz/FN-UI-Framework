@@ -7,6 +7,7 @@ import {
 import "primereact/resources/themes/saga-blue/theme.css"; // import theme
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 import { useTranslation } from "react-i18next";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 
@@ -25,8 +26,8 @@ export interface PrimeCheckboxProps extends Omit<CheckboxProps, "icon"> {
   inputId?: string;
   style?: React.CSSProperties;
   className?: string;
-  styleForLabel?: React.CSSProperties;
   onChange?: (event: CheckboxChangeEvent) => void;
+  labelClassName?: string;
 }
 
 const FNCheckbox: FC<PrimeCheckboxProps> = ({
@@ -37,11 +38,10 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
   name,
   value,
   checked,
-  required,
-  readOnly,
-  disabled,
-  invalid,
-  styleForLabel,
+  required = true,
+  readOnly = false,
+  disabled = false,
+  invalid = false,
   onChange,
   ...restProps
 }) => {
@@ -77,7 +77,10 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
         tooltipOptions={tooltipOptions}
         {...restProps}
       />
-      <label htmlFor={inputId} style={styleForLabel}>
+      <label
+        htmlFor={inputId}
+        className={`${restProps.labelClassName} ml-2`}
+      >
         {t(label)}
       </label>
     </div>

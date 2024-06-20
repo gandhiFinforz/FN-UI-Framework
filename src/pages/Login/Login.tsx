@@ -64,6 +64,7 @@ const Login: React.FC = () => {
               invalid={formik.touched.password && !!formik.errors.password}
               helpText={formik.touched.password && formik.errors.password}
             />
+
             {error && <div className="error text-red-400">{error}</div>}
 
             <FNCheckbox
@@ -72,11 +73,7 @@ const Login: React.FC = () => {
               label={t("loginPage.checkboxLabel")}
               checked={checked}
               onChange={handleCheckboxChange}
-              disabled={false}
-              invalid={false}
-              className="checkbox-class"
-              style={{ margin: "8px 0 0 0px" }}
-              styleForLabel={{ margin: "8px 0 0 5px" }}
+              className="checkbox-class mt-2"
             />
 
             <FNButton
