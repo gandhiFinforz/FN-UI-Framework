@@ -30,7 +30,6 @@ const Login: React.FC = () => {
     validationSchema: Yup.object({
       username: Yup.string().required("Username is required"),
       password: Yup.string().required("Password is required"),
-      rememberMe: Yup.boolean(),
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));

@@ -23,6 +23,7 @@ export interface FNCheckboxProps extends Omit<CheckboxProps, "icon"> {
   style?: React.CSSProperties;
   className?: string;
   labelClassName?: string;
+  helpText?: string | any;
 }
 
 const FNCheckbox: FC<FNCheckboxProps> = ({
@@ -37,6 +38,7 @@ const FNCheckbox: FC<FNCheckboxProps> = ({
   readOnly = false,
   disabled = false,
   invalid = false,
+  helpText,
   ...restProps
 }) => {
   const { t } = useTranslation();
@@ -61,6 +63,8 @@ const FNCheckbox: FC<FNCheckboxProps> = ({
       <label htmlFor={inputId} className={`${restProps.labelClassName} ml-2`}>
         {t(label)}
       </label>
+
+      {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}
     </div>
   );
 };
