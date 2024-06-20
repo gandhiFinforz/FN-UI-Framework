@@ -18,7 +18,7 @@ export interface PrimeCheckboxProps extends Omit<CheckboxProps, "icon"> {
   disabled?: boolean;
   invalid?: boolean;
   checked: boolean;
-  name?: string;
+  name: string;
   value?: any;
   required?: boolean;
   readOnly?: boolean;

@@ -8,12 +8,12 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 
 describe("<FNCheckbox />", () => {
   it("renders with label", () => {
-    mount(<FNCheckbox label="Remember Me" checked={false} />);
+    mount(<FNCheckbox name="rememberMe" label="Remember Me" checked={false} />);
     cy.get("label").contains("Remember Me").should("exist");
   });
 
   it("renders checked checkbox", () => {
-    mount(<FNCheckbox label="Remember Me" checked={true} />);
+    mount(<FNCheckbox name="rememberMe" label="Remember Me" checked={true} />);
     cy.get("input.p-checkbox-input")
       .should("exist")
       .invoke("prop", "checked")
@@ -23,13 +23,20 @@ describe("<FNCheckbox />", () => {
   it("calls onChange when checkbox is clicked", () => {
     const handleChange = cy.stub().as("handleChange");
 
-    mount(<FNCheckbox label="Remember Me" checked={false} />);
+    mount(<FNCheckbox name="rememberMe" label="Remember Me" checked={false} />);
 
     cy.get("input.p-checkbox-input").check().trigger("change"); // Trigger change event after checking
   });
 
   it("disables checkbox when disabled prop is true", () => {
-    mount(<FNCheckbox label="Remember Me" checked={false} disabled={true} />);
+    mount(
+      <FNCheckbox
+        label="Remember Me"
+        name="rememberMe"
+        checked={false}
+        disabled={true}
+      />
+    );
     cy.get("input.p-checkbox-input").should("be.disabled");
   });
 });
