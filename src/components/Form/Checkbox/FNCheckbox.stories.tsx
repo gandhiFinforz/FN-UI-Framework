@@ -1,13 +1,12 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import FNCheckbox, { PrimeCheckboxProps } from "./FNCheckbox";
-
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "primeflex/primeflex.css"
+import "primeflex/primeflex.css";
 export default {
-  title: "Components/Checkbox",
+  title: "Components/Form/Checkbox",
   component: FNCheckbox,
   argTypes: {
     label: { control: "text", description: "Label for the checkbox." },
@@ -94,7 +93,7 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   label: "Checkbox with Icon",
   checked: false,
-  icon: "pi pi-check", 
+  icon: "pi pi-check",
 };
 
 export const ReadOnly = Template.bind({});
@@ -115,12 +114,12 @@ export const CustomStyle = Template.bind({});
 CustomStyle.args = {
   label: "Custom Style Checkbox",
   checked: false,
-  labelClassName:'font-semibold text-blue-500',
+  labelClassName: "font-semibold text-blue-500",
 };
 
 export const LargeCheckbox = Template.bind({});
 LargeCheckbox.args = {
   label: "Large Checkbox",
   checked: false,
-  labelClassName:'text-lg',
+  labelClassName: "text-lg",
 };

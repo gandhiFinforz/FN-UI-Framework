@@ -65,14 +65,14 @@ const Login: React.FC = () => {
             />
 
             <FNCheckbox
-              inputId="cb1"
+              inputId="rememberMeCheckbox"
               name="rememberMe"
               value={formik.values.rememberMe}
               label={t("loginPage.checkboxLabel")}
               checked={formik.values.rememberMe}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="checkbox-class mt-2"
+              className="mt-2"
             />
 
             {error && <div className="error text-red-400">{error}</div>}
