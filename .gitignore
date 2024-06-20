@@ -37,3 +37,6 @@ yarn-error.log*
 
 # Ignore Screenshot
 /cypress/screenshots
+
+#package-lock.json
+package-lock.json
