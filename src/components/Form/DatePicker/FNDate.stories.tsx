@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import DateField, { FNDateProps } from './FNDate';
+import FNDate, { FNDateProps } from './FNDate';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
 
 export default {
     title: 'Components/Form/DateField',
-    component: DateField,
+    component: FNDate,
     tags: ['autodocs'],
     argTypes: {
         id: {
@@ -337,7 +337,7 @@ export default {
 } as Meta;
 
 
-const Template: StoryFn<FNDateProps> = (args) => <DateField {...args} />;
+const Template: StoryFn<FNDateProps> = (args) => <FNDate {...args} />;
 
 /**
  * Default story: Renders the DateField with default props.
