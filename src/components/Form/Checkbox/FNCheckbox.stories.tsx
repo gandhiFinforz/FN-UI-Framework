@@ -1,4 +1,3 @@
-import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import FNCheckbox, { FNCheckboxProps } from "./FNCheckbox";
 import "primereact/resources/themes/saga-blue/theme.css";
@@ -51,9 +50,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<FNCheckboxProps> = (args) => (
-  <FNCheckbox {...args} />
-);
+const Template: StoryFn<FNCheckboxProps> = (args) => <FNCheckbox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
