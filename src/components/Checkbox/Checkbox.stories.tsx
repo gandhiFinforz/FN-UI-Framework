@@ -53,6 +53,13 @@ export default {
       control: "object",
       description: "Style object for the label of checkbox.",
     },
+    size: {
+      control: { type: 'select', options: ['sm', 'md', 'lg'] },
+      description: 'Specifies the size of the input field.',
+  }, className: {
+    control: 'text',
+    description: 'Custom CSS class name for styling the component.',
+},
   },
 } as Meta;
 
@@ -65,7 +72,6 @@ Default.args = {
   label: "Remember Me",
   checked: false,
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const Checked = Template.bind({});
@@ -73,7 +79,6 @@ Checked.args = {
   label: "Remember Me",
   checked: true,
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const Disabled = Template.bind({});
@@ -82,7 +87,6 @@ Disabled.args = {
   checked: false,
   disabled: true,
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const Invalid = Template.bind({});
@@ -91,7 +95,6 @@ Invalid.args = {
   checked: false,
   invalid: true,
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const WithTooltip = Template.bind({});
@@ -101,16 +104,14 @@ WithTooltip.args = {
   tooltip: "Check this box",
   tooltipOptions: { position: "top" },
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   label: "Checkbox with Icon",
   checked: false,
-  icon: "pi pi-check", 
+  icon: "pi pi-check",
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const ReadOnly = Template.bind({});
@@ -119,7 +120,6 @@ ReadOnly.args = {
   checked: false,
   readOnly: true,
   styleForLabel: { marginLeft: "8px" },
-
 };
 
 export const Required = Template.bind({});
@@ -141,5 +141,7 @@ export const LargeCheckbox = Template.bind({});
 LargeCheckbox.args = {
   label: "Large Checkbox",
   checked: false,
-  styleForLabel: {marginLeft: "8px", fontSize: "1.2rem" },
+  className: 'default-class',
+  styleForLabel: { marginLeft: "8px" },
 };
+
