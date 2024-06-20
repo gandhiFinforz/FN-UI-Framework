@@ -1,79 +1,83 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import React from "react";
+import { Meta, StoryFn } from "@storybook/react";
 
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primeflex/primeflex.css'; // import theme
-import TextAreaField, { TextAreaFieldProps } from './FNInputTextArea';
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primeflex/primeflex.css"; // import theme
+import FNTextArea, { FNTextAreaProps } from "./FNInputTextArea";
 
 export default {
-    title: 'Components/Form/TextArea',
-    component: TextAreaField,
-    tags: ['autodocs'],
-    argTypes: {
-        label: {
-            control: 'text',
-            description: 'Label for the text area field.',
-        },
-        className: {
-            control: 'text',
-            description: 'Custom CSS class name for styling the component.',
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'When true, the component is disabled.',
-        },
-        invalid: {
-            control: 'boolean',
-            description: 'When true, applies the invalid state style to the component.',
-        },
-        keyfilter: {
-            control: 'text',
-            description: 'Defines the format of the keys to block.',
-        },
-        tooltip: {
-            control: 'text',
-            description: 'Content of the tooltip.',
-        },
-        tooltipOptions: {
-            control: 'object',
-            description: 'Configuration options for the tooltip.',
-        },
-        unstyled: {
-            control: 'boolean',
-            description: 'When true, removes component related styles in the core.',
-        },
-        validateOnly: {
-            control: 'boolean',
-            description: 'When true, input is validated internally against the regular expression instead of blocking keys.',
-        },
-        value: {
-            control: 'text',
-            description: 'The value of the text area field.',
-        },
-        variant: {
-            control: { type: 'select', options: ['filled', 'outlined'] },
-            description: 'Specifies the variant of the text area field.',
-        },
-        pt: {
-            control: 'object',
-            description: 'Attributes to pass to DOM elements inside the component.',
-        },
-        ptOptions: {
-            control: 'object',
-            description: 'Configuration options for passthrough (pt).',
-        },
+  title: "Components/Form/TextArea",
+  component: FNTextArea,
+  tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label for the text area field.",
     },
+    className: {
+      control: "text",
+      description: "Custom CSS class name for styling the component.",
+    },
+    disabled: {
+      control: "boolean",
+      description: "When true, the component is disabled.",
+    },
+    invalid: {
+      control: "boolean",
+      description:
+        "When true, applies the invalid state style to the component.",
+    },
+    keyfilter: {
+      control: "text",
+      description: "Defines the format of the keys to block.",
+    },
+    tooltip: {
+      control: "text",
+      description: "Content of the tooltip.",
+    },
+    tooltipOptions: {
+      control: "object",
+      description: "Configuration options for the tooltip.",
+    },
+    unstyled: {
+      control: "boolean",
+      description: "When true, removes component related styles in the core.",
+    },
+    validateOnly: {
+      control: "boolean",
+      description:
+        "When true, input is validated internally against the regular expression instead of blocking keys.",
+    },
+    value: {
+      control: "text",
+      description: "The value of the text area field.",
+    },
+    variant: {
+      control: { type: "select", options: ["filled", "outlined"] },
+      description: "Specifies the variant of the text area field.",
+    },
+    pt: {
+      control: "object",
+      description: "Attributes to pass to DOM elements inside the component.",
+    },
+    ptOptions: {
+      control: "object",
+      description: "Configuration options for passthrough (pt).",
+    },
+  },
 } as Meta;
 
-const Template: StoryFn<TextAreaFieldProps> = (args) => <TextAreaField {...args} />;
+const Template: StoryFn<FNTextAreaProps> = (args) => (
+  <FNTextArea {...args} />
+);
 
 /**
  * Default story: Renders the TextAreaField with default props.
  */
 export const Default = Template.bind({});
 Default.args = {
-    label: 'Description',
-    className: 'default-class',
+  label: "Description",
+  className: "default-class",
 };
 
 /**
@@ -81,9 +85,9 @@ Default.args = {
  */
 export const WithValue = Template.bind({});
 WithValue.args = {
-    label: 'Description',
-    value: 'Initial Value',
-    className: 'default-class',
+  label: "Description",
+  value: "Initial Value",
+  className: "default-class",
 };
 
 /**
@@ -91,8 +95,8 @@ WithValue.args = {
  */
 export const Invalid = Template.bind({});
 Invalid.args = {
-    invalid: true,
-    className: 'default-class',
+  invalid: true,
+  className: "default-class",
 };
 
 /**
@@ -100,8 +104,8 @@ Invalid.args = {
  */
 export const Disabled = Template.bind({});
 Disabled.args = {
-    disabled: true,
-    className: 'default-class',
+  disabled: true,
+  className: "default-class",
 };
 
 /**
@@ -109,7 +113,7 @@ Disabled.args = {
  */
 export const WithClassName = Template.bind({});
 WithClassName.args = {
-    className: 'custom-textarea',
+  className: "custom-textarea",
 };
 
 /**
@@ -117,9 +121,9 @@ WithClassName.args = {
  */
 export const WithTooltip = Template.bind({});
 WithTooltip.args = {
-    tooltip: 'Enter description here',
-    tooltipOptions: { position: 'top' },
-    className: 'default-class',
+  tooltip: "Enter description here",
+  tooltipOptions: { position: "top" },
+  className: "default-class",
 };
 
 /**
@@ -127,8 +131,8 @@ WithTooltip.args = {
  */
 export const Unstyled = Template.bind({});
 Unstyled.args = {
-    unstyled: true,
-    className: '',
+  unstyled: true,
+  className: "",
 };
 
 /**
@@ -136,8 +140,8 @@ Unstyled.args = {
  */
 export const WithKeyFilter = Template.bind({});
 WithKeyFilter.args = {
-    keyfilter: /[0-9]/,
-    className: 'default-class',
+  keyfilter: /[0-9]/,
+  className: "default-class",
 };
 
 /**
@@ -145,9 +149,9 @@ WithKeyFilter.args = {
  */
 export const ValidateOnly = Template.bind({});
 ValidateOnly.args = {
-    validateOnly: true,
-    keyfilter: /[0-9]/,
-    className: 'default-class',
+  validateOnly: true,
+  keyfilter: /[0-9]/,
+  className: "default-class",
 };
 
 /**
@@ -155,6 +159,6 @@ ValidateOnly.args = {
  */
 export const WithVariant = Template.bind({});
 WithVariant.args = {
-    variant: 'filled',
-    className: 'default-class',
+  variant: "filled",
+  className: "default-class",
 };

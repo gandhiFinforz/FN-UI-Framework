@@ -8,7 +8,7 @@ import { PassThroughOptions } from "primereact/passthrough";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 import { useTranslation } from "react-i18next";
 
-export interface TextAreaFieldProps extends InputTextareaProps {
+export interface FNTextAreaProps extends InputTextareaProps {
   className?: string;
   label?: string;
   disabled?: boolean;
@@ -26,7 +26,7 @@ export interface TextAreaFieldProps extends InputTextareaProps {
   name: string;
 }
 
-const FNTextArea: FC<TextAreaFieldProps> = ({
+const FNTextArea: FC<FNTextAreaProps> = ({
   disabled = false,
   invalid = false,
   label,

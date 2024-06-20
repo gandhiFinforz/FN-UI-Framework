@@ -1,19 +1,19 @@
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 import { mount } from "@cypress/react";
-import TextAreaField from "./FNInputTextArea";
+import FNTextArea from "./FNInputTextArea";
 
-describe("<TextAreaField />", () => {
+describe("<FNTextArea />", () => {
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react
-    mount(<TextAreaField name={""} />);
-    cy.screenshot("component/TextAreaField/renders");
+    mount(<FNTextArea name={""} />);
+    cy.screenshot("component/FNTextArea/renders");
   });
 
   it("displays the correct value", () => {
     const value = "Test Value";
     mount(
-      <TextAreaField
+      <FNTextArea
         value={value}
         id="textarea"
         label="Label for textarea"
@@ -21,13 +21,13 @@ describe("<TextAreaField />", () => {
       />
     );
     cy.get("textarea#textarea").should("have.value", value);
-    cy.screenshot("component/TextAreaField/displays the correct value");
+    cy.screenshot("component/FNTextArea/displays the correct value");
   });
 
   it("calls onChange when value changes", () => {
     const handleChange = cy.stub().as("handleChange");
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         onChange={handleChange}
@@ -36,12 +36,12 @@ describe("<TextAreaField />", () => {
     );
     cy.get("textarea#textarea").type("New Value");
     cy.get("@handleChange").should("have.been.called");
-    cy.screenshot("component/TextAreaField/calls onChange when value changes");
+    cy.screenshot("component/FNTextArea/calls onChange when value changes");
   });
 
   it("is disabled when disabled prop is true", () => {
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         disabled
@@ -50,13 +50,13 @@ describe("<TextAreaField />", () => {
     );
     cy.get("textarea#textarea").should("be.disabled");
     cy.screenshot(
-      "component/TextAreaField/is disabled when disabled prop is true"
+      "component/FNTextArea/is disabled when disabled prop is true"
     );
   });
 
   it("applies invalid state when invalid prop is true", () => {
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         invalid
@@ -65,14 +65,14 @@ describe("<TextAreaField />", () => {
     );
     cy.get("textarea#textarea").should("have.class", "p-invalid");
     cy.screenshot(
-      "component/TextAreaField/applies invalid state when invalid prop is true"
+      "component/FNTextArea/applies invalid state when invalid prop is true"
     );
   });
 
   it("applies custom class name", () => {
     const className = "custom-textarea";
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         className={className}
@@ -80,12 +80,12 @@ describe("<TextAreaField />", () => {
       />
     );
     cy.get("textarea#textarea").should("have.class", className);
-    cy.screenshot("component/TextAreaField/applies custom class name");
+    cy.screenshot("component/FNTextArea/applies custom class name");
   });
 
   it("renders with specified size", () => {
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         size="lg"
@@ -93,12 +93,12 @@ describe("<TextAreaField />", () => {
       />
     );
     cy.get("textarea#textarea").should("have.class", "p-inputtext-lg");
-    cy.screenshot("component/TextAreaField/renders with specified size");
+    cy.screenshot("component/FNTextArea/renders with specified size");
   });
 
   it("applies unstyled when unstyled prop is true", () => {
     mount(
-      <TextAreaField
+      <FNTextArea
         id="textarea"
         label="Label for textarea"
         unstyled
@@ -107,7 +107,7 @@ describe("<TextAreaField />", () => {
     );
     cy.get("textarea#textarea").should("not.have.class", "p-inputtext");
     cy.screenshot(
-      "component/TextAreaField/applies unstyled when unstyled prop is true"
+      "component/FNTextArea/applies unstyled when unstyled prop is true"
     );
   });
 });
