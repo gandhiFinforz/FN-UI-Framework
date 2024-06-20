@@ -66,19 +66,6 @@ const Login: React.FC = () => {
             />
             {error && <div className="error text-red-400">{error}</div>}
 
-            <FNCheckbox
-              inputId="cb1"
-              value="Yes"
-              label={t("loginPage.checkboxLabel")}
-              checked={checked}
-              onChange={handleCheckboxChange}
-              disabled={false}
-              invalid={false}
-              className="checkbox-class"
-              style={{ margin: "8px 0 0 0px" }}
-              styleForLabel={{ margin: "8px 0 0 5px" }}
-            />
-
             <FNButton
               label="Login"
               type="submit"

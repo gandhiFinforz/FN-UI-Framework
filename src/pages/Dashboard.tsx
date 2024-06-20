@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import PrimeDataTable, {
   DataTableProps,
 } from "../components/DataTable/DataTable";
-import ApiService from "../services/apiService";
+import ApiServices from "../services/ApiServices";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await ApiService.get<any[]>(
+        const response = await ApiServices.get<any[]>(
           "/users"
         );
         setUsers(response.data);
