@@ -5,7 +5,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import PrimeDataTable, { DataTableProps } from './DataTable'; // Adjust path as needed
 
 export default {
-  title: 'Components/DataTable',
+  title: 'Components/Data/DataTable',
   component: PrimeDataTable,
   tags: ['autodocs'],
   argTypes: {

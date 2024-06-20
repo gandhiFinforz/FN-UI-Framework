@@ -1,7 +1,6 @@
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import Home from "./pages/Home";
 // In your main application file
 
 /* Core CSS required for Ionic components to work properly */
@@ -39,12 +38,13 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Login from "./pages/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -62,10 +62,10 @@ const App: React.FC = () => {
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            <ProtectedRoute exact path="/home" component={Home} />
+            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/">
-              {user ? <Redirect to="/home" /> : <Login />}
-            </Route>            
+              {user ? <Redirect to="/dashboard" /> : <Login />}
+            </Route>
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>

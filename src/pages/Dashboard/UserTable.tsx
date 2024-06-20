@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import PrimeDataTable, {
   DataTableProps,
-} from "../components/DataTable/DataTable";
-import ApiService from "../services/ApiServices";
+} from "../../components/Data/DataTable/DataTable";
+import ApiService from "../../services/ApiServices";
 
-const Dashboard: React.FC = () => {
+const UserTable: React.FC = () => {
   const { t } = useTranslation();
   const [users, setUsers] = useState<any[]>([
   ]);
@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
     value: users,
     dynamicColumns: dynamicColumns,
     emptyMessage: "general.noRecordFound", // Example translation key for empty message
-    rows: 10,
+    rows: 5,
     sortable: true
   };
 
@@ -48,4 +48,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default UserTable;
