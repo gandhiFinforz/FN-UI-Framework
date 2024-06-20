@@ -65,8 +65,6 @@ const Login: React.FC = () => {
               helpText={formik.touched.password && formik.errors.password}
             />
 
-            {error && <div className="error text-red-400">{error}</div>}
-
             <FNCheckbox
               inputId="cb1"
               value="Yes"
@@ -75,6 +73,8 @@ const Login: React.FC = () => {
               onChange={handleCheckboxChange}
               className="checkbox-class mt-2"
             />
+
+            {error && <div className="error text-red-400">{error}</div>}
 
             <FNButton
               label="Login"
