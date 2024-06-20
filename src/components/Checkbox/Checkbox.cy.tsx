@@ -1,8 +1,6 @@
 /// <reference types="cypress" />
 import { mount } from "@cypress/react";
 import FNCheckbox from "./Checkbox";
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primeicons/primeicons.css"; // Import PrimeIcons for icon support
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
