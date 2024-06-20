@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FNButton from "../../components/Form/FNButton/FNButton";
 import FNInput from "../../components/Form/FNInput/FNInput";
-import FNCheckbox from "../../components/Form/Checkbox/FNCheckbox";
+import FNCheckbox from "../../components/Form/FNCheckbox/FNCheckbox";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
