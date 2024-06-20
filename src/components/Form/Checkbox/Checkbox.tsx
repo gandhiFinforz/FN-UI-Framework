@@ -38,7 +38,7 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
   name,
   value,
   checked,
-  required = true,
+  required = false,
   readOnly = false,
   disabled = false,
   invalid = false,
