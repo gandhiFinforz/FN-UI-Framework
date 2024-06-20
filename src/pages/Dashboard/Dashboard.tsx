@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
         </IonHeader>
         <div className="w-10 flex mt-3 justify-content-center">
           <Card title={t("usersTable.title")}>
-            <UserTable />
+            <UserTable/>
           </Card>
         </div>
       </IonContent>

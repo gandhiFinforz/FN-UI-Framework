@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import FNButton, { PrimeButtonProps } from './Button';
+import FNButton, { FNButtonProps } from "./FNButton";
 import 'primereact/resources/themes/saga-blue/theme.css'; // import theme
 import 'primereact/resources/primereact.min.css';          // import styles
 import 'primeicons/primeicons.css';
@@ -96,7 +96,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<PrimeButtonProps> = (args) => <FNButton {...args} />;
+const Template: StoryFn<FNButtonProps> = (args) => <FNButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

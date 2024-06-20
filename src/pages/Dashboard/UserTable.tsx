@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import PrimeDataTable, {
   DataTableProps,
-} from "../../components/Data/DataTable/DataTable";
+} from "../../components/Data/FNDataTable/FNDataTable";
 import ApiService from "../../services/ApiServices";
 
 const UserTable: React.FC = () => {
