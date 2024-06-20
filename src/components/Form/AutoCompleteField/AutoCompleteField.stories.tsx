@@ -5,7 +5,7 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 
 export default {
-  title: "Components/AutoCompleteField",
+  title: "Components/Form/AutoCompleteField",
   component: AutoCompleteField,
   tags: ["autodocs"],
   argTypes: {

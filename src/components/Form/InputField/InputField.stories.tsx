@@ -4,73 +4,92 @@ import InputField, { InputFieldProps } from './InputField';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
 export default {
-    title: 'Components/InputField',
-    component: InputField,
-    tags: ['autodocs'],
-    argTypes: {
-        label: {
-            control: 'text',
-            description: 'Label for the input field.',
-        },
-        type: {
-            control: {
-                type: 'select', options: ['text', 'password', 'email', 'url', 'number', 'date', 'time', 'datetime-local', 'month', 'search', 'tel', 'color', 'range', 'hidden', 'week']
-            },
-            description: 'The type of the input field (e.g., text, password, email).',
-        },
-        className: {
-            control: 'text',
-            description: 'Custom CSS class name for styling the component.',
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'When true, the component is disabled.',
-        },
-        invalid: {
-            control: 'boolean',
-            description: 'When true, applies the invalid state style to the component.',
-        },
-        keyfilter: {
-            control: 'text',
-            description: 'Defines the format of the keys to block.',
-        },
-        size: {
-            control: { type: 'select', options: ['sm', 'md', 'lg'] },
-            description: 'Specifies the size of the input field.',
-        },
-        tooltip: {
-            control: 'text',
-            description: 'Content of the tooltip.',
-        },
-        tooltipOptions: {
-            control: 'object',
-            description: 'Configuration options for the tooltip.',
-        },
-        unstyled: {
-            control: 'boolean',
-            description: 'When true, removes component related styles in the core.',
-        },
-        validateOnly: {
-            control: 'boolean',
-            description: 'When true, input is validated internally against the regular expression instead of blocking keys.',
-        },
-        value: {
-            control: 'text',
-            description: 'The value of the input field.',
-        },
-        variant: {
-            control: { type: 'select', options: ['filled', 'outlined'] },
-            description: 'Specifies the variant of the input field.',
-        },
-        pt: {
-            control: 'object',
-            description: 'Attributes to pass to DOM elements inside the component.',
-        },
-        ptOptions: {
-            control: 'object',
-            description: 'Configuration options for passthrough (pt).',
-        },
+  title: "Components/Form/InputField",
+  component: InputField,
+  tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label for the input field.",
     },
+    type: {
+      control: {
+        type: "select",
+        options: [
+          "text",
+          "password",
+          "email",
+          "url",
+          "number",
+          "date",
+          "time",
+          "datetime-local",
+          "month",
+          "search",
+          "tel",
+          "color",
+          "range",
+          "hidden",
+          "week",
+        ],
+      },
+      description: "The type of the input field (e.g., text, password, email).",
+    },
+    className: {
+      control: "text",
+      description: "Custom CSS class name for styling the component.",
+    },
+    disabled: {
+      control: "boolean",
+      description: "When true, the component is disabled.",
+    },
+    invalid: {
+      control: "boolean",
+      description:
+        "When true, applies the invalid state style to the component.",
+    },
+    keyfilter: {
+      control: "text",
+      description: "Defines the format of the keys to block.",
+    },
+    size: {
+      control: { type: "select", options: ["sm", "md", "lg"] },
+      description: "Specifies the size of the input field.",
+    },
+    tooltip: {
+      control: "text",
+      description: "Content of the tooltip.",
+    },
+    tooltipOptions: {
+      control: "object",
+      description: "Configuration options for the tooltip.",
+    },
+    unstyled: {
+      control: "boolean",
+      description: "When true, removes component related styles in the core.",
+    },
+    validateOnly: {
+      control: "boolean",
+      description:
+        "When true, input is validated internally against the regular expression instead of blocking keys.",
+    },
+    value: {
+      control: "text",
+      description: "The value of the input field.",
+    },
+    variant: {
+      control: { type: "select", options: ["filled", "outlined"] },
+      description: "Specifies the variant of the input field.",
+    },
+    pt: {
+      control: "object",
+      description: "Attributes to pass to DOM elements inside the component.",
+    },
+    ptOptions: {
+      control: "object",
+      description: "Configuration options for passthrough (pt).",
+    },
+  },
 } as Meta;
 
 const Template: StoryFn<InputFieldProps> = (args) => <InputField {...args} />;

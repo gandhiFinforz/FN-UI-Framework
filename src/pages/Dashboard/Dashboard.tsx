@@ -8,9 +8,9 @@ import {
 import { useTranslation } from "react-i18next";
 import React from "react";
 import { Card } from "primereact/card";
-import Dashboard from "./Dashboard";
+import UserTable from "./UserTable";
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   return (
     <IonPage>
@@ -25,9 +25,9 @@ const Home: React.FC = () => {
             <IonTitle size="large">{t("general.appTitle")}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div className="w">
+        <div className="w-10 flex mt-3 justify-content-center">
           <Card title={t("usersTable.title")}>
-            <Dashboard />
+            <UserTable />
           </Card>
         </div>
       </IonContent>
@@ -35,4 +35,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

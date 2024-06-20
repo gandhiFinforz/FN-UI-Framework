@@ -10,7 +10,7 @@ i18n
   //.use(LanguageDetector) if need to detect from browser itself
   .use(Backend)
   .init({
-    debug: true,
+    debug: false,
     lng: LANG, // Default language
     fallbackLng: FALLBACK_LANG, // Fallback language if translation not found
     interpolation: {
