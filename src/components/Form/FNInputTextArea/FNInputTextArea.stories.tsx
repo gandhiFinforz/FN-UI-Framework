@@ -3,10 +3,10 @@ import { Meta, StoryFn } from '@storybook/react';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
-import TextAreaField, { TextAreaFieldProps } from './InputTextAreaField';
+import TextAreaField, { TextAreaFieldProps } from './FNInputTextArea';
 
 export default {
-    title: 'Components/TextAreaField',
+    title: 'Components/Form/TextArea',
     component: TextAreaField,
     tags: ['autodocs'],
     argTypes: {

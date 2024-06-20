@@ -1,7 +1,7 @@
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 import { mount } from "@cypress/react";
-import TextAreaField from "./InputTextAreaField";
+import TextAreaField from "./FNInputTextArea";
 
 describe("<TextAreaField />", () => {
   it("renders", () => {

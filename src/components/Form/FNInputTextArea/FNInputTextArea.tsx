@@ -26,7 +26,7 @@ export interface TextAreaFieldProps extends InputTextareaProps {
   name: string;
 }
 
-const TextAreaField: FC<TextAreaFieldProps> = ({
+const FNTextArea: FC<TextAreaFieldProps> = ({
   disabled = false,
   invalid = false,
   label,
@@ -64,4 +64,4 @@ const TextAreaField: FC<TextAreaFieldProps> = ({
   );
 };
 
-export default TextAreaField;
+export default FNTextArea;
