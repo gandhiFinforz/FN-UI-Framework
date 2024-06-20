@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { mount } from "@cypress/react";
-import FNCheckbox from "./Checkbox";
+import FNCheckbox from "./FNCheckbox";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;

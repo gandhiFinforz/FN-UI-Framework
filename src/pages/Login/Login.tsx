@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import FNButton from "../../components/Form/Button/Button";
-import FNCheckbox from "../../components/Form/Checkbox/Checkbox";
+import FNCheckbox from "../../components/Form/Checkbox/FNCheckbox";
 import InputField from "../../components/Form/InputField/InputField";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
@@ -15,6 +15,7 @@ import { CheckboxChangeEvent } from "primereact/checkbox";
 interface LoginFormValues {
   username: string;
   password: string;
+  rememberMe: boolean;
 }
 
 const Login: React.FC = () => {
@@ -25,20 +26,18 @@ const Login: React.FC = () => {
     initialValues: {
       username: "",
       password: "",
+      rememberMe: false,
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Username is required"),
       password: Yup.string().required("Password is required"),
+      rememberMe: Yup.boolean(),
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));
     },
   });
 
-  const [checked, setChecked] = useState<boolean>(false);
-  const handleCheckboxChange = (e: CheckboxChangeEvent) => {
-    setChecked(e.checked ?? false); // Use fallback value if e.checked is undefined
-  };
   return (
     <div className="flex align-items-center justify-content-center h-screen">
       <Card title={t("loginPage.title")} className="p-fluid md:col-4">
@@ -67,10 +66,12 @@ const Login: React.FC = () => {
 
             <FNCheckbox
               inputId="cb1"
-              value="Yes"
+              name="rememberMe"
+              value={formik.values.rememberMe}
               label={t("loginPage.checkboxLabel")}
-              checked={checked}
-              onChange={handleCheckboxChange}
+              checked={formik.values.rememberMe}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               className="checkbox-class mt-2"
             />
 

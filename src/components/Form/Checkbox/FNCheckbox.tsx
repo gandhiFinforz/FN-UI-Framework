@@ -26,7 +26,6 @@ export interface PrimeCheckboxProps extends Omit<CheckboxProps, "icon"> {
   inputId?: string;
   style?: React.CSSProperties;
   className?: string;
-  onChange?: (event: CheckboxChangeEvent) => void;
   labelClassName?: string;
 }
 
@@ -37,30 +36,17 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
   inputId,
   name,
   value,
-  checked,
+  checked=false,
   required = false,
   readOnly = false,
   disabled = false,
   invalid = false,
-  onChange,
   ...restProps
 }) => {
   const { t } = useTranslation();
-  const handleChange = (e: CheckboxChangeEvent) => {
-    if (onChange) {
-      onChange({
-        originalEvent: e.originalEvent,
-        checked: e.checked,
-        stopPropagation: e.stopPropagation,
-        preventDefault: e.preventDefault,
-        target: e.target,
-        value: undefined,
-      });
-    }
-  };
   return (
     <div
-      className={`p-field-checkbox ${restProps.className || ""}`}
+      className={`p-field-checkbox ${restProps.className}`}
       style={restProps.style}
     >
       <Checkbox
@@ -72,7 +58,6 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
         readOnly={readOnly}
         disabled={disabled}
         invalid={invalid}
-        onChange={handleChange}
         tooltip={t(tooltip)}
         tooltipOptions={tooltipOptions}
         {...restProps}

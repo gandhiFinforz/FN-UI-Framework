@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import FNCheckbox, { PrimeCheckboxProps } from "./Checkbox";
+import FNCheckbox, { PrimeCheckboxProps } from "./FNCheckbox";
 
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -60,14 +60,12 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Remember Me",
   checked: false,
-  labelClassName:'ml-2',
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
   label: "Remember Me",
   checked: true,
-  labelClassName:'ml-2',
 };
 
 export const Disabled = Template.bind({});
@@ -75,7 +73,6 @@ Disabled.args = {
   label: "Disabled",
   checked: false,
   disabled: true,
-  labelClassName:'ml-2',
 };
 
 export const Invalid = Template.bind({});
@@ -83,7 +80,6 @@ Invalid.args = {
   label: "Invalid Checkbox",
   checked: false,
   invalid: true,
-  labelClassName:'ml-2',
 };
 
 export const WithTooltip = Template.bind({});
@@ -99,7 +95,6 @@ WithIcon.args = {
   label: "Checkbox with Icon",
   checked: false,
   icon: "pi pi-check", 
-  labelClassName:'ml-2',
 };
 
 export const ReadOnly = Template.bind({});
@@ -107,7 +102,6 @@ ReadOnly.args = {
   label: "Read-only Checkbox",
   checked: false,
   readOnly: true,
-  labelClassName:'ml-2',
 };
 
 export const Required = Template.bind({});
@@ -115,20 +109,18 @@ Required.args = {
   label: "Required Checkbox",
   checked: false,
   required: true,
-  labelClassName:'ml-2',
 };
 
 export const CustomStyle = Template.bind({});
 CustomStyle.args = {
   label: "Custom Style Checkbox",
   checked: false,
-  labelClassName:'ml-2 font-semibold text-blue-500',
+  labelClassName:'font-semibold text-blue-500',
 };
 
 export const LargeCheckbox = Template.bind({});
 LargeCheckbox.args = {
   label: "Large Checkbox",
   checked: false,
-  className: 'ml-2 text-lg',
-  labelClassName:'ml-2 text-lg',
+  labelClassName:'text-lg',
 };
