@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import FNCheckbox, { PrimeCheckboxProps } from "./FNCheckbox";
+import FNCheckbox, { FNCheckboxProps } from "./FNCheckbox";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
@@ -51,7 +51,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<PrimeCheckboxProps> = (args) => (
+const Template: StoryFn<FNCheckboxProps> = (args) => (
   <FNCheckbox {...args} />
 );
 

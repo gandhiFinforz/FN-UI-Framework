@@ -11,7 +11,7 @@ import "primeflex/primeflex.css";
 import { useTranslation } from "react-i18next";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 
-export interface PrimeCheckboxProps extends Omit<CheckboxProps, "icon"> {
+export interface FNCheckboxProps extends Omit<CheckboxProps, "icon"> {
   label: string;
   tooltip?: any;
   tooltipOptions?: TooltipOptions;
@@ -29,14 +29,14 @@ export interface PrimeCheckboxProps extends Omit<CheckboxProps, "icon"> {
   labelClassName?: string;
 }
 
-const FNCheckbox: FC<PrimeCheckboxProps> = ({
+const FNCheckbox: FC<FNCheckboxProps> = ({
   label,
   tooltip,
   tooltipOptions,
   inputId,
   name,
   value,
-  checked=false,
+  checked = false,
   required = false,
   readOnly = false,
   disabled = false,
@@ -62,10 +62,7 @@ const FNCheckbox: FC<PrimeCheckboxProps> = ({
         tooltipOptions={tooltipOptions}
         {...restProps}
       />
-      <label
-        htmlFor={inputId}
-        className={`${restProps.labelClassName} ml-2`}
-      >
+      <label htmlFor={inputId} className={`${restProps.labelClassName} ml-2`}>
         {t(label)}
       </label>
     </div>
