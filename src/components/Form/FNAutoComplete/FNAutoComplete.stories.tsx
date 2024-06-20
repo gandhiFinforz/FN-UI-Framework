@@ -1,12 +1,12 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import AutoCompleteField, { AutoCompleteFieldProps } from "./AutoCompleteField";
+import FNAutoComplete, { FNAutoCompleteProps } from "./FNAutoComplete";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 
 export default {
-  title: "Components/Form/AutoCompleteField",
-  component: AutoCompleteField,
+  title: "Components/Form/AutoComplete",
+  component: FNAutoComplete,
   tags: ["autodocs"],
   argTypes: {
     appendTo: {
@@ -233,8 +233,8 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<AutoCompleteFieldProps> = (args) => (
-  <AutoCompleteField {...args} />
+const Template: StoryFn<FNAutoCompleteProps> = (args) => (
+  <FNAutoComplete {...args} />
 );
 
 export const Default = Template.bind({});

@@ -2,12 +2,12 @@ import React from "react";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 import { mount } from "@cypress/react";
-import AutoCompleteField from "./AutoCompleteField";
+import FNAutoComplete from "./FNAutoComplete";
 
-describe("<AutoCompleteField />", () => {
+describe("<FNAutoComplete />", () => {
   it("renders", () => {
-    mount(<AutoCompleteField suggestions={[]} />);
-    cy.screenshot("component/AutoCompleteField/renders");
+    mount(<FNAutoComplete suggestions={[]} />);
+    cy.screenshot("component/FNAutoComplete/renders");
   });
 
   it("displays suggestions on input", () => {
@@ -15,12 +15,12 @@ describe("<AutoCompleteField />", () => {
       { label: "Option 1", value: 1 },
       { label: "Option 2", value: 2 },
     ];
-    mount(<AutoCompleteField suggestions={suggestions} />);
+    mount(<FNAutoComplete suggestions={suggestions} />);
     cy.get("input").type("Option");
     cy.get(".p-autocomplete-items")
       .should("contain", "Option 1")
       .and("contain", "Option 2");
-    cy.screenshot("component/AutoCompleteField/displays suggestions on input");
+    cy.screenshot("component/FNAutoComplete/displays suggestions on input");
   });
 
   it("selects a suggestion on click", () => {
@@ -28,29 +28,29 @@ describe("<AutoCompleteField />", () => {
       { label: "Option 1", value: 1 },
       { label: "Option 2", value: 2 },
     ];
-    mount(<AutoCompleteField suggestions={suggestions} />);
+    mount(<FNAutoComplete suggestions={suggestions} />);
     cy.get("input").type("Option");
     cy.get(".p-autocomplete-items").contains("Option 1").click();
     cy.get("input").should("have.value", "Option 1");
-    cy.screenshot("component/AutoCompleteField/selects a suggestion on click");
+    cy.screenshot("component/FNAutoComplete/selects a suggestion on click");
   });
 
   it("disables the component", () => {
-    mount(<AutoCompleteField suggestions={[]} disabled />);
+    mount(<FNAutoComplete suggestions={[]} disabled />);
     cy.get("input").should("be.disabled");
-    cy.screenshot("component/AutoCompleteField/disables the component");
+    cy.screenshot("component/FNAutoComplete/disables the component");
   });
 
   it("displays a tooltip", () => {
-    mount(<AutoCompleteField suggestions={[]} tooltip="This is a tooltip" />);
+    mount(<FNAutoComplete suggestions={[]} tooltip="This is a tooltip" />);
     cy.get("input").trigger("mouseover");
     cy.get(".p-tooltip").should("contain", "This is a tooltip");
-    cy.screenshot("component/AutoCompleteField/displays a tooltip");
+    cy.screenshot("component/FNAutoComplete/displays a tooltip");
   });
 
   it("displays the dropdown button", () => {
-    mount(<AutoCompleteField suggestions={[]} dropdown />);
+    mount(<FNAutoComplete suggestions={[]} dropdown />);
     cy.get(".p-autocomplete-dropdown").should("exist");
-    cy.screenshot("component/AutoCompleteField/displays the dropdown button");
+    cy.screenshot("component/FNAutoComplete/displays the dropdown button");
   });
 });
