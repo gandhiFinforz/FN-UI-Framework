@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import PrimeDataTable, {
-  DataTableProps,
-} from "../../components/Data/FNDataTable/FNDataTable";
+
 import ApiService from "../../services/ApiServices";
+import FNDataTable, { FNDataTableProps } from "../../components/Data/FNDataTable/FNDataTable";
 
 const UserTable: React.FC = () => {
   const { t } = useTranslation();
@@ -33,7 +32,7 @@ const UserTable: React.FC = () => {
     { field: "createdAt", header: "Created At" }
   ];
 
-  const dataTableProps: DataTableProps = {
+  const dataTableProps: FNDataTableProps = {
     value: users,
     dynamicColumns: dynamicColumns,
     emptyMessage: "general.noRecordFound", // Example translation key for empty message
@@ -43,7 +42,7 @@ const UserTable: React.FC = () => {
 
   return (
     <div className="datatable-demo">
-      <PrimeDataTable {...dataTableProps} />
+      <FNDataTable {...dataTableProps} />
     </div>
   );
 };
