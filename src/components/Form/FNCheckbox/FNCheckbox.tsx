@@ -64,7 +64,9 @@ const FNCheckbox: FC<FNCheckboxProps> = ({
         {t(label)}
       </label>
 
-      <div>{helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}</div>
+      <div>
+        {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}
+      </div>
     </div>
   );
 };
