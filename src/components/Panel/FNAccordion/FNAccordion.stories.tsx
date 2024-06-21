@@ -6,6 +6,7 @@ import "primeicons/primeicons.css";
 export default {
   title: "Components/Panel/FNAccordion",
   component: FNAccordion,
+  tags: ["autodocs"],
   argTypes: {
     tabs: { control: { disable: false } },
   },
