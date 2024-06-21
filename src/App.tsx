@@ -32,7 +32,8 @@ import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import "primereact/resources/themes/saga-blue/theme.css"; // import theme
+import 'primereact/resources/themes/saga-blue/theme.css';
+      // Core CSS
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
@@ -45,6 +46,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -52,12 +54,8 @@ const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
 
-   const [theme, setTheme] = useState("saga-blue");
+  
 
-   const onThemeChange = (newTheme: SetStateAction<string>) => {
-     setTheme(newTheme);
-     import(`primereact/resources/themes/${newTheme}/theme.css`);
-   };
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
@@ -68,7 +66,7 @@ const App: React.FC = () => {
         <div className="flex w-screen h-screen">{t("general.loading")}</div>
       }
     >
-      <FNThemeSidebar onThemeChange={onThemeChange} />
+
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
         <IonReactRouter>
