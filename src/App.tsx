@@ -57,7 +57,7 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<div>{t("general.loading")}</div>}>
+    <Suspense fallback={<div className="flex w-screen h-screen">{t("general.loading")}</div>}>
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
         <IonReactRouter>
