@@ -3,11 +3,12 @@ import { TabView, TabPanel, TabViewProps } from "primereact/tabview";
 import { useTranslation } from "react-i18next";
 
 export interface FNTab {
-    header: string;
-    content: React.ReactNode;
-    icon?: string;
-    disabled?: boolean;
-  }
+  header: string;
+  content: React.ReactNode;
+  icon?: string;
+  disabled?: boolean;
+  headerTemplate?: (options: any) => React.ReactNode;
+}
 
 export interface FNTabsProps extends TabViewProps {
   className?: string;
@@ -17,7 +18,8 @@ export interface FNTabsProps extends TabViewProps {
   unstyled?: boolean;
   iconPosition?: "right" | "left"; // Specify iconPosition type
   disabled?: boolean;
-  scrollable?: boolean,
+  scrollable?: boolean;
+  closable?: boolean;
 }
 
 const FNTabs: FC<FNTabsProps> = ({
@@ -29,12 +31,17 @@ const FNTabs: FC<FNTabsProps> = ({
   iconPosition = "left", // Default to 'left' if not specified
   disabled = false,
   scrollable = true,
+  closable = false,
   ...props
 }) => {
   const { t } = useTranslation();
 
   return (
-    <TabView className={`${className} p-tabview-${size}` }  {...props}>
+    <TabView
+      scrollable={scrollable}
+      className={`${className} p-tabview-${size}`}
+      {...props}
+    >
       {tabs.map((tab, index) => (
         <TabPanel
           key={index}
@@ -46,6 +53,8 @@ const FNTabs: FC<FNTabsProps> = ({
             ? { leftIcon: tab.icon }
             : {})}
           disabled={tab.disabled}
+          closable={closable}
+          headerTemplate={tab.headerTemplate}
         >
           {tab.content}
         </TabPanel>
