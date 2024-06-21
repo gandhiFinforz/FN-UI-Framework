@@ -1,12 +1,8 @@
-import {
-  FileUpload,
-  FileUploadProps,
-} from "primereact/fileupload";
+import { FileUpload, FileUploadProps } from "primereact/fileupload";
 import { InputTextareaPassThroughOptions } from "primereact/inputtextarea";
 import { PassThroughOptions } from "primereact/passthrough";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-
 export interface FNFileUploadProps extends FileUploadProps {
   className?: string;
   disabled?: boolean;
@@ -71,7 +67,7 @@ const FNFileUpload: FC<FNFileUploadProps> = ({
         pt={pt}
         ptOptions={ptOptions}
         mode={mode}
-        emptyTemplate={<p>Drag and drop files to here to upload.</p>}
+        emptyTemplate={<p>{t("fileUpload.label")}</p>}
         {...props}
       />
       {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}
