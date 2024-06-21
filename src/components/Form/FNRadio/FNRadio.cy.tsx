@@ -72,7 +72,5 @@ describe('RadioField Component', () => {
       .find('input[type="radio"]')
       .first()
       .trigger('mouseover');
-
-    
   });
 });
