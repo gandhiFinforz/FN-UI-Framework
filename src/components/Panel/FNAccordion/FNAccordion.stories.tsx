@@ -1,6 +1,3 @@
-// FNAccordion.stories.tsx
-
-import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import FNAccordion, { FNAccordionProps } from "./FNAccordion";
 
@@ -8,7 +5,7 @@ export default {
   title: "Components/Panel/FNAccordion",
   component: FNAccordion,
   argTypes: {
-    tabs: { control: { disable: true } },
+    tabs: { control: { disable: false } },
   },
 } as Meta;
 
