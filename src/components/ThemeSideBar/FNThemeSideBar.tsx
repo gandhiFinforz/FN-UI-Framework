@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 
-const FNThemeSidebar = ({ onThemeChange }) => {
-    const [visible, setVisible] = useState(false);
+interface FNThemeSidebarProps {
+    onThemeChange: (theme: string) => void;
+}
+
+const FNThemeSidebar: React.FC<FNThemeSidebarProps> = ({ onThemeChange }) => {
+    const [visible, setVisible] = useState(true);
 
     const themes = [
         'saga-blue', 'saga-green', 'saga-orange', 'saga-purple',
