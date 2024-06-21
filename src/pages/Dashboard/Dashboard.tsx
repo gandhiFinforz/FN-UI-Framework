@@ -16,11 +16,11 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation();
 
   const tabs: TabData[] = [
-    { header: "Header 1", content: <p>Content for the first tab</p> },
-    { header: "Header 2", content: <p>Content for the second tab</p> },
+    { header: "Header 1", content: "Content for the first tab" },
+    { header: "Header 2", content: "Content for the second tab" },
     {
       header: "Header 3",
-      content: <p>Content for the third tab</p>,
+      content: "Content for the third tab",
       disabled: true,
     },
   ];
@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
         {/* end */}
         <div className="w-10 flex mt-3 justify-content-center">
           <FNCard title={t("usersTable.title")}>
-            <UserTable/>
+            <UserTable />
           </FNCard>
         </div>
       </IonContent>

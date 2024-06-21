@@ -38,7 +38,7 @@ const FNAccordion: FC<FNAccordionProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={`p-accordion ${className}`} style={style}>
+    <div className={`p-accordion ${className}`}>
       <Accordion
         activeIndex={activeIndex}
         multiple={multiple}

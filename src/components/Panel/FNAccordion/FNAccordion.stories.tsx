@@ -1,6 +1,8 @@
 import { StoryFn, Meta } from "@storybook/react";
 import FNAccordion, { FNAccordionProps } from "./FNAccordion";
-
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 export default {
   title: "Components/Panel/FNAccordion",
   component: FNAccordion,
@@ -14,9 +16,13 @@ const Template: StoryFn<FNAccordionProps> = (args) => <FNAccordion {...args} />;
 export const DefaultAccordion = Template.bind({});
 DefaultAccordion.args = {
   tabs: [
-    { header: "Header 1", content: "Content of tab 1" },
-    { header: "Header 2", content: "Content of tab 2" },
-    { header: "Header 3", content: "Content of tab 3", disabled: true },
+    { header: "Header 1", content: "Content for the first tab" },
+    { header: "Header 2", content: "Content for the second tab" },
+    {
+      header: "Header 3",
+      content: "Content for the third tab",
+      disabled: true,
+    },
   ],
 };
 
@@ -29,8 +35,8 @@ SingleAccordion.args = {
 export const CustomIconsAccordion = Template.bind({});
 CustomIconsAccordion.args = {
   tabs: [
-    { header: "Header 1", content: "Content of tab 1" },
-    { header: "Header 2", content: "Content of tab 2" },
+    { header: "Header 1", content: "Content for the first tab" },
+    { header: "Header 2", content: "Content for the second tab" },
   ],
   expandIcon: "pi pi-chevron-right",
   collapseIcon: "pi pi-chevron-down",
@@ -39,8 +45,8 @@ CustomIconsAccordion.args = {
 export const StyledAccordion = Template.bind({});
 StyledAccordion.args = {
   tabs: [
-    { header: "Header 1", content: "Content of tab 1" },
-    { header: "Header 2", content: "Content of tab 2" },
+    { header: "Header 1", content: "Content for the first tab" },
+    { header: "Header 2", content: "Content for the second tab" },
   ],
-  style: { border: "1px solid #ccc", borderRadius: "8px", padding: "10px" },
+  className: "border-round border-solid p-2",
 };

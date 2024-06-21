@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-import React from "react";
 import { mount } from "@cypress/react";
 import FNAccordion from "./FNAccordion";
 
@@ -10,9 +8,9 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 describe("<FNAccordion />", () => {
   it("renders with default tabs and open/close correctly", () => {
     const tabs = [
-      { header: "Tab 1", content: "Content of tab 1" },
-      { header: "Tab 2", content: "Content of tab 2" },
-      { header: "Tab 3", content: "Content of tab 3" },
+      { header: "Tab 1", content: "Content for the first tab" },
+      { header: "Tab 2", content: "Content for the second tab" },
+      { header: "Tab 3", content: "Content for the third tab" },
     ];
 
     mount(<FNAccordion tabs={tabs} />);
@@ -30,9 +28,9 @@ describe("<FNAccordion />", () => {
 
   it("disables specific tabs correctly", () => {
     const tabs = [
-      { header: "Tab 1", content: "Content of tab 1" },
-      { header: "Tab 2", content: "Content of tab 2" },
-      { header: "Tab 3", content: "Content of tab 3", disabled: true },
+      { header: "Tab 1", content: "Content for the first tab" },
+      { header: "Tab 2", content: "Content for the second tab" },
+      { header: "Tab 3", content: "Content for the third tab", disabled: true },
     ];
 
     mount(<FNAccordion tabs={tabs} />);
@@ -46,8 +44,8 @@ describe("<FNAccordion />", () => {
 
   it("applies custom icons and styles correctly", () => {
     const tabs = [
-      { header: "Tab 1", content: "Content of tab 1" },
-      { header: "Tab 2", content: "Content of tab 2" },
+      { header: "Tab 1", content: "Content for the first tab" },
+      { header: "Tab 2", content: "Content for the second tab" },
     ];
 
     mount(
