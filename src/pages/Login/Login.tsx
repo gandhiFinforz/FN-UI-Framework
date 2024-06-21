@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FNButton from "../../components/Form/FNButton/FNButton";
 import FNInput from "../../components/Form/FNInput/FNInput";
+import FNCheckbox from "../../components/Form/FNCheckbox/FNCheckbox";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
@@ -13,6 +14,7 @@ import { t } from "i18next";
 interface LoginFormValues {
   username: string;
   password: string;
+  rememberMe: boolean;
 }
 
 const Login: React.FC = () => {
@@ -23,6 +25,7 @@ const Login: React.FC = () => {
     initialValues: {
       username: "",
       password: "",
+      rememberMe: false,
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Username is required"),
@@ -58,7 +61,20 @@ const Login: React.FC = () => {
               invalid={formik.touched.password && !!formik.errors.password}
               helpText={formik.touched.password && formik.errors.password}
             />
+
+            <FNCheckbox
+              inputId="rememberMeCheckbox"
+              name="rememberMe"
+              value={formik.values.rememberMe}
+              label={t("loginPage.checkboxLabel")}
+              checked={formik.values.rememberMe}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="mt-2"
+            />
+
             {error && <div className="error text-red-400">{error}</div>}
+
             <FNButton
               label="Login"
               type="submit"
