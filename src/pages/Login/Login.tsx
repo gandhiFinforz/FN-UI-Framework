@@ -3,8 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FNButton from "../../components/Form/Button/Button";
-import InputField from "../../components/Form/InputField/InputField";
+import FNButton from "../../components/Form/FNButton/FNButton";
+import FNInput from "../../components/Form/FNInput/FNInput";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
@@ -38,7 +38,7 @@ const Login: React.FC = () => {
       <Card title={t("loginPage.title")} className="p-fluid md:col-4">
         <div className="login-form">
           <form onSubmit={formik.handleSubmit}>
-            <InputField
+            <FNInput
               type="text"
               name="username"
               label="Username"
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
               invalid={formik.touched.username && !!formik.errors.username}
               helpText={formik.touched.username && formik.errors.username}
             />
-            <InputField
+            <FNInput
               type="password"
               name="password"
               label="Password"
