@@ -3,7 +3,9 @@
     "title": "Page de connexion",
     "userName": "Nom d'utilisateur",
     "password": "Mot de passe",
-    "buttonName": "Connexion"
+    "buttonName": "Connexion",
+    "checkboxLabel":"souviens-toi de moi"
+
   },
   "general": {
     "appTitle":"FN-UI",
