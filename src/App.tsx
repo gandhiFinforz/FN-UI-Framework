@@ -32,7 +32,18 @@ import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import "primereact/resources/themes/saga-blue/theme.css"; // import theme
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/themes/saga-green/theme.css';
+import 'primereact/resources/themes/saga-orange/theme.css';
+import 'primereact/resources/themes/saga-purple/theme.css';
+import 'primereact/resources/themes/vela-blue/theme.css';
+import 'primereact/resources/themes/vela-green/theme.css';
+import 'primereact/resources/themes/vela-orange/theme.css';
+import 'primereact/resources/themes/vela-purple/theme.css';
+import 'primereact/resources/themes/arya-blue/theme.css';
+import 'primereact/resources/themes/arya-green/theme.css';
+import 'primereact/resources/themes/arya-orange/theme.css';
+import 'primereact/resources/themes/arya-purple/theme.css';      // Core CSS
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
@@ -45,6 +56,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -52,12 +64,19 @@ const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
 
-   const [theme, setTheme] = useState("saga-blue");
+  const [theme, setTheme] = useState("saga-blue");
 
-   const onThemeChange = (newTheme: SetStateAction<string>) => {
-     setTheme(newTheme);
-     import(`primereact/resources/themes/${newTheme}/theme.css`);
-   };
+  useEffect(() => {
+    const themeLink = document.getElementById("theme-css") as HTMLLinkElement;
+    console.log(themeLink);
+    
+    themeLink.href = `primereact/resources/themes/${theme}/theme.css`;
+  }, [theme]);
+
+  const onThemeChange = (newTheme: string) => {
+    setTheme(newTheme);
+  };
+
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
