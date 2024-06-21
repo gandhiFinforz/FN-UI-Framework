@@ -33,17 +33,7 @@ import "@ionic/react/css/palettes/dark.system.css";
 import "./theme/variables.css";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/themes/saga-green/theme.css';
-import 'primereact/resources/themes/saga-orange/theme.css';
-import 'primereact/resources/themes/saga-purple/theme.css';
-import 'primereact/resources/themes/vela-blue/theme.css';
-import 'primereact/resources/themes/vela-green/theme.css';
-import 'primereact/resources/themes/vela-orange/theme.css';
-import 'primereact/resources/themes/vela-purple/theme.css';
-import 'primereact/resources/themes/arya-blue/theme.css';
-import 'primereact/resources/themes/arya-green/theme.css';
-import 'primereact/resources/themes/arya-orange/theme.css';
-import 'primereact/resources/themes/arya-purple/theme.css';      // Core CSS
+      // Core CSS
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
@@ -64,18 +54,7 @@ const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
 
-  const [theme, setTheme] = useState("saga-blue");
-
-  useEffect(() => {
-    const themeLink = document.getElementById("theme-css") as HTMLLinkElement;
-    console.log(themeLink);
-    
-    themeLink.href = `primereact/resources/themes/${theme}/theme.css`;
-  }, [theme]);
-
-  const onThemeChange = (newTheme: string) => {
-    setTheme(newTheme);
-  };
+  
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -87,7 +66,7 @@ const App: React.FC = () => {
         <div className="flex w-screen h-screen">{t("general.loading")}</div>
       }
     >
-      <FNThemeSidebar onThemeChange={onThemeChange} />
+
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
         <IonReactRouter>
