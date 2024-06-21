@@ -7,8 +7,8 @@ import {
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { Card } from "primereact/card";
 import UserTable from "./UserTable";
+import FNCard from "../../components/Panel/FNCard/FNCard";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -26,9 +26,9 @@ const Dashboard: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className="w-10 flex mt-3 justify-content-center">
-          <Card title={t("usersTable.title")}>
+          <FNCard title={t("usersTable.title")}>
             <UserTable/>
-          </Card>
+          </FNCard>
         </div>
       </IonContent>
     </IonPage>
