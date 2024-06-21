@@ -53,22 +53,14 @@ describe("<FNAccordion />", () => {
         tabs={tabs}
         expandIcon="pi pi-chevron-right"
         collapseIcon="pi pi-chevron-down"
-        style={{
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          padding: "10px",
-        }}
+        className="border-round border-solid p-2"
       />
     );
 
-    cy.get(".p-accordion .pi-chevron-right").should("have.length", 2); 
+    cy.get(".p-accordion .pi-chevron-right").should("have.length", 2);
 
-    cy.get(".p-accordion").should(
-      "have.css",
-      "border",
-      "1px solid rgb(204, 204, 204)"
-    );
-    cy.get(".p-accordion").should("have.css", "border-radius", "8px");
-    cy.get(".p-accordion").should("have.css", "padding", "10px");
+    cy.get(".p-accordion").should("have.class", "border-round");
+    cy.get(".p-accordion").should("have.class", "border-solid");
+    cy.get(".p-accordion").should("have.class", "p-2");
   });
 });
