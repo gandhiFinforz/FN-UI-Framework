@@ -5,7 +5,6 @@ import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { useTranslation } from "react-i18next";
-import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 import { IconType } from "primereact/utils";
 
 export interface TabData {

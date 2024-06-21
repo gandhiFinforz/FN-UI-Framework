@@ -11,7 +11,7 @@ import { Card } from "primereact/card";
 import UserTable from "./UserTable";
 import FNAccordion, {
   TabData,
-} from "../../components/Panel/FNAccordian/FNAccordian";
+} from "../../components/Panel/FNAccordion/FNAccordion";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
