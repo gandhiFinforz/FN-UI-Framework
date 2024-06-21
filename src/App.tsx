@@ -38,7 +38,7 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Login from "./pages/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { Suspense, useEffect, useState } from "react";
+import { SetStateAction, Suspense, useEffect, useState } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,12 +52,23 @@ const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
 
+   const [theme, setTheme] = useState("saga-blue");
+
+   const onThemeChange = (newTheme: SetStateAction<string>) => {
+     setTheme(newTheme);
+     import(`primereact/resources/themes/${newTheme}/theme.css`);
+   };
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<div>{t("general.loading")}</div>}>
+    <Suspense
+      fallback={
+        <div className="flex w-screen h-screen">{t("general.loading")}</div>
+      }
+    >
+      <FNThemeSidebar onThemeChange={onThemeChange} />
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
         <IonReactRouter>
