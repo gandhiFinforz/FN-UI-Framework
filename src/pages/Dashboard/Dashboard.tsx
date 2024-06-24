@@ -12,6 +12,7 @@ import FNCard from "../../components/Panel/FNCard/FNCard";
 import FNAccordion, {
   TabData,
 } from "../../components/Panel/FNAccordion/FNAccordion";
+import FNTextEditor from "../../components/Form/TextEditor/FNTextEditor";
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
 
@@ -44,6 +45,7 @@ const Dashboard: React.FC = () => {
         {/* end */}
         <div className="w-10 flex mt-3 justify-content-center">
           <FNCard title={t("usersTable.title")}>
+            <FNTextEditor value={"Always bet on Prime!"} />
             <UserTable />
           </FNCard>
         </div>
