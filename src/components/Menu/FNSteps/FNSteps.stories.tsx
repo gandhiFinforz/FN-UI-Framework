@@ -1,142 +1,106 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { Formik, Field, FieldProps } from 'formik';
-import RadioField, { RadioFieldProps } from '../FNRadio/FNRadio'; // Adjust the import path accordingly
+import StepsMenu, { StepsProps } from './FNSteps';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primeflex/primeflex.css'; // import theme
 
 export default {
-  title: 'Components/Form/RadioField',
-  component: RadioField,
-  tags: ["autodocs"],
+  title: 'Components/Menu/StepsMenu',
+  component: StepsMenu,
+  tags: ['autodocs'],
   argTypes: {
-    className: { control: 'text' },
-    name: { control: 'text' },
-    options: {
-      control: 'object',
-      defaultValue: [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
-        { value: 'option3', label: 'Option 3' }
-      ],
-      description: 'Options for the radio buttons',
-      table: {
-        type: {
-          summary: 'OptionRadioProps[]',
-          detail: `
-            interface OptionRadioProps {
-              value: string;
-              label: string;
-              disabled?: boolean;
-              autoFocus?: boolean;
-              checked?: boolean;
-              children?: string;
-              inputId?: string;
-              inputRef?: Ref<HTMLInputElement>;
-              invalid?: boolean;
-              pt?: RadioButtonPassThroughOptions;
-              ptOptions?: PassThroughOptions;
-              readonly?: boolean;
-              required?: boolean;
-              tooltip?: string | any;
-              tooltipOptions?: TooltipOptions;
-              unstyled?: boolean;
-              variant?: "outlined" | "filled";
-            }
-          `
-        }
-      }
+    className: {
+      control: 'text',
+      description: 'Custom CSS class name for styling the component.',
     },
-    initialValue: { control: 'text' }
-  }
-
+    model: {
+      control: 'object',
+      description: 'Array of steps to be displayed in the Steps component.',
+    },
+    initialIndex: {
+      control: 'number',
+      description: 'Initial index of the active step.',
+    },
+    onSelect: {
+      action: 'selected',
+      description: 'Callback function when a step is selected.',
+    },
+    readOnly: {
+      control: 'boolean',
+      description: 'When true, the steps are read-only and cannot be interacted with.',
+    },
+  },
 } as Meta;
 
-interface TemplateProps extends RadioFieldProps {
-  initialValue: string;
-}
+const Template: StoryFn<StepsProps> = (args) => <StepsMenu {...args} />;
 
-const Template: StoryFn<TemplateProps> = (args) => (
-  <Formik
-    initialValues={{ [args.name]: args.initialValue || '' }}
-    onSubmit={(values) => {
-      console.log(values);
-    }}
-  >
-    {() => (
-      <form>
-        <Field name={args.name}>
-          {({ field, form, meta }: FieldProps) => (
-            <RadioField {...args} field={field} form={form} meta={meta} />
-          )}
-        </Field>
-      </form>
-    )}
-  </Formik>
-);
-
+/**
+ * Default story: Renders the StepsMenu with default props.
+ */
 export const Default = Template.bind({});
 Default.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
+  className: 'default-steps-class',
+  model: [
+    { label: 'Step 1', icon: 'pi pi-check' },
+    { label: 'Step 2', icon: 'pi pi-check' },
+    { label: 'Step 3', icon: 'pi pi-check' },
   ],
-  initialValue: '',
+  initialIndex: 0,
 };
 
-export const DisabledOption = Template.bind({});
-DisabledOption.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2', disabled: true },
-    { value: 'option3', label: 'Option 3' },
+/**
+ * WithInitialIndex story: Renders the StepsMenu with an initial active index.
+ */
+export const WithInitialIndex = Template.bind({});
+WithInitialIndex.args = {
+  className: 'initial-index-steps-class',
+  model: [
+    { label: 'Step 1', icon: 'pi pi-check' },
+    { label: 'Step 2', icon: 'pi pi-check' },
+    { label: 'Step 3', icon: 'pi pi-check' },
   ],
-  initialValue: '',
+  initialIndex: 1,
 };
 
-export const WithTooltips = Template.bind({});
-WithTooltips.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1', tooltip: 'This is option 1' },
-    { value: 'option2', label: 'Option 2', tooltip: 'This is option 2' },
-    { value: 'option3', label: 'Option 3', tooltip: 'This is option 3' },
+/**
+ * ReadOnly story: Renders the StepsMenu in a read-only state.
+ */
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  className: 'readonly-steps-class',
+  model: [
+    { label: 'Step 1', icon: 'pi pi-check' },
+    { label: 'Step 2', icon: 'pi pi-check' },
+    { label: 'Step 3', icon: 'pi pi-check' },
   ],
-  initialValue: '',
+  initialIndex: 0,
+  readOnly: true,
 };
 
-export const WithInitialValue = Template.bind({});
-WithInitialValue.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
+/**
+ * WithCustomClassName story: Renders the StepsMenu with a custom class name.
+ */
+export const WithCustomClassName = Template.bind({});
+WithCustomClassName.args = {
+  className: 'custom-steps-class',
+  model: [
+    { label: 'Step 1', icon: 'pi pi-check' },
+    { label: 'Step 2', icon: 'pi pi-check' },
+    { label: 'Step 3', icon: 'pi pi-check' },
   ],
-  initialValue: 'option2',
+  initialIndex: 0,
 };
 
-export const OutlinedVariant = Template.bind({});
-OutlinedVariant.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1', variant: 'outlined' },
-    { value: 'option2', label: 'Option 2', variant: 'outlined' },
-    { value: 'option3', label: 'Option 3', variant: 'outlined' },
+/**
+ * WithDisabledSteps story: Renders the StepsMenu with some steps disabled.
+ */
+export const WithDisabledSteps = Template.bind({});
+WithDisabledSteps.args = {
+  className: 'disabled-steps-class',
+  model: [
+    { label: 'Step 1', icon: 'pi pi-check', disabled: true },
+    { label: 'Step 2', icon: 'pi pi-check' },
+    { label: 'Step 3', icon: 'pi pi-check' },
   ],
-  initialValue: '',
+  initialIndex: 1,
 };
-
-export const FilledVariant = Template.bind({});
-FilledVariant.args = {
-  name: 'option',
-  options: [
-    { value: 'option1', label: 'Option 1', variant: 'filled' },
-    { value: 'option2', label: 'Option 2', variant: 'filled' },
-    { value: 'option3', label: 'Option 3', variant: 'filled' },
-  ],
-  initialValue: '',
-};
-
-

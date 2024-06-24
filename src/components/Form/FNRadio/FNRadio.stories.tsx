@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { Formik, Field, FieldProps } from 'formik';
+import { Formik, Field } from 'formik';
+import { useField } from 'formik';
 import RadioField, { RadioFieldProps } from '../FNRadio/FNRadio'; // Adjust the import path accordingly
 
 export default {
@@ -45,9 +46,10 @@ export default {
         }
       }
     },
-    initialValue: { control: 'text' }
+    initialValue: { control: 'text' },
+    helpText: { control: 'text' },
+    error: { control: 'text' }
   }
-
 } as Meta;
 
 interface TemplateProps extends RadioFieldProps {
@@ -64,8 +66,14 @@ const Template: StoryFn<TemplateProps> = (args) => (
     {() => (
       <form>
         <Field name={args.name}>
-          {({ field, form, meta }: FieldProps) => (
-            <RadioField {...args} field={field} form={form} meta={meta} />
+          {({ field, form, meta }: any) => (
+            <RadioField
+              {...args}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              error={meta.touched && meta.error ? meta.error : ''}
+            />
           )}
         </Field>
       </form>

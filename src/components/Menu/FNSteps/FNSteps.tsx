@@ -8,7 +8,7 @@ import { StepsPassThroughOptions } from "primereact/steps";
 import { PassThroughOptions } from "primereact/passthrough";
 import { useTranslation } from "react-i18next";
 
-interface OptionStepsProps {
+export interface OptionStepsProps {
   label: string;
   icon?: string;
   url?: string;
@@ -19,7 +19,7 @@ interface OptionStepsProps {
   separator?: boolean;
 }
 
-export interface StepsProps {
+export interface StepsProps extends PrimeStepsProps {
   className?: string;
   model: OptionStepsProps[];
   initialIndex: number;

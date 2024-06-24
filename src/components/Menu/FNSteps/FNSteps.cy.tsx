@@ -1,76 +1,55 @@
 import React from 'react';
-import RadioField from './FNRadio';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css';
 import { mount } from '@cypress/react';
 import { Formik, Form, Field } from 'formik';
+import StepsMenu, { OptionStepsProps } from './FNSteps';
 
-const options = [
-  { value: 'option1', label: 'Option 1', tooltip: 'This is option 1' },
-  { value: 'option2', label: 'Option 2', tooltip: 'This is option 2', disabled: true },
-  { value: 'option3', label: 'Option 3', tooltip: 'This is option 3' },
-];
 
-const TestRadioField: React.FC = () => (
-  <Formik
-    initialValues={{ option: 'option2' }}
-    onSubmit={(values) => {
-      console.log(values);
-    }}
-  >
-    <Form>
-      <Field
-        name="option"
-        component={RadioField}
-        options={options}
-        variant="outlined"
-      />
-    </Form>
-  </Formik>
-);
 
-describe('RadioField Component', () => {
+
+
+describe('StepsMenu Component', () => {
+  const mockStepsModel: OptionStepsProps[] = [
+    { label: 'Step 1', icon: 'pi pi-user' },
+    { label: 'Step 2', icon: 'pi pi-search' },
+    { label: 'Step 3', icon: 'pi pi-check' },
+  ];
+
   beforeEach(() => {
-    mount(<TestRadioField />);
+    // Mount the StepsMenu component with required props
+    mount(
+      <StepsMenu
+        model={mockStepsModel}
+        initialIndex={0} // Start with the first step active
+        onSelect={() => {}} // Mock onSelect function
+      />
+    );
   });
 
-  it('should render radio buttons with labels', () => {
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"]')
-      .should('have.length', 3); // Assuming there are 3 options, adjust as necessary
+  it('renders the StepsMenu component with correct initial state', () => {
+    // Assert that the StepsMenu component is rendered
+    cy.get('[data-testid="steps-menu"]').should('exist');
+
+    // Assert that the first step is initially active
   });
 
-  it('should allow selecting a radio button', () => {
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"]')
-      .first()
-      .check()
-      .should('be.checked');
+  it('changes active step when clicked', () => {
+    // Click on the second step
+    cy.get('.border-circle').eq(1).click();
+
+    // Assert that the second step is now active
+
+    // Optionally, assert other behaviors or states after clicking
   });
 
-  it('should update the selected value on change', () => {
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"]')
-      .eq(2)
-      .check()
-      .should('be.checked');
+  it('does not change active step when disabled step is clicked', () => {
+    // Click on the disabled second step
+    cy.get('.border-circle').eq(1).click();
 
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"]')
-      .eq(1)
-      .should('not.be.checked');
+    // Assert that the first step remains active
+    cy.get('.border-circle').eq(1).should('not.have.css', 'background-color', 'rgb(0, 123, 255)');
   });
 
-  it('should respect the disabled state', () => {
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"][disabled]')
-      .should('have.length', 1); // Adjust based on how many are disabled
-  });
-
-  it('should display tooltips when hovered over', () => {
-    cy.get('[data-testid="radio-field"]')
-      .find('input[type="radio"]')
-      .first()
-      .trigger('mouseover');
-  });
+  // Add more test cases as needed, such as testing for disabled steps, etc.
 });

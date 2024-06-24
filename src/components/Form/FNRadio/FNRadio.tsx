@@ -1,8 +1,8 @@
 import React, { FC, useState, Ref } from "react";
-import { FieldProps } from "formik";
 import {
   RadioButton,
   RadioButtonProps,
+  RadioButtonChangeEvent,
   RadioButtonPassThroughOptions,
 } from "primereact/radiobutton";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
@@ -33,39 +33,41 @@ export interface RadioFieldProps {
   className?: string;
   name: string;
   options: OptionRadioProps[];
-  initialValue:string;
+  initialValue: string;
+  value: string;
+  onChange: (e: RadioButtonChangeEvent) => void;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  helpText?: string | any;
+  error?: string;
 }
 
-const RadioField: FC<RadioFieldProps & FieldProps> = ({
-  field,
-  form,
+const RadioField: FC<RadioFieldProps> = ({
   name,
   options,
   className = "",
   initialValue,
+  value,
+  onChange,
+  onBlur,
+  helpText,
+  error,
   ...props
 }) => {
   const { t } = useTranslation();
   const [selectedValue, setSelectedValue] = useState(initialValue || "");
 
-  const handleChange = (value: string) => {
-    setSelectedValue(value);
-    form.setFieldValue(name, value);
+  const handleChange = (e: RadioButtonChangeEvent) => {
+    setSelectedValue(e.value);
+    onChange(e); // Pass the event to the Formik handler
   };
 
   return (
     <div data-testid="radio-field" className={`flex flex-wrap gap-3`}>
       {options.map((d: OptionRadioProps) => (
-        <div
-          key={d.value}
-          className={"flex align-items-center"}
-        >
+        <div key={d.value} className={"flex align-items-center"}>
           <RadioButton
-            className={`${className} ${
-              d.variant === "outlined"
-                ? " p-radiobutton-outlined"
-                : " p-radiobutton-filled"
-            }`}
+            className={className}
+            variant={d.variant}
             disabled={d.disabled}
             invalid={d.invalid}
             inputId={d.inputId || d.value} // Ensure inputId is set correctly
@@ -75,8 +77,9 @@ const RadioField: FC<RadioFieldProps & FieldProps> = ({
             tooltip={t(d.tooltip)}
             unstyled={d.unstyled}
             name={name}
-            onChange={() => handleChange(d.value)}
-            checked={selectedValue === d.value}
+            onChange={handleChange}
+            onBlur={onBlur}
+            checked={value === d.value}
             inputRef={d.inputRef}
             pt={d.pt}
             ptOptions={d.ptOptions}
@@ -88,6 +91,7 @@ const RadioField: FC<RadioFieldProps & FieldProps> = ({
           )}
         </div>
       ))}
+      {helpText ? <div className="error text-red-400">{t(helpText)}</div> : null}
     </div>
   );
 };
