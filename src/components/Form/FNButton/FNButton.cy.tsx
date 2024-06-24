@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { mount } from '@cypress/react';
-import FNButton from './Button';
+import FNButton from './FNButton';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; 
 Cypress.on("uncaught:exception", (err, runnable) => {
@@ -28,7 +28,5 @@ Cypress.on("uncaught:exception", (err, runnable) => {
       mount(<FNButton label="Save" disabled={true} />);
       cy.get("button").should("be.disabled");
     });
-
-    // Add more test cases to cover other props such as loading, badge, tooltip, etc.
   });
   

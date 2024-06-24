@@ -6,6 +6,7 @@
     "buttonName":"Login",
     "changpassword": "Change Password",
     "logout": "Logout"
+    "checkboxLabel":"Remember Me"
   },
   "usersTable":{
     "title": "Users List"

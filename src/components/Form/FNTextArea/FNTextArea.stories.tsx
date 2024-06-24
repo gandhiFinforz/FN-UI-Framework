@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css"; // import theme
-import FNTextArea, { FNTextAreaProps } from "./FNInputTextArea";
+import FNTextArea, { FNTextAreaProps } from "./FNTextArea";
 
 export default {
   title: "Components/Form/TextArea",

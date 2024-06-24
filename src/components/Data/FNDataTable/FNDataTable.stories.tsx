@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import PrimeDataTable, { DataTableProps } from './DataTable'; // Adjust path as needed
+import PrimeDataTable, { FNDataTableProps } from './FNDataTable'; // Adjust path as needed
 
 export default {
   title: 'Components/Data/DataTable',
@@ -21,7 +21,7 @@ const sampleData = [
 ];
 
 // Template for a basic DataTable
-const Template: StoryFn<DataTableProps> = (args) => <PrimeDataTable {...args} />;
+const Template: StoryFn<FNDataTableProps> = (args) => <PrimeDataTable {...args} />;
 
 // Basic DataTable with dynamic columns and sample data
 export const BasicDataTable = Template.bind({});

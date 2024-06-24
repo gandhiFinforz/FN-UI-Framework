@@ -1,12 +1,12 @@
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 import { mount } from "@cypress/react";
-import FNTextArea from "./FNInputTextArea";
+import FNTextArea from "./FNTextArea";
 
 describe("<FNTextArea />", () => {
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react
-    mount(<FNTextArea name={""} />);
+    mount(<FNTextArea name={"Address"} />);
     cy.screenshot("component/FNTextArea/renders");
   });
 
@@ -17,7 +17,7 @@ describe("<FNTextArea />", () => {
         value={value}
         id="textarea"
         label="Label for textarea"
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("have.value", value);
@@ -31,7 +31,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         onChange={handleChange}
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").type("New Value");
@@ -45,7 +45,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         disabled
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("be.disabled");
@@ -60,7 +60,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         invalid
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("have.class", "p-invalid");
@@ -76,7 +76,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         className={className}
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("have.class", className);
@@ -89,7 +89,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         size="lg"
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("have.class", "p-inputtext-lg");
@@ -102,7 +102,7 @@ describe("<FNTextArea />", () => {
         id="textarea"
         label="Label for textarea"
         unstyled
-        name={""}
+        name={"Address"}
       />
     );
     cy.get("textarea#textarea").should("not.have.class", "p-inputtext");
