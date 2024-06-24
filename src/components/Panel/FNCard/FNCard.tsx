@@ -1,7 +1,7 @@
 import React from "react";
-import { Card } from "primereact/card";
+import { Card, CardProps } from "primereact/card";
 
-export interface FNCardProps {
+export interface FNCardProps extends CardProps {
   children?: React.ReactNode;
   footer?: React.ReactNode | (() => React.ReactNode);
   header?: React.ReactNode | (() => React.ReactNode);
@@ -21,6 +21,7 @@ const FNCard: React.FC<FNCardProps> = ({
   subTitle,
   title,
   unstyled,
+  ...props
 }) => {
   return (
     <Card
@@ -31,6 +32,7 @@ const FNCard: React.FC<FNCardProps> = ({
       subTitle={subTitle}
       title={title}
       unstyled={unstyled}
+      {...props}
     >
       {children}
     </Card>

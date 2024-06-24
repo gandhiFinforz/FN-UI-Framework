@@ -1,6 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import { IonApp, setupIonicReact } from "@ionic/react";
 // In your main application file
 
 /* Core CSS required for Ionic components to work properly */
@@ -38,7 +36,6 @@ import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Login from "./pages/Login/Login";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { Suspense, useEffect } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./i18n";
@@ -47,7 +44,6 @@ import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
 import Layout from "./pages/BlankPage/Layout";
 import './App.css';
-import Dashboard from "./pages/Dashboard/Dashboard";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 
 setupIonicReact();
@@ -68,7 +64,7 @@ const App: React.FC = () => {
     >
       <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
-      <IonApp>
+      <IonApp className="m-0 justify-content-start">
         {user ? <Layout /> : <Login />}
       </IonApp>
     </Suspense>

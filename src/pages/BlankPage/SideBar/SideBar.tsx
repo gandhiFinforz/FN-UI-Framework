@@ -1,91 +1,87 @@
-import { useTranslation } from "react-i18next";
 import React from "react";
-import { Sidebar, Menu, MenuItem, SubMenu, ElementStyles } from 'react-pro-sidebar';
-import { Link } from "react-router-dom";
+import { TieredMenu } from "primereact/tieredmenu";
 
 interface SideBarProps {
-  toggled: boolean;
-  collapsed: boolean;
+  sidebarVisible: boolean;
 }
 
-const SideBar: React.FC<SideBarProps> = (props: SideBarProps) => {
-  const { t } = useTranslation();
-
-  const menuItems = [
+const SideBar: React.FC<SideBarProps> = ({ sidebarVisible }) => {
+  const items = [
     {
-      label: 'Menu 1',
-      icon: <i className="pi pi-briefcase text-cyan-600"></i>,
+      label: "File",
+      icon: "pi pi-file",
       items: [
         {
-          label: 'Page 1',
-          url: '/pageone1',
-          icon: <i className="pi pi-chart-line text-cyan-600"></i>,
+          label: "New",
+          icon: "pi pi-plus",
+          items: [
+            {
+              label: "Document",
+              icon: "pi pi-file",
+            },
+            {
+              label: "Image",
+              icon: "pi pi-image",
+            },
+            {
+              label: "Video",
+              icon: "pi pi-video",
+            },
+          ],
         },
         {
-          label: 'Page 2',
-          url: '/pageone2',
-          icon: <i className="pi pi-cloud-download text-cyan-600"></i>,
+          label: "Open",
+          icon: "pi pi-folder-open",
         },
         {
-          label: 'Page 3',
-          url: '/pageone3',
-          icon: <i className="pi pi-exclamation-triangle text-cyan-600"></i>,
-        }
-      ]
+          label: "Print",
+          icon: "pi pi-print",
+        },
+      ],
     },
     {
-      label: 'Menu 2',
-      icon: <i className="pi pi-shopping-cart text-cyan-600"></i>,
+      label: "Edit",
+      icon: "pi pi-file-edit",
       items: [
         {
-          label: 'Page 1',
-          icon: <i className="pi pi-wrench text-cyan-600"></i>,
-          url: '/pagetwo1',
+          label: "Copy",
+          icon: "pi pi-copy",
         },
-      ]
+        {
+          label: "Delete",
+          icon: "pi pi-times",
+        },
+      ],
     },
     {
-      label: 'Menu 3',
-      icon: <i className="pi pi-video text-cyan-600"></i>,
-      url: '/menu3',
+      label: "Search",
+      icon: "pi pi-search",
+    },
+    {
+      separator: true,
+    },
+    {
+      label: "Share",
+      icon: "pi pi-share-alt",
+      items: [
+        {
+          label: "Slack",
+          icon: "pi pi-slack",
+        },
+        {
+          label: "Whatsapp",
+          icon: "pi pi-whatsapp",
+        },
+      ],
     },
   ];
 
-  const renderMenuItems = (items: any) => {
-    return items.map((item: any, index: number) => {
-      if (item.items) {
-        return (
-          <SubMenu key={index} label={item.label} icon={item.icon} rootStyles={{
-            [`.ps-submenu-expand-icon`]: {
-              color: 'var(--cyan-600) !important',
-            },
-          }}>
-            {renderMenuItems(item.items)}
-          </SubMenu> //t(item.label)
-        );
-      } else {
-        return (
-          <MenuItem key={index} component={<Link to={item.url} />} icon={item.icon}>{item.label}</MenuItem>  // t(item.label)
-        );
-      }
-    });
-  };
-
   return (
-    <Sidebar collapsed={props.collapsed}>
-      <Menu menuItemStyles={{
-      button: ({ level, active, disabled }) => {
-        // only apply styles on first level elements of the tree
-        if (level === 0)
-          return {
-            color: disabled ? '#f5d9ff' : '#606060',
-            backgroundColor: active ? '#eecef9' : undefined,
-          };
-      },
-    }}>
-        {renderMenuItems(menuItems)}
-      </Menu>
-    </Sidebar>
+    <div
+      className={`fn-menu h-screen ${sidebarVisible ? "m-collapse" : "m-expand"}`}
+    >
+      <TieredMenu model={items} breakpoint="0px" />
+    </div>
   );
 };
 

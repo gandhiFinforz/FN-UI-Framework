@@ -28,13 +28,13 @@ const Dashboard: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{t("general.appTitle")}</IonTitle>
+          <IonTitle>{}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{t("general.appTitle")}</IonTitle>
+            <IonTitle size="large">{}</IonTitle>
           </IonToolbar>
         </IonHeader>
         {/* accordion element */}
