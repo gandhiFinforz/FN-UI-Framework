@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { TabView, TabPanel, TabViewProps } from "primereact/tabview";
 import { useTranslation } from "react-i18next";
-
+import "./FNTabs.css";
 export interface FNTab {
   header: string;
   content: React.ReactNode;
@@ -45,7 +45,7 @@ const FNTabs: FC<FNTabsProps> = ({
       {tabs.map((tab, index) => (
         <TabPanel
           key={index}
-          header={t(tab.header)}
+          header={tab.header}
           {...(iconPosition === "right" && tab.icon
             ? { rightIcon: tab.icon }
             : {})}

@@ -32,6 +32,10 @@ const disabledTabs: FNTab[] = [
     content: <p>Content for Tab 3</p>,
   },
 ];
+const scrollableTabs: FNTab[] = Array.from({ length: 15 }, (_, i) => ({
+  header: `Tab ${i + 1}`,
+  content: <p>Content for Tab {i + 1}</p>,
+}));
 describe("<FNTabs />", () => {
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react
@@ -84,5 +88,48 @@ describe("<FNTabs />", () => {
     cy.get(
       '.p-unselectable-text.p-disabled:contains("Tab 2 (Disabled)")'
     ).should("exist");
+  });
+
+  it("renders with closable tabs and closes a tab", () => {
+    mount(<FNTabs tabs={defaultTabs} closable />);
+
+    // Assert that the tabs headers are rendered
+    cy.contains("Tab 1").should("exist");
+    cy.contains("Tab 2").should("exist");
+    cy.contains("Tab 3").should("exist");
+
+    // Close the second tab
+    cy.get(".p-tabview-close").eq(1).click();
+
+    // Assert that Tab 2 is closed and no longer rendered
+    cy.contains("Tab 2").should("not.exist");
+
+    cy.screenshot("component/FNTabs/renders-closable");
+  });
+
+  it("renders with scrollable tabs and scrolls through tabs using next and previous buttons", () => {
+    mount(<FNTabs tabs={scrollableTabs} scrollable />);
+
+    // Assert that the FNTabs component renders
+    cy.get(".p-tabview").should("exist");
+
+    // Assert that the first few tab headers are rendered initially
+    cy.contains("Tab 1").should("be.visible");
+    cy.contains("Tab 2").should("be.visible");
+    cy.contains("Tab 3").should("be.visible");
+
+    // Assert that the previous and next scroll buttons are present
+    cy.get(".p-tabview-nav-next").should("exist");
+
+    // Click the next button to scroll through tabs
+    cy.get(".p-tabview-nav-next").click();
+
+    cy.get(".p-tabview-nav-prev").should("exist");
+
+    // Click the previous button to scroll back
+    cy.get(".p-tabview-nav-prev").click();
+
+    // Take a screenshot of the scrollable tabs
+    cy.screenshot("component/FNTabs/renders-scrollable");
   });
 });
