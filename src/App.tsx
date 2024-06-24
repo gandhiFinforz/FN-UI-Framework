@@ -39,12 +39,14 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Login from "./pages/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { SetStateAction, Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
+import Layout from "./pages/BlankPage/Layout";
+import './App.css';
 import Dashboard from "./pages/Dashboard/Dashboard";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 
@@ -53,8 +55,6 @@ const App: React.FC = () => {
   const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
-
-  
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -66,17 +66,10 @@ const App: React.FC = () => {
         <div className="flex w-screen h-screen">{t("general.loading")}</div>
       }
     >
-
+      <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/">
-              {user ? <Redirect to="/dashboard" /> : <Login />}
-            </Route>
-          </IonRouterOutlet>
-        </IonReactRouter>
+        {user ? <Layout /> : <Login />}
       </IonApp>
     </Suspense>
   );

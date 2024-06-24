@@ -1,0 +1,41 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-image: url('../../assets/images/error-page.avif');
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color */
+  }
+  
+  .not-found-title {
+    font-size: 8rem; /* Adjust size as needed */
+    margin-bottom: 0.5rem;
+  }
+  
+  .not-found-message {
+    font-size: 1.5rem; /* Adjust size as needed */
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .not-found-link {
+    background-color: #ffa200;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size as needed */
+    border: 2px solid #ffa200;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 40px;
+  }
+  
+  .not-found-link:hover {
+    background-color: #fff;
+    color: #ffa200;
+  }
+  
