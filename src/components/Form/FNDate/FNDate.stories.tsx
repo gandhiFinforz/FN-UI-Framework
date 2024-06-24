@@ -421,16 +421,6 @@ WithVariant.args = {
     name: 'fn-date',
 };
 
-
-/**
- * WithLocale story: Renders the DateField with a specific locale.
- */
-// export const WithLocale = Template.bind({});
-// WithLocale.args = {
-//     locale: 'es',
-//     className: 'default-class',
-// };
-
 /**
  * WithDisabledDates story: Renders the DateField with specific disabled dates.
  */
@@ -448,16 +438,6 @@ WithEnabledDates.args = {
     enabledDates: [new Date(2024, 6, 22), new Date(2024, 6, 23)],
     name: 'fn-date',
 };
-
-/**
- * WithMinMaxDate story: Renders the DateField with a minimum and maximum date.
- */
-// export const WithMinMaxDate = Template.bind({});
-// WithMinMaxDate.args = {
-//     minDate: new Date(2024, 6, 1),
-//     maxDate: new Date(2024, 6, 31),
-//     className: 'default-class',
-// };
 
 /**
  * WithShowTime story: Renders the DateField with time selection enabled.

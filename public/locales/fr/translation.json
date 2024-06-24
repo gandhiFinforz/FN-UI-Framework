@@ -4,8 +4,9 @@
     "userName": "Nom d'utilisateur",
     "password": "Mot de passe",
     "buttonName": "Connexion",
+    "changpassword": "Change Password",
+    "logout": "Logout"
     "checkboxLabel":"souviens-toi de moi"
-
   },
   "general": {
     "appTitle":"FN-UI",

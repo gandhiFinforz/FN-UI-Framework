@@ -45,7 +45,9 @@ import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
-import Dashboard from "./pages/Dashboard/Dashboard"; 
+import Layout from "./pages/BlankPage/Layout";
+import './App.css';
+import Dashboard from "./pages/Dashboard/Dashboard";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 
 setupIonicReact();
@@ -67,14 +69,7 @@ const App: React.FC = () => {
       <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp>
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/">
-              {user ? <Redirect to="/dashboard" /> : <Login />}
-            </Route>
-          </IonRouterOutlet>
-        </IonReactRouter>
+        {user ? <Layout /> : <Login />}
       </IonApp>
     </Suspense>
   );

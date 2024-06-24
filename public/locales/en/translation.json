@@ -4,6 +4,8 @@
     "userName":"Username",
     "password":"Passsword",
     "buttonName":"Login",
+    "changpassword": "Change Password",
+    "logout": "Logout"
     "checkboxLabel":"Remember Me"
   },
   "usersTable": {
