@@ -12,7 +12,6 @@ import FNCard from "../../components/Panel/FNCard/FNCard";
 import FNAccordion, {
   TabData,
 } from "../../components/Panel/FNAccordion/FNAccordion";
-import FNTextEditor from "../../components/Form/TextEditor/FNTextEditor";
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
 
