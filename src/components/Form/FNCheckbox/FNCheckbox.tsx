@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Checkbox, CheckboxProps } from "primereact/checkbox";
-import "primereact/resources/themes/saga-blue/theme.css"; // import theme
+
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";

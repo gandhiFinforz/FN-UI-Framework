@@ -3,7 +3,7 @@ import { ButtonProps, Button as PrimeButton } from 'primereact/button';
 import { ButtonPassThroughOptions } from 'primereact/button';
 import { PassThroughOptions } from 'primereact/passthrough';
 import { TooltipOptions } from 'primereact/tooltip/tooltipoptions';
-import 'primereact/resources/themes/saga-blue/theme.css'; // import theme
+
 import 'primereact/resources/primereact.min.css';          // import styles
 import 'primeicons/primeicons.css';
 import { useTranslation } from 'react-i18next';
