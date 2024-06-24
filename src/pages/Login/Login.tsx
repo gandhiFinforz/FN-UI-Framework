@@ -10,7 +10,6 @@ import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
 import { t } from "i18next";
-
 interface LoginFormValues {
   username: string;
   password: string;
