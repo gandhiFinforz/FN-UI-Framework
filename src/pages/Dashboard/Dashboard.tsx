@@ -45,7 +45,6 @@ const Dashboard: React.FC = () => {
         {/* end */}
         <div className="w-10 flex mt-3 justify-content-center">
           <FNCard title={t("usersTable.title")}>
-            <FNTextEditor value={"Always bet on Prime!"} />
             <UserTable />
           </FNCard>
         </div>
