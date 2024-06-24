@@ -25,7 +25,7 @@ const Dashboard: React.FC = () => {
             <IonTitle size="large">{t("general.appTitle")}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div className="w-10 flex mt-3 justify-content-center">
+        <div className="w-10 mt-3">
           <Card title={t("usersTable.title")}>
             <UserTable />
           </Card>
