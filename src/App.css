@@ -40,3 +40,7 @@ body {
 .p-menuitem-icon {
   color: var(--cyan-600) !important;
 }
+
+.p-breadcrumb {
+  border: 0;
+}
