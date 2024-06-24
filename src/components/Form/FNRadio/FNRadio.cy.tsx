@@ -1,5 +1,5 @@
 import React from 'react';
-import RadioField from './FNRadio';
+import FNRadioField from './FNRadio';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css';
 import { mount } from '@cypress/react';
@@ -21,7 +21,7 @@ const TestRadioField: React.FC = () => (
     <Form>
       <Field
         name="option"
-        component={RadioField}
+        component={FNRadioField}
         options={options}
         variant="outlined"
       />
@@ -29,7 +29,7 @@ const TestRadioField: React.FC = () => (
   </Formik>
 );
 
-describe('RadioField Component', () => {
+describe('FNRadioField Component', () => {
   beforeEach(() => {
     mount(<TestRadioField />);
   });

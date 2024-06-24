@@ -8,7 +8,7 @@ import { StepsPassThroughOptions } from "primereact/steps";
 import { PassThroughOptions } from "primereact/passthrough";
 import { useTranslation } from "react-i18next";
 
-export interface OptionStepsProps {
+export interface FNOptionStepsProps {
   label: string;
   icon?: string;
   url?: string;
@@ -21,7 +21,7 @@ export interface OptionStepsProps {
 
 export interface StepsProps extends PrimeStepsProps {
   className?: string;
-  model: OptionStepsProps[];
+  model: FNOptionStepsProps[];
   initialIndex: number;
   onSelect?: (event: StepsSelectEvent) => void;
   children?: string;
@@ -31,7 +31,7 @@ export interface StepsProps extends PrimeStepsProps {
   unstyled?: boolean;
 }
 
-const StepsMenu: FC<StepsProps> = ({
+const FNStepsMenu: FC<StepsProps> = ({
   className = "",
   model,
   initialIndex,
@@ -42,7 +42,7 @@ const StepsMenu: FC<StepsProps> = ({
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(initialIndex);
 
-  const itemRenderer = (item: OptionStepsProps, itemIndex: number) => {
+  const itemRenderer = (item: FNOptionStepsProps, itemIndex: number) => {
     const isActiveItem = activeIndex === itemIndex;
     const backgroundColor = isActiveItem
       ? "var(--primary-color)"
@@ -92,4 +92,4 @@ const StepsMenu: FC<StepsProps> = ({
   );
 };
 
-export default StepsMenu;
+export default FNStepsMenu;

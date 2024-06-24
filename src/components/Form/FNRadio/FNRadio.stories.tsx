@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Formik, Field } from 'formik';
 import { useField } from 'formik';
-import RadioField, { RadioFieldProps } from '../FNRadio/FNRadio'; // Adjust the import path accordingly
+import FNRadioField, { RadioFieldProps } from '../FNRadio/FNRadio'; // Adjust the import path accordingly
 
 export default {
   title: 'Components/Form/RadioField',
-  component: RadioField,
+  component: FNRadioField,
   tags: ["autodocs"],
   argTypes: {
     className: { control: 'text' },
@@ -67,7 +67,7 @@ const Template: StoryFn<TemplateProps> = (args) => (
       <form>
         <Field name={args.name}>
           {({ field, form, meta }: any) => (
-            <RadioField
+            <FNRadioField
               {...args}
               value={field.value}
               onChange={field.onChange}

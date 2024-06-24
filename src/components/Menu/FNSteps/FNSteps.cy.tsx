@@ -3,14 +3,14 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css';
 import { mount } from '@cypress/react';
 import { Formik, Form, Field } from 'formik';
-import StepsMenu, { OptionStepsProps } from './FNSteps';
+import FNStepsMenu, { FNOptionStepsProps } from './FNSteps';
 
 
 
 
 
-describe('StepsMenu Component', () => {
-  const mockStepsModel: OptionStepsProps[] = [
+describe('FNStepsMenu Component', () => {
+  const mockStepsModel: FNOptionStepsProps[] = [
     { label: 'Step 1', icon: 'pi pi-user' },
     { label: 'Step 2', icon: 'pi pi-search' },
     { label: 'Step 3', icon: 'pi pi-check' },
@@ -19,7 +19,7 @@ describe('StepsMenu Component', () => {
   beforeEach(() => {
     // Mount the StepsMenu component with required props
     mount(
-      <StepsMenu
+      <FNStepsMenu
         model={mockStepsModel}
         initialIndex={0} // Start with the first step active
         onSelect={() => {}} // Mock onSelect function

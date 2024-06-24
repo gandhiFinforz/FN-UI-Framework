@@ -9,7 +9,7 @@ import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 import { PassThroughOptions } from "primereact/passthrough";
 import { useTranslation } from "react-i18next";
 
-interface OptionRadioProps extends RadioButtonProps {
+interface FNOptionRadioProps extends RadioButtonProps {
   value: string;
   label: string;
   disabled?: boolean;
@@ -32,7 +32,7 @@ interface OptionRadioProps extends RadioButtonProps {
 export interface RadioFieldProps {
   className?: string;
   name: string;
-  options: OptionRadioProps[];
+  options: FNOptionRadioProps[];
   initialValue: string;
   value: string;
   onChange: (e: RadioButtonChangeEvent) => void;
@@ -41,7 +41,7 @@ export interface RadioFieldProps {
   error?: string;
 }
 
-const RadioField: FC<RadioFieldProps> = ({
+const FNRadioField: FC<RadioFieldProps> = ({
   name,
   options,
   className = "",
@@ -63,7 +63,7 @@ const RadioField: FC<RadioFieldProps> = ({
 
   return (
     <div data-testid="radio-field" className={`flex flex-wrap gap-3`}>
-      {options.map((d: OptionRadioProps) => (
+      {options.map((d: FNOptionRadioProps) => (
         <div key={d.value} className={"flex align-items-center"}>
           <RadioButton
             className={className}
@@ -96,4 +96,4 @@ const RadioField: FC<RadioFieldProps> = ({
   );
 };
 
-export default RadioField;
+export default FNRadioField;
