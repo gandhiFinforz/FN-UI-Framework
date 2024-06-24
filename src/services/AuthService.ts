@@ -46,6 +46,7 @@ const AuthService = {
     const cognitoUser = userPool.getCurrentUser();
     if (cognitoUser) {
       cognitoUser.signOut();
+      window.location.href = '/';
     }
   },
 

@@ -4,7 +4,7 @@ import FNInput, { FNInputProps } from './FNInput';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
 export default {
-  title: "Components/Form/FNInput",
+  title: "Components/Form/Input",
   component: FNInput,
   tags: ["autodocs"],
   argTypes: {

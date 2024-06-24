@@ -1,0 +1,61 @@
+.p-sidebar-content {
+  padding: 0px;
+}
+
+.p-sidebar .p-sidebar-header {
+  background: #b7b7b7;
+  color: white;
+}
+
+.p-sidebar-content {
+  background-color: #f0f0f0;
+}
+
+.p-menubar .p-menuitem {
+  width: 100%;
+}
+
+.user-details-menu {
+  margin-left: auto;
+}
+
+span.user-icon {
+  font-size: 1.25rem;
+  margin: 0px 15px;
+  cursor: pointer;
+}
+
+.notification-icon {
+  background-color: #246192;
+  color: #ffffff
+}
+
+.user-icon {
+  background-color: #2196F3;
+  color: #ffffff
+}
+
+.user-panel .p-overlaypanel-content {
+  padding: 0px;
+  width: 300px;
+}
+
+.user-panel .p-overlaypanel-content .p-menu {
+  width: 100%;
+}
+
+.user-panel .p-overlaypanel-content .p-menu li {
+  overflow-wrap: break-word;
+}
+
+#app_layout main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div.main-container {
+  display: flex;
+  height: 100vh;
+  overflow: auto;
+}

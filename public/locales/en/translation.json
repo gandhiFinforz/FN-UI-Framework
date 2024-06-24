@@ -4,18 +4,23 @@
     "userName":"Username",
     "password":"Passsword",
     "buttonName":"Login",
+    "changpassword": "Change Password",
+    "logout": "Logout"
     "checkboxLabel":"Remember Me"
   },
-  "usersTable":{
+  "usersTable": {
     "title": "Users List"
   },
-  "general":{
-    "appTitle":"FN-UI",
-    "noRecordFound":"No results found",
-    "loading":"Loading..."
+  "general": {
+    "appTitle": "FN-UI",
+    "noRecordFound": "No results found",
+    "loading": "Loading..."
   },
-  "storiesSample":{
-    "name":"Name",
-    "age":"Age"
+  "storiesSample": {
+    "name": "Name",
+    "age": "Age"
+  },
+  "fileUpload": {
+    "label": "Drag and drop files to here to upload."
   }
 }

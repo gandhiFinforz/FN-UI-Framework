@@ -10,6 +10,7 @@ import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
 import { t } from "i18next";
+import logo from "../../assets/img/logo.png";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -36,8 +37,14 @@ const Login: React.FC = () => {
   });
 
   return (
-    <div className="flex align-items-center justify-content-center h-screen">
-      <Card title={t("loginPage.title")} className="p-fluid md:col-4">
+    <div
+      className="flex align-items-center justify-content-center h-screen bg-no-repeat"
+      style={{
+        backgroundImage:
+          "linear-gradient(to top, var(--primary-600) 0%, #fff 100%)",
+      }}
+    >
+      <Card title={<img src={logo} className="w-6 text-center" />} className="p-fluid md:col-3">
         <div className="login-form">
           <form onSubmit={formik.handleSubmit}>
             <FNInput
