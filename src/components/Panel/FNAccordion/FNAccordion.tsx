@@ -52,7 +52,7 @@ const FNAccordion: FC<FNAccordionProps> = ({
             header={t(tab.header)}
             disabled={tab.disabled}
           >
-            {t(tab.content)}
+            {tab.content}
           </AccordionTab>
         ))}
       </Accordion>
