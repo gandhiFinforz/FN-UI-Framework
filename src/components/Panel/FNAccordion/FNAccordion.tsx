@@ -9,7 +9,7 @@ import { IconType } from "primereact/utils";
 
 export interface TabData {
   header: string;
-  content: React.ReactNode;
+  content: string;
   disabled?: boolean;
 }
 
@@ -52,7 +52,7 @@ const FNAccordion: FC<FNAccordionProps> = ({
             header={t(tab.header)}
             disabled={tab.disabled}
           >
-            {tab.content}
+            {t(tab.content)}
           </AccordionTab>
         ))}
       </Accordion>
