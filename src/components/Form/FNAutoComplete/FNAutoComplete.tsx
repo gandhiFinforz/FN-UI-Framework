@@ -12,7 +12,7 @@ import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 import { useTranslation } from "react-i18next";
 import { IconType } from "primereact/utils";
 
-export interface AutoCompleteFieldProps
+export interface FNAutoCompleteProps
   extends Omit<AutoCompleteProps, "optionGroupChildren"> {
   appendTo?: null | HTMLElement | "self" | (() => HTMLElement);
   autoFocus?: boolean;
@@ -71,7 +71,7 @@ export interface AutoCompleteFieldProps
   virtualScrollerOptions?: VirtualScrollerProps;
 }
 
-const AutoCompleteField: FC<AutoCompleteFieldProps> = ({
+const FNAutoComplete: FC<FNAutoCompleteProps> = ({
   appendTo,
   autoFocus = false,
   autoHighlight = false,
@@ -216,4 +216,4 @@ const AutoCompleteField: FC<AutoCompleteFieldProps> = ({
   );
 };
 
-export default AutoCompleteField;
+export default FNAutoComplete;

@@ -4,7 +4,7 @@ import { KeyFilterType } from 'primereact/keyfilter';
 import { PassThroughOptions } from 'primereact/passthrough';
 import { TooltipOptions } from 'primereact/tooltip/tooltipoptions';
 import { useTranslation } from 'react-i18next';
-export interface InputFieldProps extends InputTextProps {
+export interface FNInputProps extends InputTextProps {
     className?: string,
     type:'text'
     | 'password'
@@ -38,7 +38,7 @@ export interface InputFieldProps extends InputTextProps {
     name:string;
 }
 
-const InputField: FC<InputFieldProps> = ({
+const FNInput: FC<FNInputProps> = ({
     disabled = false,
     invalid = false,
     label,
@@ -86,4 +86,4 @@ const InputField: FC<InputFieldProps> = ({
     );
 };
 
-export default InputField;
+export default FNInput;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { DataTable } from 'primereact/datatable';
+import { DataTable, DataTableProps } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { useTranslation } from 'react-i18next';
 
-export interface DataTableProps {
+export interface FNDataTableProps{
     alwaysShowPaginator?: boolean;
     breakpoint?: string;
     cellSelection?: boolean;
@@ -33,7 +33,7 @@ export interface DataTableProps {
     sortable?:boolean;
 }
 
-const PrimeDataTable: React.FC<DataTableProps> = ({
+const FNDataTable: React.FC<FNDataTableProps> = ({
     alwaysShowPaginator = true,
     breakpoint = '960px',
     cellSelection = false,
@@ -98,4 +98,4 @@ const PrimeDataTable: React.FC<DataTableProps> = ({
     );
 };
 
-export default PrimeDataTable;
+export default FNDataTable;

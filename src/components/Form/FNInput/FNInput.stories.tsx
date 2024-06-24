@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import InputField, { InputFieldProps } from './InputField';
+import FNInput, { FNInputProps } from './FNInput';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
 export default {
-  title: "Components/Form/InputField",
-  component: InputField,
+  title: "Components/Form/FNInput",
+  component: FNInput,
   tags: ["autodocs"],
   argTypes: {
     label: {
@@ -92,10 +92,10 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<InputFieldProps> = (args) => <InputField {...args} />;
+const Template: StoryFn<FNInputProps> = (args) => <FNInput {...args} />;
 
 /**
- * Default story: Renders the InputField with default props.
+ * Default story: Renders the FNInput with default props.
  */
 export const Default = Template.bind({});
 Default.args = {
@@ -104,7 +104,7 @@ Default.args = {
 };
 
 /**
- * WithValue story: Renders the InputField with an initial value.
+ * WithValue story: Renders the FNInput with an initial value.
  */
 export const WithValue = Template.bind({});
 WithValue.args = {
@@ -114,7 +114,7 @@ WithValue.args = {
 };
 
 /**
- * Invalid story: Renders the InputField in an invalid state.
+ * Invalid story: Renders the FNInput in an invalid state.
  */
 export const Invalid = Template.bind({});
 Invalid.args = {
@@ -123,7 +123,7 @@ Invalid.args = {
 };
 
 /**
- * Disabled story: Renders the InputField in a disabled state.
+ * Disabled story: Renders the FNInput in a disabled state.
  */
 export const Disabled = Template.bind({});
 Disabled.args = {
@@ -132,7 +132,7 @@ Disabled.args = {
 };
 
 /**
- * WithClassName story: Renders the InputField with a custom class name.
+ * WithClassName story: Renders the FNInput with a custom class name.
  */
 export const WithClassName = Template.bind({});
 WithClassName.args = {
@@ -140,7 +140,7 @@ WithClassName.args = {
 };
 
 /**
- * WithSize story: Renders the InputField with a specified size.
+ * WithSize story: Renders the FNInput with a specified size.
  */
 export const WithSize = Template.bind({});
 WithSize.args = {
@@ -149,7 +149,7 @@ WithSize.args = {
 };
 
 /**
- * WithTooltip story: Renders the InputField with a tooltip.
+ * WithTooltip story: Renders the FNInput with a tooltip.
  */
 export const WithTooltip = Template.bind({});
 WithTooltip.args = {
@@ -159,7 +159,7 @@ WithTooltip.args = {
 };
 
 /**
- * Unstyled story: Renders the InputField without additional styles.
+ * Unstyled story: Renders the FNInput without additional styles.
  */
 export const Unstyled = Template.bind({});
 Unstyled.args = {
@@ -168,7 +168,7 @@ Unstyled.args = {
 };
 
 /**
- * WithKeyFilter story: Renders the InputField with a key filter to allow only numbers.
+ * WithKeyFilter story: Renders the FNInput with a key filter to allow only numbers.
  */
 export const WithKeyFilter = Template.bind({});
 WithKeyFilter.args = {
@@ -177,7 +177,7 @@ WithKeyFilter.args = {
 };
 
 /**
- * ValidateOnly story: Renders the InputField with validateOnly prop enabled.
+ * ValidateOnly story: Renders the FNInput with validateOnly prop enabled.
  */
 export const ValidateOnly = Template.bind({});
 ValidateOnly.args = {
@@ -187,7 +187,7 @@ ValidateOnly.args = {
 };
 
 /**
- * WithVariant story: Renders the InputField with the "filled" variant.
+ * WithVariant story: Renders the FNInput with the "filled" variant.
  */
 export const WithVariant = Template.bind({});
 WithVariant.args = {

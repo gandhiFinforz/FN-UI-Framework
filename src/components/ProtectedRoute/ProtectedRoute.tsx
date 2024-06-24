@@ -1,17 +1,37 @@
-import React, { ComponentType } from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
-import AuthService from './../../services/AuthService';
+import React, { ComponentType, Suspense } from "react";
+import { Route, Redirect, RouteProps } from "react-router-dom";
+import AuthService from "./../../services/AuthService";
+import { useTranslation } from "react-i18next";
 
 interface ProtectedRouteProps extends RouteProps {
-    component: ComponentType<any>;
+  component: ComponentType<any>;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, ...rest }) => (
-    <Route {...rest} render={(props) => (
-        AuthService.isAuthenticated()
-            ? <Component {...props} />
-            : <Redirect to='/' />
-    )} />
-);
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
+  component: Component,
+  ...rest
+}) => {
+  const { t } = useTranslation();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        AuthService.isAuthenticated() ? (
+          <Suspense
+            fallback={
+              <div className="flex w-screen h-screen">
+                {t("general.loading")}
+              </div>
+            }
+          >
+            <Component {...props} />
+          </Suspense>
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+};
 
 export default ProtectedRoute;
