@@ -7,6 +7,7 @@ import "primeflex/primeflex.css";
 export default {
   title: "Components/Form/Checkbox",
   component: FNCheckbox,
+  tags: ["autodocs"],
   argTypes: {
     label: { control: "text", description: "Label for the checkbox." },
     tooltip: { control: "text", description: "Content of the tooltip." },

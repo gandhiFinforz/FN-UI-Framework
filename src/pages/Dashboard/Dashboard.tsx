@@ -7,10 +7,11 @@ import {
 } from "@ionic/react";
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { Card } from "primereact/card";
 import UserTable from "./UserTable";
-import StepsMenu from "../../components/Menu/FNSteps/FNSteps";
-
+import FNCard from "../../components/Panel/FNCard/FNCard";
+import FNAccordion, {
+  TabData,
+} from "../../components/Panel/FNAccordion/FNAccordion";
 const Dashboard: React.FC = () => {
 
   const stepsModel = [
@@ -21,10 +22,15 @@ const Dashboard: React.FC = () => {
 
   const { t } = useTranslation();
 
-  const handleSelect = (event: { index: number }) => {
-    console.log(`Step ${event.index + 1} selected`);
-  };
-
+  const tabs: TabData[] = [
+    { header: "Header 1", content: "Content for the first tab" },
+    { header: "Header 2", content: "Content for the second tab" },
+    {
+      header: "Header 3",
+      content: "Content for the third tab",
+      disabled: true,
+    },
+  ];
   return (
     <IonPage>
       <IonHeader>
@@ -38,13 +44,15 @@ const Dashboard: React.FC = () => {
             <IonTitle size="large">{t("general.appTitle")}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <div>
-        <StepsMenu model={stepsModel} initialIndex={0} onSelect={handleSelect} readOnly={false} />
+        {/* accordion element */}
+        <div className="m-3">
+          <FNAccordion tabs={tabs} />
         </div>
+        {/* end */}
         <div className="w-10 flex mt-3 justify-content-center">
-          <Card title={t("usersTable.title")}>
-            <UserTable/>
-          </Card>
+          <FNCard title={t("usersTable.title")}>
+            <UserTable />
+          </FNCard>
         </div>
       </IonContent>
     </IonPage>
