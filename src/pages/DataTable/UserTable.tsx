@@ -5,6 +5,7 @@ import FNDataTable, {
   FNDataTableProps,
 } from "../../components/Data/FNDataTable/FNDataTable";
 import FNCard from "../../components/Panel/FNCard/FNCard";
+// import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 import { commonAPIUrl } from "../../utils/APIUtils";
 
 const UserTable: React.FC = () => {
@@ -14,6 +15,7 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        // const response = await ApiService.get<any[]>(urlConfig.userList);
         const response = await ApiService.get<any[]>(commonAPIUrl.userData);
         setUsers(response.data);
       } catch (error) {
