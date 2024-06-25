@@ -1,4 +1,3 @@
-import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import FNButton, { FNButtonProps } from "./FNButton";
 import 'primereact/resources/themes/saga-blue/theme.css'; // import theme

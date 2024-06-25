@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import PrimeDataTable, {
-  DataTableProps,
-} from "../components/DataTable/DataTable";
-import ApiService from "../services/apiService";
+import ApiServices from "../services/ApiServices";
+import FNDataTable, {
+  FNDataTableProps,
+} from "../components/Data/FNDataTable/FNDataTable";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await ApiService.get<any[]>(
+        const response = await ApiServices.get<any[]>(
           "/users"
         );
         setUsers(response.data);
@@ -33,17 +33,17 @@ const Dashboard: React.FC = () => {
     { field: "createdAt", header: "Created At" }
   ];
 
-  const dataTableProps: DataTableProps = {
+  const dataTableProps: FNDataTableProps = {
     value: users,
     dynamicColumns: dynamicColumns,
     emptyMessage: "general.noRecordFound", // Example translation key for empty message
     rows: 10,
-    sortable: true
+    sortable: true,
   };
 
   return (
     <div className="datatable-demo">
-      <PrimeDataTable {...dataTableProps} />
+      <FNDataTable {...dataTableProps} />
     </div>
   );
 };

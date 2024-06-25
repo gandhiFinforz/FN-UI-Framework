@@ -1,6 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import { IonApp, setupIonicReact } from "@ionic/react";
 // In your main application file
 
 /* Core CSS required for Ionic components to work properly */
@@ -38,17 +36,18 @@ import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Login from "./pages/Login/Login";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { Suspense, useEffect } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
-import Layout from "./pages/BlankPage/Layout";
 import './App.css';
-import Dashboard from "./pages/Dashboard/Dashboard";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Layout from "./pages/Layout/Layout";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -68,8 +67,16 @@ const App: React.FC = () => {
     >
       <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
-      <IonApp>
-        {user ? <Layout /> : <Login />}
+      <IonApp className="m-0 justify-content-start">
+        <BrowserRouter>
+          <Switch>
+            <ProtectedRoute exact path="/pageone1" component={Layout} />
+            <Route exact path="/">
+              {user ? <Redirect to="/pageone1" /> : <Login />}
+            </Route>
+            <ProtectedRoute component={ErrorPage} />
+          </Switch>
+        </BrowserRouter>
       </IonApp>
     </Suspense>
   );
