@@ -7,6 +7,7 @@ import "primeflex/primeflex.css";
 export default {
   title: "Components/Form/OtpInput",
   component: FNOtpInput,
+  tags: ["autodocs"],
   argTypes: {
     value: { control: "text" },
     label: { control: "text" },
