@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
-import "./ErrorPage.css"; // Import your CSS file
 import notfound from "../../assets/img/error-page.png";
 import FNButton from "../../components/Form/FNButton/FNButton";
 const ErrorPage: React.FC = () => {
@@ -17,7 +16,7 @@ const ErrorPage: React.FC = () => {
 
   return (
     <div className="flex justify-content-center align-items-center flex-column w-screen h-screen">
-      <img src={notfound} />
+      <img src={notfound} alt="404-notfound" />
       <FNButton
         onClick={() => logoutUser()}
         label={"Return To Login"}
