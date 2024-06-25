@@ -1,37 +1,45 @@
-import  { FC } from "react";
-import { ConfirmDialog, ConfirmDialogProps } from "primereact/confirmdialog";
+import React, { FC } from "react";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import {  ConfirmDialog, ConfirmDialogProps } from "primereact/confirmdialog";
 
-
-export interface FNConfirmDialogProps extends ConfirmDialogProps {
-    message?: string;
-    header?: string;
-    icon?: string;
-    accept?: any;
-    reject?: any;
-    defaultFocus?:string;
-    acceptClassName?:string;
+export interface FNConfirmDialogProps extends Omit<ConfirmDialogProps, "visible" | "onHide"> {
+  header: string;
+  content: string | React.ReactNode;
+  footerButtons?: {
+    label: string;
+    icon: string;
+    onClick: () => void;
+    className?: string;
+  }[];
+  visible: boolean;
+  onHide: () => void;
+  className?: string;
 }
 
 const FNConfirmDialog: FC<FNConfirmDialogProps> = ({
-    message,
-    header,
-    icon,
-    accept,
-    reject ,
-    acceptClassName,
-    defaultFocus= 'accept',
-  ...props
+  header,
+  content,
+  footerButtons = [],
+  visible,
+  onHide,
+  className,
+  ...restProps
 }) => {
-
+ 
   return (
-    <ConfirmDialog
-      message={message}
-      header={header}
-      icon={icon}
-      acceptClassName={acceptClassName}
-      onHide={() => {}}
-      {...props}
-    />
+    <div className={`p-dialog ${className}`}>
+      <ConfirmDialog
+        header={header}
+        visible={visible}
+        onHide={onHide}
+        {...restProps}
+      >
+        {content}
+      </ConfirmDialog>
+    </div>
   );
 };
 
