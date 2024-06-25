@@ -16,7 +16,7 @@ const ErrorPage: React.FC = () => {
 
   return (
     <div className="flex justify-content-center align-items-center flex-column w-screen h-screen">
-      <img src={notfound} />
+      <img src={notfound} alt="404-notfound" />
       <FNButton
         onClick={() => logoutUser()}
         label={"Return To Login"}

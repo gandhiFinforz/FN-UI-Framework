@@ -1,4 +1,3 @@
-import React from "react";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primeflex/primeflex.css";
 import { mount } from "@cypress/react";

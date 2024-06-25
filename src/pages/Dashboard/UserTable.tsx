@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AppDispatch, RootState } from "../../store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import FNButton from "../../components/Form/FNButton/FNButton";
 import ApiService from "../../services/ApiServices";
 import FNDataTable, { FNDataTableProps } from "../../components/Data/FNDataTable/FNDataTable";
-import FNInputNumber from "../../components/Form/FNInputNumber/FNInputNumber";
-
-
+import FNCard from "../../components/Panel/FNCard/FNCard";
+ 
 const UserTable: React.FC = () => {
   useTranslation();
   const [users, setUsers] = useState<any[]>([
   ]);
-
-  interface LoginFormValues {
-    username: number | undefined;
-    password: number | undefined;
-  }
-
+ 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -31,10 +20,10 @@ const UserTable: React.FC = () => {
         console.error("Error fetching users:", error);
       }
     };
-
+ 
     fetchUsers();
   }, []);
-
+ 
   // Define columns dynamically based on your API response
   const dynamicColumns = [
     { field: "id", header: "ID" },
@@ -42,25 +31,7 @@ const UserTable: React.FC = () => {
     { field: "phonenumber", header: "Phone Number" },
     { field: "createdAt", header: "Created At" }
   ];
-
-  const dispatch: AppDispatch = useDispatch();
-  const { loading, error } = useSelector((state: RootState) => state.auth);
-
-  const formik = useFormik<LoginFormValues>({
-    initialValues: {
-      username: undefined,
-      password: undefined
-    },
-    validationSchema: Yup.object({
-      username: Yup.string().required("Username is required"),
-      password: Yup.string().required("Password is required"),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      
-    },
-  });
-
+ 
   const dataTableProps: FNDataTableProps = {
     value: users,
     dynamicColumns: dynamicColumns,
@@ -68,36 +39,16 @@ const UserTable: React.FC = () => {
     rows: 5,
     sortable: true
   };
-
-  return (
-    <div className="datatable-demo">
-
-<div className="login-form">
-          <form onSubmit={formik.handleSubmit}>
-            <FNInputNumber
-              name="username"
-              label="Username"
-              value={formik.values.username}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              invalid={formik.touched.username && !!formik.errors.username}
-              helpText={formik.touched.username && formik.errors.username}
-            />
-
-            <FNButton
-              label="Login"
-              type="submit"
-              className="mt-3"
-              loading={loading}
-              disabled={loading}
-            />
-          </form>
-        </div>
-
-
-      <FNDataTable {...dataTableProps} />
-    </div>
+ 
+  function onAccept(): void {
+    console.log("bhavani u will get better future !..")
+  }
+ 
+  return (    
+      <FNCard>
+        <FNDataTable {...dataTableProps} />
+        </FNCard>
   );
 };
-
+ 
 export default UserTable;
