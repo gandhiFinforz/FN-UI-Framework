@@ -7,10 +7,11 @@ import FNDataTable, {
 import FNCard from "../../components/Panel/FNCard/FNCard";
 import { Button } from "primereact/button";
 import FNDialog from "../../components/Panel/FNDialog/FNDialog";
+import { t } from "i18next";
 
 const UserTable: React.FC = () => {
-  useTranslation();
   const [users, setUsers] = useState<any[]>([]);
+  useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -41,6 +42,7 @@ const UserTable: React.FC = () => {
     sortable: true,
   };
 
+  // show and hide dialog component
   const [visible, setVisible] = useState(false);
 
   return (
@@ -48,22 +50,22 @@ const UserTable: React.FC = () => {
       {/* dialog component content */}
       <div className="card flex justify-content-end mb-2">
         <Button
-          label="Add User"
+          label={t("Dialog.buttonLabel")}
           icon="pi pi-external-link"
           onClick={() => setVisible(true)}
         />
         <FNDialog
-          header="Confirmation"
+          header={t("Dialog.header")}
           content="Are you sure you want add more users..!"
           footerButtons={[
             {
-              label: "No",
+              label: t("Dialog.rejectButton"),
               icon: "pi pi-times",
               onClick: () => setVisible(false),
               className: "p-button-text",
             },
             {
-              label: "Yes",
+              label: t("Dialog.confirmButton"),
               icon: "pi pi-check",
               onClick: () => setVisible(false),
             },
