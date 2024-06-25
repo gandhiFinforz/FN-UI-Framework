@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
-import "./ErrorPage.css"; // Import your CSS file
 import notfound from "../../assets/img/error-page.png";
 import FNButton from "../../components/Form/FNButton/FNButton";
 const ErrorPage: React.FC = () => {
