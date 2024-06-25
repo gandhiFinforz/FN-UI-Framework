@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import React, { useRef } from "react";
-import FNCard from "../../../components/Panel/FNCard/FNCard";
+import FNCard from "../../../../components/Panel/FNCard/FNCard";
 import { Divider } from "primereact/divider";
 import { Badge } from "primereact/badge";
 import { Avatar } from "primereact/avatar";

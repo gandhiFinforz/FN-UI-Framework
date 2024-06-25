@@ -43,10 +43,7 @@ const Routing: React.FC = (width) => {
           title="Menu 3"
           breadcrumb={[{ label: "Menu 3", url: "/menu3" }]}
         />
-        <Route exact path="/">
-          <Redirect to="/pageone1" /> {/* Default route */}
-        </Route>
-        <Route component={ErrorPage} /> {/* This will handle unmatched routes */}
+       
       </Switch>
     </div>
   );

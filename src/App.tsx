@@ -45,6 +45,9 @@ import { checkAuth } from "./store/authSlice";
 import Layout from "./pages/BlankPage/Layout";
 import './App.css';
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -65,7 +68,15 @@ const App: React.FC = () => {
       <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp className="m-0 justify-content-start">
-        {user ? <Layout /> : <Login />}
+        <BrowserRouter>
+          <Switch>
+            <ProtectedRoute exact path="/pageone1" component={Layout} />
+            <Route exact path="/">
+              {user ? <Redirect to="/pageone1" /> : <Login />}
+            </Route>
+            <ProtectedRoute component={ErrorPage} />
+          </Switch>
+        </BrowserRouter>
       </IonApp>
     </Suspense>
   );

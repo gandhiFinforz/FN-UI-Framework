@@ -7,7 +7,7 @@ import { logout } from "../../../store/authSlice";
 import { Menu } from "primereact/menu";
 import { Avatar } from "primereact/avatar";
 import { OverlayPanel } from "primereact/overlaypanel";
-import Notification from "../Notification/Notification";
+import Notification from "./Notification/Notification";
 import logo from "../../../assets/img/logo.png";
 import smlogo from "../../../assets/img/sm-logo.png";
 import FNInput from "../../../components/Form/FNInput/FNInput";

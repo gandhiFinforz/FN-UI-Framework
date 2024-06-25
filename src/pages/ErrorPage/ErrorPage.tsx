@@ -16,7 +16,7 @@ const ErrorPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col w-screen">
+    <div className="flex justify-content-center align-items-center flex-column w-screen h-screen">
       <img src={notfound} />
       <FNButton
         onClick={() => logoutUser()}
