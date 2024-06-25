@@ -4,9 +4,9 @@ import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
 import UserTable from "../../Dashboard/UserTable";
 import ErrorPage from "../../ErrorPage/ErrorPage";
 
-const Routing: React.FC = () => {
+const Routing: React.FC = (width) => {
   return (
-    <div className="w-10 mt-3">
+    <div className="w-full mt-3 ml-2 px-3">
       <Switch>
         <ProtectedRoute
           exact
@@ -43,10 +43,7 @@ const Routing: React.FC = () => {
           title="Menu 3"
           breadcrumb={[{ label: "Menu 3", url: "/menu3" }]}
         />
-        <Route exact path="/">
-          <Redirect to="/pageone1" /> {/* Default route */}
-        </Route>
-        <Route component={ErrorPage} /> {/* This will handle unmatched routes */}
+       
       </Switch>
     </div>
   );
