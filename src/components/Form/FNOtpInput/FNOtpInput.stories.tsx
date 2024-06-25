@@ -9,15 +9,51 @@ export default {
   component: FNOtpInput,
   tags: ["autodocs"],
   argTypes: {
-    value: { control: "text" },
-    label: { control: "text" },
-    disabled: { control: "boolean" },
-    mask: { control: "boolean" },
-    readonly: { control: "boolean" },
-    integerOnly: { control: "boolean" },
-    variant: { control: { type: "select", options: ["outlined", "filled"] } },
-    length: { control: "number" },
-    helpText: { control: "text" },
+    value: {
+      control: "text",
+      description:
+        "The value of the input field. This is the text that the user enters or that is set programmatically.",
+    },
+    label: {
+      control: "text",
+      description:
+        "The label for the input field. This is typically displayed above or next to the input field to indicate what the user should enter.",
+    },
+    disabled: {
+      control: "boolean",
+      description:
+        "If set to true, the input field will be disabled, meaning it cannot be interacted with or focused. Disabled fields typically appear grayed out.",
+    },
+    mask: {
+      control: "boolean",
+      description:
+        "If set to true, the input field will use a mask to control what type of input is allowed. This can be used for formatted input like phone numbers or dates.",
+    },
+    readonly: {
+      control: "boolean",
+      description:
+        "If set to true, the input field will be read-only. The user can see the field's value but cannot modify it.",
+    },
+    integerOnly: {
+      control: "boolean",
+      description:
+        "If set to true, the input field will only accept integer values. This can be used to restrict input to whole numbers only.",
+    },
+    variant: {
+      control: { type: "select", options: ["outlined", "filled"] },
+      description:
+        "The visual style of the input field. `outlined` typically means the field has a border around it, while `filled` means the field has a background color that makes it look filled.",
+    },
+    length: {
+      control: "number",
+      description:
+        "The maximum length of the input field. This restricts the number of characters that can be entered.",
+    },
+    helpText: {
+      control: "text",
+      description:
+        "The help text associated with the input field. This is typically displayed below the field to provide additional information or instructions to the user.",
+    },
   },
 } as Meta;
 
