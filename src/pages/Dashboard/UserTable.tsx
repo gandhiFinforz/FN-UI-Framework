@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
+import { AppDispatch, RootState } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import FNButton from "../../components/Form/FNButton/FNButton";
 import ApiService from "../../services/ApiServices";
 import FNDataTable, { FNDataTableProps } from "../../components/Data/FNDataTable/FNDataTable";
+import FNInputNumber from "../../components/Form/FNInputNumber/FNInputNumber";
+
 
 const UserTable: React.FC = () => {
   const { t } = useTranslation();
   const [users, setUsers] = useState<any[]>([
   ]);
+
+  interface LoginFormValues {
+    username: number | undefined;
+    password: number | undefined;
+  }
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -32,6 +43,24 @@ const UserTable: React.FC = () => {
     { field: "createdAt", header: "Created At" }
   ];
 
+  const dispatch: AppDispatch = useDispatch();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
+
+  const formik = useFormik<LoginFormValues>({
+    initialValues: {
+      username: undefined,
+      password: undefined
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Username is required"),
+      password: Yup.string().required("Password is required"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+      
+    },
+  });
+
   const dataTableProps: FNDataTableProps = {
     value: users,
     dynamicColumns: dynamicColumns,
@@ -42,6 +71,30 @@ const UserTable: React.FC = () => {
 
   return (
     <div className="datatable-demo">
+
+<div className="login-form">
+          <form onSubmit={formik.handleSubmit}>
+            <FNInputNumber
+              name="username"
+              label="Username"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.username && !!formik.errors.username}
+              helpText={formik.touched.username && formik.errors.username}
+            />
+
+            <FNButton
+              label="Login"
+              type="submit"
+              className="mt-3"
+              loading={loading}
+              disabled={loading}
+            />
+          </form>
+        </div>
+
+
       <FNDataTable {...dataTableProps} />
     </div>
   );
