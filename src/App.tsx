@@ -70,9 +70,17 @@ const App: React.FC = () => {
       <IonApp className="m-0 justify-content-start">
         <BrowserRouter>
           <Switch>
-            <ProtectedRoute exact path="/pageone1" component={Layout} />
+            <ProtectedRoute exact path="/dashboard" component={Layout} />
+            <ProtectedRoute exact path="/data/table" component={Layout} />
+            <ProtectedRoute exact path="/form/components" component={Layout} />
             <Route exact path="/">
-              {user ? <Redirect to="/pageone1" /> : <Login />}
+              {user ? <Redirect to="/dashboard" /> : <Login />}
+            </Route>
+            <Route exact path="/data">
+              {user ? <Redirect to="/data/table" /> : <Login />}
+            </Route>
+            <Route exact path="/form">
+              {user ? <Redirect to="/form/components" /> : <Login />}
             </Route>
             <ProtectedRoute component={ErrorPage} />
           </Switch>

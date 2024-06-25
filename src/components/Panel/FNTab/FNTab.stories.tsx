@@ -4,7 +4,7 @@ import { Badge } from "primereact/badge";
 import FNTabs, { FNTab, FNTabsProps } from "./FNTab";
 
 export default {
-  title: "Components/Form/Tabs",
+  title: "Components/Panel/Tabs",
   component: FNTabs,
   tags: ["autodocs"],
   argTypes: {

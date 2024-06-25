@@ -14,7 +14,7 @@ const Layout: React.FC = () => {
         setSidebarVisible={setSidebarVisible}
       />
       <BrowserRouter>
-        <div className="flex bg-primary-50">
+        <div className="flex bg-primary-50 h-screen overflow-y-auto">
           <SideBar sidebarVisible={sidebarVisible} />
           <Routing />
         </div>
