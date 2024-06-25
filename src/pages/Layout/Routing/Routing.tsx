@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
 import UserTable from "../../Dashboard/UserTable";
 import ErrorPage from "../../ErrorPage/ErrorPage";
+import Dashboard from "../../Dashboard/Dashboard";
+import FormComponents from "../../Form/FormComponents";
 
 const Routing: React.FC = (width) => {
   return (
@@ -10,40 +12,26 @@ const Routing: React.FC = (width) => {
       <Switch>
         <ProtectedRoute
           exact
-          path="/pageone1"
-          component={UserTable}
-          title="Page One 1"
-          breadcrumb={[{ label: "Menu 1", url: "/pageone1" }, { label: "Page 1", url: "/pageone1" }]}
+          path="/dashboard"
+          component={Dashboard}
+          title="Dashboard"
+          breadcrumb={[{ label: "Dashboard", url: "/dashboard" }]}
         />
         <ProtectedRoute
           exact
-          path="/pageone2"
+          path="/data/table"
           component={UserTable}
-          title="Page One 2"
-          breadcrumb={[{ label: "Menu 1", url: "/pageone2" }, { label: "Page 2", url: "/pageone2" }]}
+          title="Data Table"
+          breadcrumb={[{ label: "Data", url: "/data" }, { label: "Table", url: "/table" }]}
         />
         <ProtectedRoute
           exact
-          path="/pageone3"
-          component={UserTable}
-          title="Page One 3"
-          breadcrumb={[{ label: "Menu 1", url: "/pageone3" }, { label: "Page 3", url: "/pageone3" }]}
+          path="/form/components"
+          component={FormComponents}
+          title="Form Components"
+          breadcrumb={[{ label: "Form", url: "/form" }, { label: "Components", url: "/components" }]}
         />
-        <ProtectedRoute
-          exact
-          path="/pagetwo1"
-          component={UserTable}
-          title="Page Two 1"
-          breadcrumb={[{ label: "Menu 2", url: "/pagetwo1" }, { label: "Page 1", url: "/pagetwo1" }]}
-        />
-        <ProtectedRoute
-          exact
-          path="/menu3"
-          component={UserTable}
-          title="Menu 3"
-          breadcrumb={[{ label: "Menu 3", url: "/menu3" }]}
-        />
-       
+
       </Switch>
     </div>
   );

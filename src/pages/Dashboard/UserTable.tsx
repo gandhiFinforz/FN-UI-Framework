@@ -41,7 +41,7 @@ const UserTable: React.FC = () => {
   };
 
   return (    
-      <FNCard><FNDataTable {...dataTableProps} /></FNCard>
+      <FNCard title="User Table"><FNDataTable {...dataTableProps} /></FNCard>
   );
 };
 
