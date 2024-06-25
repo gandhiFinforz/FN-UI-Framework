@@ -2,7 +2,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import FNTextEditor, { FNTextEditorProps } from "./FNTextEditor";
 
 export default {
-  title: "Components/Form/FNTextEditor",
+  title: "Components/Form/TextEditor",
   component: FNTextEditor,
   tags: ["autodocs"],
   argTypes: {

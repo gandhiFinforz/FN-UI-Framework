@@ -8,6 +8,8 @@ export interface FNTextEditorProps extends EditorProps {
   height?: string;
   className?: string;
   headerTemplate?: React.ReactNode;
+  label?: string;
+  helpText?: string;
 }
 
 const FNTextEditor: FC<FNTextEditorProps> = ({
@@ -16,12 +18,15 @@ const FNTextEditor: FC<FNTextEditorProps> = ({
   height = "320px",
   className = "",
   headerTemplate,
+  label,
+  helpText,
   ...props
 }) => {
   const { t } = useTranslation();
 
   return (
     <div className={`card ${className}`}>
+      {label ? <label className="mt-2">{t(label)}</label> : ""}
       <Editor
         value={t(value)}
         style={{ height }}
@@ -29,6 +34,7 @@ const FNTextEditor: FC<FNTextEditorProps> = ({
         headerTemplate={headerTemplate}
         {...props}
       />
+      {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}
     </div>
   );
 };
