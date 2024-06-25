@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "primeflex/primeflex.css";
+import FNCard from "../../components/Panel/FNCard/FNCard";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -20,15 +21,9 @@ const Dashboard: React.FC = () => {
       <div className="grid nogutter mt-3">
         {data.map((item, index) => (
           <div key={index} className="col-3">
+            <FNCard title="">
             <div
-              className="shadow-3 p-3 d-flex flex-column jc-center ai-center"
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '8px',
-                textAlign: 'center',
-                border: '1px solid #ddd',
-                width: '100%'
-              }}
+              className="flex flex-column align-items-center"
             >
               <div className={`pi ${item.icon} text-4xl mb-2 text-primary-600`}></div>
               <h3 className="mx-0 my-2 ">{t(item.title)}</h3>
@@ -38,6 +33,7 @@ const Dashboard: React.FC = () => {
               </div>
               <p className="mx-0 my-2 font-bold text-base ">{t(item.description)}</p>
             </div>
+            </FNCard>
           </div>
         ))}
       </div>
