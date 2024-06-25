@@ -42,12 +42,12 @@ import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
-import Layout from "./pages/BlankPage/Layout";
 import './App.css';
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Layout from "./pages/Layout/Layout";
 
 setupIonicReact();
 const App: React.FC = () => {
