@@ -32,17 +32,18 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, t
       render={(props) =>
         AuthService.isAuthenticated() ? (
           <>
-            {title && (
-              <div className="font-bold text-lg text-primary-600">
-                {title}
-              </div>
-            )}
             {breadcrumb && (
               <div className="border-0">
                 <BreadCrumb
                   model={items}
                   home={{ icon: "pi pi-home", url: "/" }}
                 />
+              </div>
+            )}
+
+            {title && (
+              <div className="font-bold text-lg text-primary-600 mb-2">
+                {title}
               </div>
             )}
 
