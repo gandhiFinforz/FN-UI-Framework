@@ -11,7 +11,7 @@ import FNInputNumber from "../../components/Form/FNInputNumber/FNInputNumber";
 
 
 const UserTable: React.FC = () => {
-  const { t } = useTranslation();
+  useTranslation();
   const [users, setUsers] = useState<any[]>([
   ]);
 

@@ -11,7 +11,6 @@ interface ProtectedRouteProps extends RouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, title, breadcrumb, ...rest }) => {
-  const location = useLocation();
   const [items, setItems] = useState<any[]>([]);
   const { t } = useTranslation();
 
@@ -28,20 +27,25 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, t
   }, [breadcrumb]);
 
   return (
-    <Route {...rest} render={(props) => (
-      AuthService.isAuthenticated()
-        ? (
-          <div>
-            {breadcrumb && (
-              <div className="p-mb-3 w-4 mb-2">
-                <BreadCrumb model={items} home={{ icon: 'pi pi-home', url: '/' }} />
-              </div>
-            )}
+    <Route
+      {...rest}
+      render={(props) =>
+        AuthService.isAuthenticated() ? (
+          <>
             {title && (
-              <div className="font-bold text-2xl text-cyan-600 p-2 w-6">
+              <div className="font-bold text-lg text-primary-600">
                 {title}
               </div>
             )}
+            {breadcrumb && (
+              <div className="border-0">
+                <BreadCrumb
+                  model={items}
+                  home={{ icon: "pi pi-home", url: "/" }}
+                />
+              </div>
+            )}
+
             <Suspense
               fallback={
                 <div className="flex w-screen h-screen">
@@ -51,10 +55,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, t
             >
               <Component {...props} />
             </Suspense>
-          </div>
+          </>
+        ) : (
+          <Redirect to="/" />
         )
-        : <Redirect to='/' />
-    )} />
+      }
+    />
   );
 };
 
