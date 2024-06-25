@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import ApiService from "../../services/ApiServices";
 import FNDataTable, { FNDataTableProps } from "../../components/Data/FNDataTable/FNDataTable";
+import FNCard from "../../components/Panel/FNCard/FNCard";
 
 const UserTable: React.FC = () => {
-  const { t } = useTranslation();
+  useTranslation();
   const [users, setUsers] = useState<any[]>([
   ]);
 
@@ -40,10 +40,8 @@ const UserTable: React.FC = () => {
     sortable: true
   };
 
-  return (
-    <div className="datatable-demo">
-      <FNDataTable {...dataTableProps} />
-    </div>
+  return (    
+      <FNCard><FNDataTable {...dataTableProps} /></FNCard>
   );
 };
 
