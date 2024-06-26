@@ -346,6 +346,18 @@ const FormComponents: React.FC = () => {
                     />
                 </div>
                 <div className="col-6">
+                    <FNTextArea
+                        rows={8}
+                        name="textarea"
+                        label="Textarea"
+                        value={otherFormik.values.textarea}
+                        onChange={otherFormik.handleChange}
+                        onBlur={otherFormik.handleBlur}
+                        invalid={otherFormik.touched.textarea && !!otherFormik.errors.textarea}
+                        helpText={otherFormik.touched.textarea && otherFormik.errors.textarea}
+                    />
+                </div>
+                <div className="col-6">
                     <FNFileUpload
                         name="fileupload"
                         label="File Upload"
@@ -358,18 +370,6 @@ const FormComponents: React.FC = () => {
                         onSelect={handleFileUpload}
                         onRemove={handleFileRemove}
                         helpText={otherFormik.touched.fileupload ? otherFormik.errors.fileupload : ""}
-                    />
-                </div>
-                <div className="col-6">
-                    <FNTextArea
-                        rows={8}
-                        name="textarea"
-                        label="Textarea"
-                        value={otherFormik.values.textarea}
-                        onChange={otherFormik.handleChange}
-                        onBlur={otherFormik.handleBlur}
-                        invalid={otherFormik.touched.textarea && !!otherFormik.errors.textarea}
-                        helpText={otherFormik.touched.textarea && otherFormik.errors.textarea}
                     />
                 </div>
                 {error && <div className="col-span-3 text-red-400">{error}</div>}
