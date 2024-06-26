@@ -31,7 +31,7 @@ export interface StepsProps extends PrimeStepsProps {
   unstyled?: boolean;
 }
 
-const FNStepsMenu: FC<StepsProps> = ({
+const FNSteps: FC<StepsProps> = ({
   className = "",
   model,
   initialIndex,
@@ -92,4 +92,4 @@ const FNStepsMenu: FC<StepsProps> = ({
   );
 };
 
-export default FNStepsMenu;
+export default FNSteps;
