@@ -32,22 +32,26 @@ describe("FNConfirmDialog", () => {
     mountComponent();
     cy.contains("Test Header").should("be.visible");
     cy.contains("Test Message").should("be.visible");
+    cy.screenshot("component/FNConfirmDialog/renders");
   });
 
   it("should render accept and reject buttons with correct labels", () => {
     mountComponent();
     cy.contains("Accept").should("be.visible");
     cy.contains("Reject").should("be.visible");
+    cy.screenshot("component/FNConfirmDialog/renders");
   });
 
   it("should apply custom width and height styles", () => {
     mountComponent();
     cy.get(".p-confirm-dialog").should("have.css", "width", "300px");
     cy.get(".p-confirm-dialog").should("have.css", "height", "200px");
+    cy.screenshot("component/FNConfirmDialog/renders");
   });
 
   it("should open the dialog in the top-left position", () => {
     mountComponent({ position: "center" });
     cy.get(".p-dialog-default").should("exist");
+    cy.screenshot("component/FNConfirmDialog/renders");
   });
 });
