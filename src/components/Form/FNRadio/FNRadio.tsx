@@ -39,6 +39,7 @@ export interface RadioFieldProps {
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   helpText?: string | any;
   error?: string;
+  label?:string;
 }
 
 const FNRadioField: FC<RadioFieldProps> = ({
@@ -51,6 +52,7 @@ const FNRadioField: FC<RadioFieldProps> = ({
   onBlur,
   helpText,
   error,
+  label,
   ...props
 }) => {
   const { t } = useTranslation();
@@ -62,7 +64,9 @@ const FNRadioField: FC<RadioFieldProps> = ({
   };
 
   return (
-    <div data-testid="radio-field" className={`flex flex-wrap gap-3`}>
+    <div className={label ? "flex flex-column gap-2 " : ""}>
+      {label ? <label className="mt-2">{t(label)}</label> : ""}
+      <div className="flex flex-row gap-2">
       {options.map((d: FNOptionRadioProps) => (
         <div key={d.value} className={"flex align-items-center"}>
           <RadioButton
@@ -83,6 +87,7 @@ const FNRadioField: FC<RadioFieldProps> = ({
             inputRef={d.inputRef}
             pt={d.pt}
             ptOptions={d.ptOptions}
+            {...props}
           />
           {d.label && (
             <label htmlFor={d.inputId || d.value} className="ml-2">
@@ -91,7 +96,10 @@ const FNRadioField: FC<RadioFieldProps> = ({
           )}
         </div>
       ))}
-      {helpText ? <div className="error text-red-400">{t(helpText)}</div> : null}
+      </div>
+      {helpText ? (
+        <div className="error text-red-400">{t(helpText)}</div>
+      ) : null}
     </div>
   );
 };

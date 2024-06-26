@@ -23,14 +23,9 @@ const FNTextEditor: FC<FNTextEditorProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={`card ${className}`}>
+    <div className={`flex flex-column gap-2 ${className}`}>
       {label ? <label className="mt-2">{t(label)}</label> : ""}
-      <Editor
-        value={value}
-        style={{ height }}
-        readOnly={readOnly}
-        {...props}
-      />
+      <Editor value={value} style={{ height }} readOnly={readOnly} {...props} />
       {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}
     </div>
   );
