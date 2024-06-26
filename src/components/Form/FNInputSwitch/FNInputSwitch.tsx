@@ -74,6 +74,4 @@ const FNInputSwitch: FC<FNInputSwitchProps> = ({
   );
 };
 
-
-
 export default FNInputSwitch;
