@@ -2,11 +2,10 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
 import UserTable from "../../DataTable/UserTable";
-import ErrorPage from "../../ErrorPage/ErrorPage";
 import Dashboard from "../../Dashboard/Dashboard";
 import FormComponents from "../../Form/FormComponents";
 
-const Routing: React.FC = (width) => {
+const Routing: React.FC = () => {
   return (
     <div className="w-full mt-3 ml-2 px-3">
       <Switch>
@@ -22,16 +21,24 @@ const Routing: React.FC = (width) => {
           path="/data/table"
           component={UserTable}
           title="Data Table"
-          breadcrumb={[{ label: "Data", url: "/data" }, { label: "Table", url: "/table" }]}
+          breadcrumb={[
+            { label: "Data", url: "/data" },
+            { label: "Table", url: "/table" },
+          ]}
         />
         <ProtectedRoute
           exact
           path="/form/components"
           component={FormComponents}
           title="Form Components"
-          breadcrumb={[{ label: "Form", url: "/form" }, { label: "Components", url: "/components" }]}
+          breadcrumb={[
+            { label: "Form", url: "/form" },
+            { label: "Components", url: "/components" },
+          ]}
         />
-
+        <Route exact path="/">
+          <Redirect to="/dashboard" />
+        </Route>
       </Switch>
     </div>
   );
