@@ -4,6 +4,13 @@ import "primeflex/primeflex.css";
 import FNCard from "../../components/Panel/FNCard/FNCard";
 
 const Dashboard: React.FC = () => {
+
+  const stepsModel = [
+    { label: 'Step 1', icon: 'pi pi-user' },
+    { label: 'Step 2', icon: 'pi pi-briefcase', command: () => console.log('Step 2 clicked') },
+    { label: 'Step 3', icon: 'pi pi-check' },
+  ];
+
   const { t } = useTranslation();
   const data = [
     {
