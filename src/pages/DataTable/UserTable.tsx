@@ -5,11 +5,14 @@ import FNDataTable, {
   FNDataTableProps,
 } from "../../components/Data/FNDataTable/FNDataTable";
 import FNCard from "../../components/Panel/FNCard/FNCard";
+import { Button } from "primereact/button";
+import FNDialog from "../../components/Panel/FNDialog/FNDialog";
+import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 
 const UserTable: React.FC = () => {
-  useTranslation();
   const [users, setUsers] = useState<any[]>([]);
+  useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -40,10 +43,46 @@ const UserTable: React.FC = () => {
     sortable: true,
   };
 
+  // show and hide dialog component
+  const [visible, setVisible] = useState(false);
+
   return (
-    <FNCard title="User Table">
-      <FNDataTable {...dataTableProps} />
-    </FNCard>
+    <div>
+      {/* dialog component content */}
+      <div className="card flex justify-content-end mb-2">
+        <Button
+          label={t("Dialog.buttonLabel")}
+          icon="pi pi-external-link"
+          onClick={() => setVisible(true)}
+        />
+        <FNDialog
+          header={t("Dialog.header")}
+          content="Are you sure you want add more users..!"
+          footerButtons={[
+            {
+              label: t("Dialog.rejectButton"),
+              icon: "pi pi-times",
+              onClick: () => setVisible(false),
+              className: "p-button-text",
+            },
+            {
+              label: t("Dialog.confirmButton"),
+              icon: "pi pi-check",
+              onClick: () => setVisible(false),
+            },
+          ]}
+          visible={visible}
+          onHide={() => setVisible(false)}
+          style={{ width: "40vw" }}
+          className="my-custom-dialog"
+        />
+      </div>
+      {/* dialog component content end */}
+
+      <FNCard title="User Table">
+        <FNDataTable {...dataTableProps} />
+      </FNCard>
+    </div>
   );
 };
 

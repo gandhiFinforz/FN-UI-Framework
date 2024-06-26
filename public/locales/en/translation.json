@@ -1,15 +1,21 @@
 {
-  "loginPage":{
-    "title":"Login Page",
-    "userName":"Username",
-    "password":"Passsword",
-    "buttonName":"Login",
+  "loginPage": {
+    "title": "Login Page",
+    "userName": "Username",
+    "password": "Passsword",
+    "buttonName": "Login",
     "changepassword": "Change Password",
     "logout": "Logout",
-    "checkboxLabel":"Remember Me"
+    "checkboxLabel": "Remember Me"
   },
   "usersTable": {
     "title": "Users List"
+  },
+  "Dialog": {
+    "buttonLabel": "Add User",
+    "header": "Proceed with Add User",
+    "confirmButton": "Yes",
+    "rejectButton": "No"
   },
   "general": {
     "appTitle": "FN-UI",
