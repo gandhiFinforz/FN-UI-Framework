@@ -5,8 +5,7 @@ import FNDataTable, {
   FNDataTableProps,
 } from "../../components/Data/FNDataTable/FNDataTable";
 import FNCard from "../../components/Panel/FNCard/FNCard";
-// import { urlConfig } from "../../services/Utils/ApiUrlConfig";
-import { commonAPIUrl } from "../../utils/APIUtils";
+import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 
 const UserTable: React.FC = () => {
   useTranslation();
@@ -15,8 +14,7 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // const response = await ApiService.get<any[]>(urlConfig.userList);
-        const response = await ApiService.get<any[]>(commonAPIUrl.userData);
+        const response = await ApiService.get<any[]>(urlConfig.userList);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
