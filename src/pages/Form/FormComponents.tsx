@@ -253,7 +253,7 @@ const FormComponents: React.FC = () => {
                             name="otp"
                             label="MFA"
                             value={loginFormik.values.otp}
-                            onChange={loginFormik.handleChange}
+                            onChange={(e) => { loginFormik.setFieldValue('otp', e.value) }}
                             onBlur={loginFormik.handleBlur}
                             invalid={loginFormik.touched.otp && !!loginFormik.errors.otp}
                             helpText={loginFormik.touched.otp && loginFormik.errors.otp}
