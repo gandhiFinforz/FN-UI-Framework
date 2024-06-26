@@ -39,12 +39,13 @@ const FNCheckbox: FC<FNCheckboxProps> = ({
   disabled = false,
   invalid = false,
   helpText,
+  className='',
   ...restProps
 }) => {
   const { t } = useTranslation();
   return (
     <div
-      className={`p-field-checkbox ${restProps.className}`}
+      className={`p-field-checkbox ${className}`}
       style={restProps.style}
     >
       <Checkbox

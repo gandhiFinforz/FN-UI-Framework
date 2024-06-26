@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
-import UserTable from "../../Dashboard/UserTable";
+import UserTable from "../../DataTable/UserTable";
 import ErrorPage from "../../ErrorPage/ErrorPage";
 import Dashboard from "../../Dashboard/Dashboard";
 import FormComponents from "../../Form/FormComponents";
