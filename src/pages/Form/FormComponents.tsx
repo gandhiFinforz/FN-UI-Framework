@@ -90,17 +90,17 @@ const FormComponents: React.FC = () => {
 
     const otherFormik = useFormik<OtherFormValues>({
         initialValues: {
-            autoComplete: undefined,
+            autoComplete: "",
             radio: "",
             editor: "",
             textarea: "",
             fileupload: "",
         },
         validationSchema: Yup.object({
-            autoComplete: Yup.object().required("Auto Complete is required"),
-            radio: Yup.string().required("Please select radio button"),
-            editor: Yup.string().required("Please enter some content in the editor"),
-            textarea: Yup.string().required("Please enter some content in the text area"),
+            autoComplete: Yup.object().required("Country is required"),
+            radio: Yup.string().required("Please select option"),
+            editor: Yup.string().required("Please enter your content"),
+            textarea: Yup.string().required("Please enter address"),
             fileupload: Yup.string().required("Please upload a file"),
         }),
         onSubmit: (values) => {
