@@ -19,6 +19,8 @@ export interface FNDateProps extends CalendarBaseProps {
     value?: Date;
     variant?: 'filled' | 'outlined';
     name: string;
+    onChangeEvent?: (e: any) => void;
+    onBlurEvent?: (e: any) => void;
 }
 
 const FNDate: FC<FNDateProps> = ({
@@ -34,9 +36,33 @@ const FNDate: FC<FNDateProps> = ({
     variant = 'outlined',
     className = '',
     helpText,
+    onChangeEvent,
+    onBlurEvent,
+    name,
     ...props
 }) => {
     const { t } = useTranslation();
+
+    const handleChange = (e: any) => {
+        const event = {
+            target: {
+                name,
+                value: e.value
+            }
+        };
+        onChangeEvent && onChangeEvent(event);
+    };
+
+    const handleBlur = (e: any) => {
+        const event = {
+            target: {
+                name,
+                value: e.value
+            }
+        };
+        onBlurEvent && onBlurEvent(event);
+    };
+
     return (
         <div className={label ? 'flex flex-column gap-1 ' : ''}>
             {label ? <label className='mt-2'>{t(label)}</label> : ''}
@@ -51,6 +77,8 @@ const FNDate: FC<FNDateProps> = ({
                 disabled={disabled}
                 unstyled={unstyled}
                 value={value}
+                onSelect={handleChange}
+                onBlur={handleBlur}
                 {...props}
             />
             {helpText ?
