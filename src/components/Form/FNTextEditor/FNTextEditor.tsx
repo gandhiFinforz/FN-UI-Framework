@@ -7,17 +7,15 @@ export interface FNTextEditorProps extends EditorProps {
   readOnly?: boolean;
   height?: string;
   className?: string;
-  headerTemplate?: React.ReactNode;
   label?: string;
   helpText?: string;
 }
 
 const FNTextEditor: FC<FNTextEditorProps> = ({
-  value,
+  value= "",
   readOnly,
   height = "320px",
   className = "",
-  headerTemplate,
   label,
   helpText,
   ...props
@@ -28,10 +26,9 @@ const FNTextEditor: FC<FNTextEditorProps> = ({
     <div className={`card ${className}`}>
       {label ? <label className="mt-2">{t(label)}</label> : ""}
       <Editor
-        value={t(value)}
+        value={value}
         style={{ height }}
         readOnly={readOnly}
-        headerTemplate={headerTemplate}
         {...props}
       />
       {helpText ? <small className="text-red-400">{t(helpText)}</small> : ""}

@@ -69,6 +69,8 @@ export interface FNAutoCompleteProps
   value?: any;
   variant?: "filled" | "outlined";
   virtualScrollerOptions?: VirtualScrollerProps;
+  helpText?: string | any;
+  label?: string;
 }
 
 const FNAutoComplete: FC<FNAutoCompleteProps> = ({
@@ -127,6 +129,8 @@ const FNAutoComplete: FC<FNAutoCompleteProps> = ({
   value,
   variant = "outlined",
   virtualScrollerOptions,
+  helpText,
+  label,
   ...props
 }) => {
   const { t } = useTranslation();
@@ -154,7 +158,8 @@ const FNAutoComplete: FC<FNAutoCompleteProps> = ({
   }, []);
 
   return (
-    <div className={className}>
+    <div className={label ? 'flex flex-column gap-1 ' : ''}>
+      {label ? <label className='mt-2'>{t(label)}</label> : ''}
       <AutoComplete
         {...props}
         appendTo={appendTo}
@@ -212,6 +217,11 @@ const FNAutoComplete: FC<FNAutoCompleteProps> = ({
         onChange={(e) => setLocalValue(e.value)}
       />
       {children}
+      {helpText ?
+        <small className='text-red-400'>
+          {t(helpText)}
+        </small>
+        : ''}
     </div>
   );
 };
