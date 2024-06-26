@@ -9,14 +9,17 @@ import FNDataTable, {
   FNDataTableProps,
 } from "../../components/Data/FNDataTable/FNDataTable";
 import FNCard from "../../components/Panel/FNCard/FNCard";
+import { Button } from "primereact/button";
+import FNDialog from "../../components/Panel/FNDialog/FNDialog";
+import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 import FNButton from "../../components/Form/FNButton/FNButton";
 import FNInputSwitch from "../../components/Form/FNInputSwitch/FNInputSwitch";
 
 
 const UserTable: React.FC = () => {
-  useTranslation();
   const [users, setUsers] = useState<any[]>([]);
+  useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -47,54 +50,46 @@ const UserTable: React.FC = () => {
     sortable: true,
   };
 
-  interface LoginFormValues {
-    activeBox: boolean;
-  }
-
-  const dispatch: AppDispatch = useDispatch();
-  const { loading, error } = useSelector((state: RootState) => state.auth);
-
-  const formik = useFormik<LoginFormValues>({
-    initialValues: {
-      activeBox: false,
-    },
-    validationSchema: Yup.object({
-      activeBox: Yup.boolean().required("Active is required"),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      
-    },
-  });
+  // show and hide dialog component
+  const [visible, setVisible] = useState(false);
 
   return (
-    <FNCard title="User Table">
-
-<form onSubmit={formik.handleSubmit}>
-      <FNInputSwitch
-          name="activeBox"
-          label="Active"
-          checked={formik.values.activeBox}
-          onChange={(e) => formik.setFieldValue("activeBox", e.value)}
-          onBlur={formik.handleBlur}
-          invalid={formik.touched.activeBox && !!formik.errors.activeBox}
-          helpText={formik.touched.activeBox && formik.errors.activeBox}
+    <div>
+      {/* dialog component content */}
+      <div className="card flex justify-content-end mb-2">
+        <Button
+          label={t("Dialog.buttonLabel")}
+          icon="pi pi-external-link"
+          onClick={() => setVisible(true)}
         />
+        <FNDialog
+          header={t("Dialog.header")}
+          content="Are you sure you want add more users..!"
+          footerButtons={[
+            {
+              label: t("Dialog.rejectButton"),
+              icon: "pi pi-times",
+              onClick: () => setVisible(false),
+              className: "p-button-text",
+            },
+            {
+              label: t("Dialog.confirmButton"),
+              icon: "pi pi-check",
+              onClick: () => setVisible(false),
+            },
+          ]}
+          visible={visible}
+          onHide={() => setVisible(false)}
+          style={{ width: "40vw" }}
+          className="my-custom-dialog"
+        />
+      </div>
+      {/* dialog component content end */}
 
-            {error && <div className="error text-red-400">{error}</div>}
-
-            <FNButton
-              label="Login"
-              type="submit"
-              className="mt-3"
-              loading={loading}
-              disabled={loading}
-            />
-          </form>
-
-
-      <FNDataTable {...dataTableProps} />
-    </FNCard>
+      <FNCard title="User Table">
+        <FNDataTable {...dataTableProps} />
+      </FNCard>
+    </div>
   );
 };
  

@@ -31,7 +31,7 @@ const FNOtpInput: FC<FNOtpInputProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="p-field">
+    <div className={label ? "flex flex-column gap-1 " : ""}>
       {label && <label htmlFor={props.id}>{t(label)}</label>}
       <InputOtp
         id={props.id}

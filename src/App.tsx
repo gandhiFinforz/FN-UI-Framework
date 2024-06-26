@@ -30,8 +30,8 @@ import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import 'primereact/resources/themes/saga-blue/theme.css';
-      // Core CSS
+import "primereact/resources/themes/saga-blue/theme.css";
+// Core CSS
 import "primereact/resources/primereact.min.css"; // import styles
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
@@ -42,12 +42,13 @@ import i18n from "./i18n";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
-import './App.css';
+import "./App.css";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Layout from "./pages/Layout/Layout";
+import Dashboard from "./pages/Dashboard";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -70,19 +71,9 @@ const App: React.FC = () => {
       <IonApp className="m-0 justify-content-start">
         <BrowserRouter>
           <Switch>
-            <ProtectedRoute exact path="/dashboard" component={Layout} />
-            <ProtectedRoute exact path="/data/table" component={Layout} />
-            <ProtectedRoute exact path="/form/components" component={Layout} />
-            <Route exact path="/">
-              {user ? <Redirect to="/dashboard" /> : <Login />}
-            </Route>
-            <Route exact path="/data">
-              {user ? <Redirect to="/data/table" /> : <Login />}
-            </Route>
-            <Route exact path="/form">
-              {user ? <Redirect to="/form/components" /> : <Login />}
-            </Route>
-            <ProtectedRoute component={ErrorPage} />
+            {user && <Layout />}
+            <Route exact path="/" component={Login} />          
+            <Route component={ErrorPage} />
           </Switch>
         </BrowserRouter>
       </IonApp>
