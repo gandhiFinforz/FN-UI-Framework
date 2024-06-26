@@ -8,6 +8,8 @@ import FNCard from "../../components/Panel/FNCard/FNCard";
 import { Button } from "primereact/button";
 import FNDialog from "../../components/Panel/FNDialog/FNDialog";
 import { t } from "i18next";
+// import { urlConfig } from "../../services/Utils/ApiUrlConfig";
+import { commonAPIUrl } from "../../utils/APIUtils";
 
 const UserTable: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -16,7 +18,8 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await ApiService.get<any[]>("/users");
+        // const response = await ApiService.get<any[]>(urlConfig.userList);
+        const response = await ApiService.get<any[]>(commonAPIUrl.userData);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -78,7 +81,7 @@ const UserTable: React.FC = () => {
       </div>
       {/* dialog component content end */}
 
-      <FNCard>
+      <FNCard title="User Table">
         <FNDataTable {...dataTableProps} />
       </FNCard>
     </div>
