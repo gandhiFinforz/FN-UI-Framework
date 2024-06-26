@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import FNStepsMenu, { StepsProps } from './FNSteps';
+import FNSteps, { StepsProps } from './FNSteps';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeflex/primeflex.css'; // import theme
 
 export default {
   title: 'Components/Menu/StepsMenu',
-  component: FNStepsMenu,
+  component: FNSteps,
   tags: ['autodocs'],
   argTypes: {
     className: {
@@ -32,7 +32,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<StepsProps> = (args) => <FNStepsMenu {...args} />;
+const Template: StoryFn<StepsProps> = (args) => <FNSteps {...args} />;
 
 /**
  * Default story: Renders the StepsMenu with default props.
