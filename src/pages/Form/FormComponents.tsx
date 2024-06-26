@@ -1,20 +1,20 @@
 import React from "react";
-import FNCard from "../../components/Panel/FNCard/FNCard";
+import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import FNButton from "../../components/Form/FNButton/FNButton";
-import FNCheckbox from "../../components/Form/FNCheckbox/FNCheckbox";
-import FNInput from "../../components/Form/FNInput/FNInput";
-import FNDate from "../../components/Form/FNDate/FNDate";
-import FNTextArea from "../../components/Form/FNTextArea/FNTextArea";
-import FNFileUpload from "../../components/Form/FNFileUpload/FNFileUpload";
-import FNTabs, { FNTab } from "../../components/Panel/FNTab/FNTab";
-import FNOtpInput from "../../components/Form/FNOtpInput/FNOtpInput";
-import FNAutoComplete from "../../components/Form/FNAutoComplete/FNAutoComplete";
-import FNTextEditor from "../../components/Form/FNTextEditor/FNTextEditor";
-import FNRadioField from "../../components/Form/FNRadio/FNRadio";
+import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
+import FNCheckbox from "../../components/UIComponents/Form/FNCheckbox/FNCheckbox";
+import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
+import FNDate from "../../components/UIComponents/Form/FNDate/FNDate";
+import FNTextArea from "../../components/UIComponents/Form/FNTextArea/FNTextArea";
+import FNFileUpload from "../../components/UIComponents/Form/FNFileUpload/FNFileUpload";
+import FNTabs, { FNTab } from "../../components/UIComponents/Panel/FNTab/FNTab";
+import FNOtpInput from "../../components/UIComponents/Form/FNOtpInput/FNOtpInput";
+import FNAutoComplete from "../../components/UIComponents/Form/FNAutoComplete/FNAutoComplete";
+import FNTextEditor from "../../components/UIComponents/Form/FNTextEditor/FNTextEditor";
+import FNRadioField from "../../components/UIComponents/Form/FNRadio/FNRadio";
 
 
 const FormComponents: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "primeflex/primeflex.css";
-import FNCard from "../../components/Panel/FNCard/FNCard";
+import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import UserTable from "../DataTable/UserTable";
 
 const Dashboard: React.FC = () => {
