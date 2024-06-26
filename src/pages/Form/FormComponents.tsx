@@ -57,97 +57,100 @@ const FormComponents: React.FC = () => {
     };
 
     const children = (
-        <div className="login-form p-4">
-            <form onSubmit={formik.handleSubmit} className="formgrid grid">
-                <div className="field col-4">
-                    <FNInput
-                        type="text"
-                        name="text"
-                        label="Text"
-                        value={formik.values.text}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        invalid={formik.touched.text && !!formik.errors.text}
-                        helpText={formik.touched.text && formik.errors.text}
-                    />
-                </div>
-                <div className="field col-4">
-                    <FNInput
-                        type="password"
-                        name="password"
-                        label="Password"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        invalid={formik.touched.password && !!formik.errors.password}
-                        helpText={formik.touched.password && formik.errors.password}
-                    />
-                </div>
-                <div className="field col-4">
-                    <FNDate
-                        inputId="fn-date"
-                        name="date"
-                        showButtonBar={true}
-                        hideOnDateTimeSelect={true}
-                        value={formik.values.date}
-                        label="Date"
-                        onChangeEvent={formik.handleChange}
-                        onBlurEvent={formik.handleBlur}
-                        className=""
-                    />
-                </div>
-                <div className="field col-12">
-                    <FNTextArea
-                        name="textarea"
-                        label="Textarea"
-                        value={formik.values.textarea}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        invalid={formik.touched.textarea && !!formik.errors.textarea}
-                        helpText={formik.touched.textarea && formik.errors.textarea}
-                    />
-                </div>
-                <div className="field col-6">
-                    <FNFileUpload
-                        name="fileupload"
-                        label="File Upload"
-                        previewWidth={50}
-                        multiple={true}
-                        maxFileSize={1000000}
-                        mode="advanced"
-                        value={formik.values.fileupload}
-                        onUpload={handleFileUpload}
-                        onSelect={handleFileUpload}
-                        onRemove={handleFileRemove}
-                        helpText={formik.touched.fileupload ? formik.errors.fileupload : ""}
-                    />
-                </div>
-                <div className="field col-6 flex align-content-center">
-                    <FNCheckbox
-                        inputId="rememberMeCheckbox"
-                        name="checkbox"
-                        value={formik.values.checkbox}
-                        label="Checkbox"
-                        checked={formik.values.checkbox}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        className="mt-4"
-                    />
-                </div>
+      <div className="login-form">
+        <form onSubmit={formik.handleSubmit} className="formgrid grid">
+          <div className="field col-4">
+            <FNInput
+              type="text"
+              name="text"
+              label="Text"
+              value={formik.values.text}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.text && !!formik.errors.text}
+              helpText={formik.touched.text && formik.errors.text}
+            />
+          </div>
+          <div className="field col-4">
+            <FNInput
+              type="password"
+              name="password"
+              label="Password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.password && !!formik.errors.password}
+              helpText={formik.touched.password && formik.errors.password}
+            />
+          </div>
+          <div className="field col-4">
+            <FNDate
+              inputId="fn-date"
+              name="date"
+              showButtonBar={true}
+              hideOnDateTimeSelect={true}
+              value={formik.values.date}
+              label="Date"
+              onChangeEvent={formik.handleChange}
+              onBlurEvent={formik.handleBlur}
+              className=""
+            />
+          </div>
 
-                {error && <div className="col-span-3 text-red-400">{error}</div>}
+          <div className="field col-6">
+            <FNFileUpload
+              name="fileupload"
+              label="File Upload"
+              previewWidth={50}
+              multiple={true}
+              maxFileSize={1000000}
+              mode="advanced"
+              value={formik.values.fileupload}
+              onUpload={handleFileUpload}
+              onSelect={handleFileUpload}
+              onRemove={handleFileRemove}
+              helpText={
+                formik.touched.fileupload ? formik.errors.fileupload : ""
+              }
+            />
+          </div>
+          <div className="field col-6">
+            <FNTextArea
+                rows={8}
+              name="textarea"
+              label="Textarea"
+              value={formik.values.textarea}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.textarea && !!formik.errors.textarea}
+              helpText={formik.touched.textarea && formik.errors.textarea}
+            />
+          </div>
+          <div className="field col-4">
+            <FNCheckbox
+              inputId="rememberMeCheckbox"
+              name="checkbox"
+              value={formik.values.checkbox}
+              label="Checkbox"
+              checked={formik.values.checkbox}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          </div>
 
-                <div className="field col-12 text-right">
-                    <FNButton
-                        label="Check Form Value"
-                        type="submit"
-                        className="mt-3"
-                        loading={loading}
-                        disabled={loading}
-                    />
-                </div>
-            </form>
-        </div>
+          {error && <div className="col-span-3 text-red-400">{error}</div>}
+
+          <div className="field col-12 text-right">
+            <FNButton
+              label="Submit"
+              type="submit"
+              className="mt-3"
+              loading={loading}
+              disabled={loading}
+            />
+          </div>
+        </form>
+      </div>
     );
 
     return (
