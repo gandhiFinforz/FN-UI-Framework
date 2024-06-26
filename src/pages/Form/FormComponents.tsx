@@ -14,6 +14,9 @@ import FNTabs, { FNTab } from "../../components/Panel/FNTab/FNTab";
 import FNOtpInput from "../../components/Form/FNOtpInput/FNOtpInput";
 import FNAutoComplete from "../../components/Form/FNAutoComplete/FNAutoComplete";
 import FNTextEditor from "../../components/Form/FNTextEditor/FNTextEditor";
+import FNRadioField from "../../components/Form/FNRadio/FNRadio";
+import { Checked } from "../../components/Form/FNCheckbox/FNCheckbox.stories";
+
 
 const FormComponents: React.FC = () => {
     const { loading, error } = useSelector((state: RootState) => state.auth);
@@ -36,6 +39,7 @@ const FormComponents: React.FC = () => {
 
     interface OtherFormValues {
         autoComplete: any;
+        radio: string;
         editor: string;
         textarea: string;
         fileupload: string;
@@ -88,12 +92,14 @@ const FormComponents: React.FC = () => {
     const otherFormik = useFormik<OtherFormValues>({
         initialValues: {
             autoComplete: undefined,
+            radio: "",
             editor: "",
             textarea: "",
             fileupload: "",
         },
         validationSchema: Yup.object({
             autoComplete: Yup.object().required("Auto Complete is required"),
+            radio: Yup.string().required("Please select radio button"),
             editor: Yup.string().required("Please enter some content in the editor"),
             textarea: Yup.string().required("Please enter some content in the text area"),
             fileupload: Yup.string().required("Please upload a file"),
@@ -295,6 +301,11 @@ const FormComponents: React.FC = () => {
         { label: 'Australia', value: 'AU' },
     ];
 
+    const radioOptions = [
+        { label: 'Yes', value: 'Yes', Checked: true },
+        { label: 'No', value: 'No', Checked: false }
+    ]
+
     const otherFormElements = (
         <div className="login-form">
             <form onSubmit={otherFormik.handleSubmit} className="grid">
@@ -303,7 +314,7 @@ const FormComponents: React.FC = () => {
                         label="Auto Complete"
                         suggestions={suggestions}
                         value={otherFormik.values.autoComplete}
-                        onSelect={(e) => {debugger; otherFormik.setFieldValue('autoComplete', e.value)}}
+                        onSelect={(e) => otherFormik.setFieldValue('autoComplete', e.value)}
                         onBlur={() => otherFormik.setFieldTouched('autoComplete', true)}
                         field="label"
                         invalid={otherFormik.touched.autoComplete && !!otherFormik.errors.autoComplete}
@@ -312,13 +323,24 @@ const FormComponents: React.FC = () => {
                         minLength={1}
                     />
                 </div>
+                <div className="col-4 my-auto">
+                    <FNRadioField
+                        options={radioOptions}
+                        className=""
+                        name="radio"
+                        initialValue={'Yes'}
+                        value={otherFormik.values.radio}
+                        onChange={otherFormik.handleChange}
+                        onBlur={otherFormik.handleBlur}
+                    />
+                </div>
                 <div className="col-12">
                     <FNTextEditor
                         name="editor"
                         id="text-editor-com"
                         label="Text Editor"
                         value={otherFormik.values.editor}
-                        onTextChange={(e) => {debugger; otherFormik.setFieldValue('editor', e.htmlValue)}}
+                        onTextChange={(e) => otherFormik.setFieldValue('editor', e.htmlValue)}
                         onBlur={() => otherFormik.setFieldTouched('editor', true)}
                         helpText={otherFormik.touched.editor ? otherFormik.errors.editor : ''}
                     />
