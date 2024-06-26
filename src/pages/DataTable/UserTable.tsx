@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { AppDispatch, RootState } from "../../store/store";
 import { useTranslation } from "react-i18next";
 import ApiService from "../../services/ApiServices";
 import FNDataTable, {
@@ -13,14 +9,11 @@ import { Button } from "primereact/button";
 import FNDialog from "../../components/Panel/FNDialog/FNDialog";
 import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
-import FNButton from "../../components/Form/FNButton/FNButton";
-import FNInputSwitch from "../../components/Form/FNInputSwitch/FNInputSwitch";
-
-
+ 
 const UserTable: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   useTranslation();
-
+ 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -49,10 +42,10 @@ const UserTable: React.FC = () => {
     rows: 5,
     sortable: true,
   };
-
+ 
   // show and hide dialog component
   const [visible, setVisible] = useState(false);
-
+ 
   return (
     <div>
       {/* dialog component content */}
@@ -85,7 +78,7 @@ const UserTable: React.FC = () => {
         />
       </div>
       {/* dialog component content end */}
-
+ 
       <FNCard title="User Table">
         <FNDataTable {...dataTableProps} />
       </FNCard>
