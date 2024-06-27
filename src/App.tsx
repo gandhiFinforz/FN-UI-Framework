@@ -41,6 +41,7 @@ import Layout from "./pages/Layout/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserTable from "./pages/DataTable/UserTable";
+import { filteredRouteData } from "./services/MenuJSON";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -65,28 +66,19 @@ const App: React.FC = () => {
           <Routes>
             {/* Routes that should include the header and footer */}
             <Route element={<Layout />}>
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute
-                    component={Dashboard}
-                    title="Dashboard"
-                    breadcrumb={[{ label: "Dashboard", url: "/dashboard" }]}
-                    access={["admin"]}
-                  />
-                }
-              />
-              <Route
-                path="/data/table"
-                element={
-                  <ProtectedRoute
-                    component={UserTable}
-                    title="User List"
-                    breadcrumb={[{ label: "Dashboard", url: "/dashboard" }]}
-                    access={["admisn"]}
-                  />
-                }
-              />
+              {filteredRouteData.map((m) => {
+                return <Route
+                  path={m.url}
+                  element={
+                    <ProtectedRoute
+                      component={m.component ? m.component : ErrorPage}
+                      title={m.label}
+                      breadcrumb={m.breadcrumb}
+                      access={m.access}
+                    />
+                  }
+                />
+              })}
             </Route>
             <Route path="/" element={<Login />} />
 
