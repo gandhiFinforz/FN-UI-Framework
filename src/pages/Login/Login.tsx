@@ -1,16 +1,17 @@
 // src/components/Login.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FNButton from "../../components/Form/FNButton/FNButton";
-import FNInput from "../../components/Form/FNInput/FNInput";
-import FNCheckbox from "../../components/Form/FNCheckbox/FNCheckbox";
+import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
+import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
+import FNCheckbox from "../../components/UIComponents/Form/FNCheckbox/FNCheckbox";
 import { loginUser } from "../../store/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Card } from "primereact/card";
 import { t } from "i18next";
 import logo from "../../assets/img/logo.png";
+import { useNavigate } from "react-router-dom";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -19,8 +20,9 @@ interface LoginFormValues {
 
 const Login: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.auth.user);
   const { loading, error } = useSelector((state: RootState) => state.auth);
-
+  const navigate = useNavigate();
   const formik = useFormik<LoginFormValues>({
     initialValues: {
       username: "",
@@ -32,8 +34,15 @@ const Login: React.FC = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
-      dispatch(loginUser(values));
+      dispatch(loginUser(values)).then((e) => {
+        console.log(e);
+        user && navigate("/dashboard");
+      });
     },
+  });
+
+  useEffect(() => {
+    user && navigate("/dashboard");
   });
 
   return (
@@ -44,7 +53,10 @@ const Login: React.FC = () => {
           "linear-gradient(to top, var(--primary-600) 0%, #fff 100%)",
       }}
     >
-      <Card title={<img src={logo} className="w-6 text-center" />} className="p-fluid md:col-3">
+      <Card
+        title={<img src={logo} className="w-6 text-center" />}
+        className="p-fluid md:col-3"
+      >
         <div className="login-form">
           <form onSubmit={formik.handleSubmit}>
             <FNInput

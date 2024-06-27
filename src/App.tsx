@@ -6,15 +6,6 @@ import "@ionic/react/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
 import "@ionic/react/css/structure.css";
-import "@ionic/react/css/typography.css";
-
-/* Optional CSS utils that can be commented out */
-import "@ionic/react/css/padding.css";
-import "@ionic/react/css/float-elements.css";
-import "@ionic/react/css/text-alignment.css";
-import "@ionic/react/css/text-transformation.css";
-import "@ionic/react/css/flex-utils.css";
-import "@ionic/react/css/display.css";
 
 /**
  * Ionic Dark Mode
@@ -44,11 +35,12 @@ import { AppDispatch, RootState } from "./store/store";
 import { checkAuth } from "./store/authSlice";
 import "./App.css";
 import FNThemeSidebar from "./components/ThemeSideBar/FNThemeSideBar";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Layout from "./pages/Layout/Layout";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import UserTable from "./pages/DataTable/UserTable";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -69,13 +61,38 @@ const App: React.FC = () => {
       <FNThemeSidebar />
       <I18nextProvider i18n={i18n}></I18nextProvider>
       <IonApp className="m-0 justify-content-start">
-        <BrowserRouter>
-          <Switch>
-            {user && <Layout />}
-            <Route exact path="/" component={Login} />          
-            <Route component={ErrorPage} />
-          </Switch>
-        </BrowserRouter>
+        <Router>
+          <Routes>
+            {/* Routes that should include the header and footer */}
+            <Route element={<Layout />}>
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute
+                    component={Dashboard}
+                    title="Dashboard"
+                    breadcrumb={[{ label: "Dashboard", url: "/dashboard" }]}
+                    access={["admin"]}
+                  />
+                }
+              />
+              <Route
+                path="/data/table"
+                element={
+                  <ProtectedRoute
+                    component={UserTable}
+                    title="User List"
+                    breadcrumb={[{ label: "Dashboard", url: "/dashboard" }]}
+                    access={["admisn"]}
+                  />
+                }
+              />
+            </Route>
+            <Route path="/" element={<Login />} />
+
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </Router>
       </IonApp>
     </Suspense>
   );

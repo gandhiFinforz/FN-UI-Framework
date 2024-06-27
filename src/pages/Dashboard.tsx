@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import ApiServices from "../services/ApiServices";
 import FNDataTable, {
   FNDataTableProps,
-} from "../components/Data/FNDataTable/FNDataTable";
+} from "../components/UIComponents/Data/FNDataTable/FNDataTable";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();

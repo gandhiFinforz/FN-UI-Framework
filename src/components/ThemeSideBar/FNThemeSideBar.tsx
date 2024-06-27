@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
-import FNButton from "../Form/FNButton/FNButton";
+import FNButton from "../UIComponents/Form/FNButton/FNButton";
+import { Divider } from "primereact/divider";
 
 // Define theme imports grouped by color scheme
 const themeImports = {
@@ -86,11 +87,11 @@ const FNThemeSidebar: React.FC = () => {
     selectedColorScheme : string
   ) => {
     return (
-      <div className="flex flex-wrap row-gap-3">
+      <div className="flex flex-wrap gap-3">
         {Object.keys(themeImport).map((theme) => (
           <div
             key={theme}
-            className="w-3 cursor-pointer"
+            className="cursor-pointer"
             onClick={() => onThemeChange(theme, selectedColorScheme)}
           >
             <span
@@ -114,19 +115,23 @@ const FNThemeSidebar: React.FC = () => {
       ></FNButton>
       <Sidebar
         position="right"
+        className="w-2"
         visible={visible}
         onHide={() => setVisible(false)}
       >
-        <h3>Select a Theme</h3>
+        <h3 className="text-xl">Select a Theme</h3>
+
         <div>
-          <h6>Light Theme</h6>
-          {renderThemeOptions(themeImports.light, 'light')}
-          <h6 className="mt-4">Dim Theme</h6>
-          {renderThemeOptions(themeImports.dim, 'dim')}
-          <h6 className="mt-4">Dark Theme</h6>
-          {renderThemeOptions(themeImports.dark, 'dark')}
+          <h6 className="text-sm">Light Theme</h6>
+
+          {renderThemeOptions(themeImports.light, "light")}
+          <Divider />
+          <h6 className="mt-4 text-sm">Dim Theme</h6>
+          {renderThemeOptions(themeImports.dim, "dim")}
+          <Divider />
+          <h6 className="mt-4 text-sm">Dark Theme</h6>
+          {renderThemeOptions(themeImports.dark, "dark")}
         </div>
-       
       </Sidebar>
     </div>
   );

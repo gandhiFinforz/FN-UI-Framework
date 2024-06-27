@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import ApiService from "../../services/ApiServices";
 import FNDataTable, {
   FNDataTableProps,
-} from "../../components/Data/FNDataTable/FNDataTable";
-import FNCard from "../../components/Panel/FNCard/FNCard";
+} from "../../components/UIComponents/Data/FNDataTable/FNDataTable";
+import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import { Button } from "primereact/button";
-import FNDialog from "../../components/Panel/FNDialog/FNDialog";
+import FNDialog from "../../components/UIComponents/Panel/FNDialog/FNDialog";
 import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 
