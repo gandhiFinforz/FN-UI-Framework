@@ -41,6 +41,8 @@ const UserTable: React.FC = () => {
     emptyMessage: "general.noRecordFound", // Example translation key for empty message
     rows: 5,
     sortable: true,
+    globalFilterFields: ["id", "name", "phonenumber", "createdAt"],
+    filter: true,
   };
 
   // show and hide dialog component
