@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
-import FNButton from "../Form/FNButton/FNButton";
+import FNButton from "../UIComponents/Form/FNButton/FNButton";
 import { Divider } from "primereact/divider";
 
 // Define theme imports grouped by color scheme

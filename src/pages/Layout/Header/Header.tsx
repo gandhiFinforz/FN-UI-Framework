@@ -10,7 +10,7 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import Notification from "./Notification/Notification";
 import logo from "../../../assets/img/logo.png";
 import smlogo from "../../../assets/img/sm-logo.png";
-import FNInput from "../../../components/Form/FNInput/FNInput";
+import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
 interface HeaderProps {
   sidebarVisible: boolean;
   setSidebarVisible: any;
