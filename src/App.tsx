@@ -40,6 +40,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
+import ToastService from "./services/Toaster/ToasterService";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -85,6 +86,8 @@ const App: React.FC = () => {
           </Routes>
         </Router>
       </IonApp>
+     
+      <ToastService />
     </Suspense>
   );
 };

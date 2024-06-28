@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,9 +7,11 @@ import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
 import FNCard from "../../../components/UIComponents/Panel/FNCard/FNCard";
 import FNDate from "../../../components/UIComponents/Form/FNDate/FNDate";
+import { addToast } from "../../../store/toastSlice";
 
 const SignupForm: React.FC = () => {
   const { loading, error } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
 
   interface SignupFormValues {
     firstName: string,
@@ -42,6 +44,7 @@ const SignupForm: React.FC = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
+      dispatch(addToast({ id: new Date().getTime(), message: 'User Created Successfully !', severity: 'success' }));
       console.log("############  Signup Form Values ->", values);
     },
   });

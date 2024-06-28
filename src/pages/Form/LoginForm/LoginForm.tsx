@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,9 +8,11 @@ import FNCheckbox from "../../../components/UIComponents/Form/FNCheckbox/FNCheck
 import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
 import FNOtpInput from "../../../components/UIComponents/Form/FNOtpInput/FNOtpInput";
 import FNCard from "../../../components/UIComponents/Panel/FNCard/FNCard";
+import { addToast } from "../../../store/toastSlice";
 
 const LoginForm: React.FC = () => {
     const { loading, error } = useSelector((state: RootState) => state.auth);
+    const dispatch = useDispatch();
 
     interface LoginFormValues {
         loginId: string;
@@ -33,6 +35,7 @@ const LoginForm: React.FC = () => {
             rememberMe: Yup.boolean(),
         }),
         onSubmit: (values) => {
+            dispatch(addToast({ id: new Date().getTime(), message: 'User Login Successful !', severity: 'success' }));
             console.log("############  Login Form Values ->", values);
         },
     });

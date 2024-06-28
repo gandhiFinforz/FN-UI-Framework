@@ -143,5 +143,4 @@ function filterRouteData(menu: Menu[], accessRole: string) {
 const userRole = "admin"; // localStorage.getItem('userRole') || "";
 export const filteredMenu = filterMenuByAccess(menuJson, userRole);
 export const filteredRouteData = filterRouteData(menuJson, userRole);
-debugger
 export default menuJson;

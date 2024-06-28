@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -9,9 +9,11 @@ import FNFileUpload from "../../../components/UIComponents/Form/FNFileUpload/FNF
 import FNRadioField from "../../../components/UIComponents/Form/FNRadio/FNRadio";
 import FNTextArea from "../../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import FNTextEditor from "../../../components/UIComponents/Form/FNTextEditor/FNTextEditor";
+import { addToast } from "../../../store/toastSlice";
 
 const OtherForm: React.FC = () => {
     const { loading, error } = useSelector((state: RootState) => state.auth);
+    const dispatch = useDispatch();
 
     interface OtherFormValues {
         autoComplete: any;
@@ -37,6 +39,7 @@ const OtherForm: React.FC = () => {
             fileupload: Yup.string().required("Please upload a file"),
         }),
         onSubmit: (values) => {
+            dispatch(addToast({ id: new Date().getTime(), message: 'Submit Submitted Successfully !', severity: 'success' }));
             console.log("############  Other Form Values ->", values);
         },
     });
