@@ -54,7 +54,7 @@ const Login: React.FC = () => {
       }}
     >
       <Card
-        title={<img src={logo} className="w-6 text-center" />}
+        title={<img alt="logo" src={logo} className="w-6 text-center" />}
         className="p-fluid md:col-3"
       >
         <div className="login-form">
