@@ -4,11 +4,12 @@ import { BreadCrumb } from "primereact/breadcrumb";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
+import { Breadcrumb } from "../../services/MenuJSON";
 
 interface ProtectedRouteProps {
   component: ComponentType<any>;
   title?: string; // Optional title prop
-  breadcrumb?: { label: string; url: string }[]; // Optional breadcrumb prop
+  breadcrumb?: Breadcrumb[]; // Optional breadcrumb prop
   access: string[];
 }
 
@@ -56,8 +57,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
       {title && (
         <div className="font-bold text-lg text-primary-600 mb-2">{title}</div>
       )}
-
-      <Suspense
+      
+        <Suspense
         fallback={
           <div className="flex w-screen h-screen">{t("general.loading")}</div>
         }
