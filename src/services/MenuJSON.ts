@@ -68,7 +68,7 @@ const menuJson: Menu[] = [
         label: "Components",
         icon: "pi pi-microchip",
         url: "/form/components",
-        access: ["user"],
+        access: ["admin"],
         component: FormComponents,
         breadcrumb: [
           { label: "Form", url: "/form" },
@@ -140,8 +140,8 @@ function filterRouteData(menu: Menu[], accessRole: string) {
 }
 
 // Example usage
-const userRole = localStorage.getItem('userRole') || "";
+const userRole = "admin"; // localStorage.getItem('userRole') || "";
 export const filteredMenu = filterMenuByAccess(menuJson, userRole);
 export const filteredRouteData = filterRouteData(menuJson, userRole);
-
+debugger
 export default menuJson;
