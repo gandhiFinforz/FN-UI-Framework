@@ -1,13 +1,15 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import store from "../store/store"; // Import the Redux store to access the auth state
+import { addToast } from "../store/toastSlice"; // Import the action to add a toast notification
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 class ApiService {
   private axiosInstance: AxiosInstance;
+
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: import.meta.env.VITE_API_BASE_URL, // Your API base URL
+      baseURL: BASE_URL, // Your API base URL
       headers: {
         "Content-Type": "application/json",
       },
@@ -29,37 +31,89 @@ class ApiService {
         return Promise.reject(error);
       }
     );
+
+    // Add a response interceptor to handle errors globally
+    this.axiosInstance.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response) {
+          // Server responded with a status other than 2xx
+          const message = error.response.data?.message || 'An error occurred';
+          store.dispatch(
+            addToast({ id: new Date().getTime(), message, severity: 'error' })
+          );
+        } else if (error.request) {
+          // Request was made but no response received
+          store.dispatch(
+            addToast({ id: new Date().getTime(), message: 'No response from server', severity: 'error' })
+          );
+        } else {
+          // Something happened while setting up the request
+          store.dispatch(
+            addToast({ id: new Date().getTime(), message: 'Error setting up request', severity: 'error' })
+          );
+        }
+
+        return Promise.reject(error);
+      }
+    );
   }
 
   // Generic GET method
-  get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.get<T>(BASE_URL+url, config);
+  async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    try {
+      return await this.axiosInstance.get<T>(url, config);
+    } catch (error) {
+      this.handleApiError(error);
+      throw error;
+    }
   }
 
   // Generic POST method
-  post<T>(
-    url: string,
-    data: any,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.post<T>(BASE_URL+url, data, config);
+  async post<T>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    try {
+      return await this.axiosInstance.post<T>(url, data, config);
+    } catch (error) {
+      this.handleApiError(error);
+      throw error;
+    }
   }
 
   // Generic PUT method
-  put<T>(
-    url: string,
-    data: any,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.put<T>(BASE_URL+url, data, config);
+  async put<T>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    try {
+      return await this.axiosInstance.put<T>(url, data, config);
+    } catch (error) {
+      this.handleApiError(error);
+      throw error;
+    }
   }
 
   // Generic DELETE method
-  delete<T>(
-    url: string,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.delete<T>(BASE_URL+url, config);
+  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    try {
+      return await this.axiosInstance.delete<T>(url, config);
+    } catch (error) {
+      this.handleApiError(error);
+      throw error;
+    }
+  }
+
+  private handleApiError(error: any): void {
+    if (error.response) {
+      const message = error.response.data?.message || 'An error occurred';
+      store.dispatch(
+        addToast({ id: new Date().getTime(), message, severity: 'error' })
+      );
+    } else if (error.request) {
+      store.dispatch(
+        addToast({ id: new Date().getTime(), message: 'No response from server', severity: 'error' })
+      );
+    } else {
+      store.dispatch(
+        addToast({ id: new Date().getTime(), message: 'Error setting up request', severity: 'error' })
+      );
+    }
   }
 }
 
