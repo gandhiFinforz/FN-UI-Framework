@@ -16,6 +16,8 @@ interface LoginFormValues {
   username: string;
   password: string;
   rememberMe: boolean;
+  grant_type: string;
+  client_id: string;
 }
 
 const Login: React.FC = () => {
@@ -27,6 +29,8 @@ const Login: React.FC = () => {
     initialValues: {
       username: "",
       password: "",
+      grant_type: "password",
+      client_id: "my-super-client",
       rememberMe: false,
     },
     validationSchema: Yup.object({

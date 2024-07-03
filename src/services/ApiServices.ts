@@ -17,7 +17,7 @@ class ApiService {
     this.axiosInstance.interceptors.request.use(
       (config) => {
         const state = store.getState();
-        const token = state.auth?.user?.idToken?.jwtToken;
+        const token = state.auth?.user?.access_token;
         
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
