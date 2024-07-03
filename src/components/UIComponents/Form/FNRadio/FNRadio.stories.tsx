@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Formik, Field } from 'formik';
 import { useField } from 'formik';
-import FNRadioField, { RadioFieldProps } from '../FNRadio/FNRadio'; // Adjust the import path accordingly
+import FNRadioField, { RadioFieldProps } from './FNRadio'; // Adjust the import path accordingly
 
 export default {
   title: 'Components/Form/RadioField',

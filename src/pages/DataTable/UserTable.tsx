@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import ApiService from "../../services/ApiServices";
 import FNDataTable, {
   FNDataTableProps,
-} from "../../components/Data/FNDataTable/FNDataTable";
-import FNCard from "../../components/Panel/FNCard/FNCard";
+} from "../../components/UIComponents/Data/FNDataTable/FNDataTable";
+import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import { Button } from "primereact/button";
-import FNDialog from "../../components/Panel/FNDialog/FNDialog";
+import FNDialog from "../../components/UIComponents/Panel/FNDialog/FNDialog";
 import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
  
@@ -41,6 +41,8 @@ const UserTable: React.FC = () => {
     emptyMessage: "general.noRecordFound", // Example translation key for empty message
     rows: 5,
     sortable: true,
+    globalFilterFields: ["id", "name", "phonenumber", "createdAt"],
+    filter: true,
   };
  
   // show and hide dialog component

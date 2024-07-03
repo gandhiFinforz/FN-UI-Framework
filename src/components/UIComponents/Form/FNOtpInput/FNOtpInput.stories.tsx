@@ -62,8 +62,7 @@ const Template: StoryFn<FNOtpInputProps> = (args) => <FNOtpInput {...args} />;
 export const WithLabel = Template.bind({});
 WithLabel.args = {
   label: "Enter OTP",
-  length: 6,
-  helpText: "Please enter the OTP sent to your mobile number",
+  length: 6
 };
 
 export const Disabled = Template.bind({});

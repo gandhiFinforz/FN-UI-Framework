@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 import notfound from "../../assets/img/error-page.png";
-import FNButton from "../../components/Form/FNButton/FNButton";
+import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
 const ErrorPage: React.FC = () => {
   useEffect(() => {
     console.log("Invalid route accessed");
