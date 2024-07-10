@@ -50,25 +50,24 @@ const VerifyOTP: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="image-container">
+    <div className="flex flex-column h-screen bg-white">
+      <div className="flex justify-content-center align-items-center">
         <img
           src="src/assets/img/verify-otp.jpg"
           alt="Verify"
-          className="verify-otp-image"
+          className="max-w-full object-cover md:h-auto"
         />
       </div>
 
-      <div className="form-container">
-        <div className="notify">
+      <div className="flex flex-column p-3 pt-0 md:p-5 mt-0 md:mt-6 flex-1">
+        <div className="text-center text-lg	 p-p-4 mb-3" style={{ color: "#000" }}>
           We have sent a verification code to
-          <div className="user-number">+{phone}</div>
+          <div className="user-number mt-1 font-semibold">+{phone}</div>
         </div>
         <FNOtpInput
           name="otp"
           value=""
-          label="MFA"
-          style={{ height: "3rem", width: "3rem" }}
+          label="MFA" style={{gap: "0.6rem"}}
         />
 
         <FNButton
@@ -79,21 +78,21 @@ const VerifyOTP: React.FC = () => {
           loading={loading}
         />
 
-        <div className="flex resend-back-content">
+        <div className="flex-initial flex align-items-center justify-content-between mt-4" style={{ color: "#000" }}>
           <div>
-            <span onClick={handleGoBack} className="back-button">
-              <i className="pi pi-arrow-left"></i>
+            <span onClick={handleGoBack} className="back-button font-medium">
+              <i className="pi pi-arrow-left pr-1"></i>
               Back
             </span>
           </div>
           <div className="resend-otp">
             <div>
               {isResendDisabled ? (
-                <span className="resend-text">
+                <span className="opacity-50" >
                   Resend OTP in {resendTimer}s
                 </span>
               ) : (
-                <span onClick={handleResendOTP} className="resend-button">
+                <span onClick={handleResendOTP} className="font-semibold" style={{ color: "#01499d" }}>
                   Resend OTP
                 </span>
               )}

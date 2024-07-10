@@ -41,7 +41,7 @@ import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
-import PropertyLogin from "./pages/OwnerLogin/Login";
+import OwnerLogin from "./pages/OwnerLogin/Login";
 import VerifyOTP from "./pages/OwnerLogin/VerifyOTP";
 
 setupIonicReact();
@@ -86,7 +86,7 @@ const App: React.FC = () => {
             </Route>
             <Route path="/" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
-            <Route path="/owner-login" element={<PropertyLogin />} />
+            <Route path="/owner-login" element={<OwnerLogin />} />
             <Route path="/verify-otp" element={<VerifyOTP />} />
           </Routes>
         </Router>
