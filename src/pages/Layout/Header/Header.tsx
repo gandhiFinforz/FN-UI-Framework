@@ -15,7 +15,10 @@ interface HeaderProps {
   sidebarVisible: boolean;
   setSidebarVisible: any;
 }
-export const Header: React.FC<HeaderProps> = ({sidebarVisible, setSidebarVisible}) => {
+export const Header: React.FC<HeaderProps> = ({
+  sidebarVisible,
+  setSidebarVisible,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
@@ -34,13 +37,11 @@ export const Header: React.FC<HeaderProps> = ({sidebarVisible, setSidebarVisible
     if (event && event.item.label === "Logout") {
       logoutUser();
     }
-  };  
+  };
 
   const userDetails = [
     {
-      label: user?.idToken?.payload?.email
-        ? user?.idToken?.payload?.email
-        : "Guest",
+      label: user?.scope ? user?.scope : "Guest",
       items: [
         {
           label: t("loginPage.changepassword"),

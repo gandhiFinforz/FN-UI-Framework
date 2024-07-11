@@ -30,9 +30,8 @@ const UserTable: React.FC = () => {
   // Define columns dynamically based on your API response
   const dynamicColumns = [
     { field: "id", header: "ID" },
-    { field: "name", header: "Name" },
-    { field: "phonenumber", header: "Phone Number" },
-    { field: "createdAt", header: "Created At" },
+    { field: "firstName", header: "Name" },
+    { field: "email", header: "Email" }
   ];
 
   const dataTableProps: FNDataTableProps = {

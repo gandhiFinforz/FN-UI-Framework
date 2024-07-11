@@ -16,6 +16,8 @@ interface LoginFormValues {
   username: string;
   password: string;
   rememberMe: boolean;
+  grant_type: string;
+  client_id: string;
 }
 
 const Login: React.FC = () => {
@@ -27,6 +29,8 @@ const Login: React.FC = () => {
     initialValues: {
       username: "",
       password: "",
+      grant_type: "password",
+      client_id: "my-super-client",
       rememberMe: false,
     },
     validationSchema: Yup.object({
@@ -54,7 +58,7 @@ const Login: React.FC = () => {
       }}
     >
       <Card
-        title={<img src={logo} className="w-6 text-center" />}
+        title={<img alt="logo" src={logo} className="w-6 text-center" />}
         className="p-fluid md:col-3"
       >
         <div className="login-form">

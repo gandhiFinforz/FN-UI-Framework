@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import AuthService from "../services/AuthService";
+import { urlConfig } from "../services/Utils/ApiUrlConfig";
+import ApiServices from "../services/ApiServices";
 
+const LOGIN_URL = import.meta.env.VITE_API_LOGIN_URL;
 interface AuthState {
   user: any | null;
   loading: boolean;
@@ -14,13 +17,41 @@ const initialState: AuthState = {
 };
 
 export const loginUser = createAsyncThunk(
-  "auth/loginUser",
+  urlConfig.login,
   async (
-    { username, password }: { username: string; password: string },
+    {
+      username,
+      password,
+      grant_type = "password",
+      client_id = "my-super-client",
+    }: {
+      username: string;
+      password: string;
+      grant_type: string;
+      client_id: string;
+    },
     thunkAPI
   ) => {
     try {
-      const session = await AuthService.authenticate(username, password);
+      const params = new URLSearchParams();
+      params.append("username", username);
+      params.append("password", password);
+      params.append("grant_type", grant_type);
+      params.append("client_id", client_id);
+
+      const response = await fetch(LOGIN_URL+urlConfig.login, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+
+      const session = await response.json();
       return session;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
@@ -69,6 +100,9 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
+        console.log(state, action , ">>>");
+        console.log(">>>>>>> ", action.payload);
+        
         state.user = action.payload;
         state.loading = false;
       })
