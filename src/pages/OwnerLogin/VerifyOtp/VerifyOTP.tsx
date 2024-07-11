@@ -57,7 +57,7 @@ const VerifyOTP: React.FC = () => {
         <img
           src="src/assets/img/verify-otp.jpg"
           alt="Verify"
-          className="max-w-full object-cover  h-full" 
+          className="max-w-full object-cover  h-full"
         />
       </div>
 
@@ -74,49 +74,47 @@ const VerifyOTP: React.FC = () => {
           <FNOtpInput name="otp" value="" style={{ gap: "0.6rem" }} />
 
           <div className="xl:mt-8 lg:mt-8 md:mt-8">
-          <FNButton
-            onClick={handleContinue}
-            label={t("ownerLoginPage.verifyButtonLabel")}
-            type="submit"
-            className="w-full mt-3 p-3"
-            loading={loading}
-          />
+            <FNButton
+              onClick={handleContinue}
+              label={t("ownerLoginPage.verifyButtonLabel")}
+              type="submit"
+              className="w-full mt-3 p-3"
+              loading={loading}
+            />
 
-          <div
-            className="flex-initial flex align-items-center justify-content-between mt-4"
-            style={{ color: "#000" }}
-          >
-            <div>
-              <span
-                onClick={handleGoBack}
-                className="back-button font-medium cursor-pointer"
-              >
-                <i className="pi pi-arrow-left pr-1"></i>
-                {t("ownerLoginPage.backButton")}
-              </span>
-            </div>
-            <div className="resend-otp">
+            <div
+              className="flex-initial flex align-items-center justify-content-between mt-4"
+              style={{ color: "#000" }}
+            >
               <div>
-                {isResendDisabled ? (
-                  <span className="opacity-50">
-                    {t("ownerLoginPage.resendOTPLabel")} in {resendTimer}s
-                  </span>
-                ) : (
-                  <span
-                    onClick={handleResendOTP}
-                    className="font-semibold resend-btn cursor-pointer	"
-                    style={{ color: "#01499d" }}
-                  >
-                    {t("ownerLoginPage.resendOTPLabel")}
-                  </span>
-                )}
+                <span
+                  onClick={handleGoBack}
+                  className="back-button font-medium cursor-pointer"
+                >
+                  <i className="pi pi-arrow-left pr-1"></i>
+                  {t("ownerLoginPage.backButton")}
+                </span>
+              </div>
+              <div className="resend-otp">
+                <div>
+                  {isResendDisabled ? (
+                    <span className="opacity-50">
+                      {t("ownerLoginPage.resendOTPLabel")} in {resendTimer}s
+                    </span>
+                  ) : (
+                    <span
+                      onClick={handleResendOTP}
+                      className="font-semibold resend-btn cursor-pointer	"
+                      style={{ color: "#01499d" }}
+                    >
+                      {t("ownerLoginPage.resendOTPLabel")}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-
-       
       </div>
     </div>
   );
