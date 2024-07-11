@@ -22,17 +22,21 @@ const Registration: React.FC = () => {
     console.log("stepIndex", event.index);
     setCurrentStep(event.index);
   };
+  const handleNext = () => {
+    setCurrentStep(currentStep + 1);
+  };
 
   return (
     <div className="p-3">
       <FNSteps
         model={mockStepsModel}
-        initialIndex={0}
+        initialIndex={currentStep}
+        activeIndex={currentStep}
         onSelect={handleStepChange}
       />
-      {currentStep === 0 && <PersonalInformation />}
-      {currentStep === 1 && <BankInformation />}
-      {currentStep === 2 && <DocumentUpload />}
+      {currentStep === 0 && <PersonalInformation onNext={handleNext} />}
+      {currentStep === 1 && <BankInformation onNext={handleNext}/>}
+      {currentStep === 2 && <DocumentUpload onNext={handleNext}/>}
       {currentStep === 3 && <SuccessMessage />}
     </div>
   );

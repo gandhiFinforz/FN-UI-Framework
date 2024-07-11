@@ -5,7 +5,22 @@ import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
 import FNTextArea from "../../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import "primeflex/primeflex.css";
 import "./personalInformation.css";
-
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store/store";
+import { addToast } from "../../../store/toastSlice";
+import { useFormik } from "formik";
+interface PersonalInfoFormValues {
+  name: string;
+  email: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+}
+interface PersonalInformationProps {
+  onNext: () => void; // Callback function to handle next step
+}
 const countryOptions = [
   { label: "India", value: "India" },
   { label: "USA", value: "USA" },
@@ -27,9 +42,38 @@ const cityOptions = [
   { label: "Coimbatore", value: "Coimbatore" },
 ];
 
-const PersonalInformation: React.FC = () => {
+const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
+  const dispatch: AppDispatch = useDispatch();
+  const personalInfoFormik = useFormik<PersonalInfoFormValues>({
+    initialValues: {
+      name: "",
+      email: "",
+      city: "",
+      state: "",
+      country: "",
+      address: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Name is required"),
+      email: Yup.string().required("Email is required"),
+      city: Yup.string().required("City is required"),
+      state: Yup.string().required("State is required"),
+      country: Yup.string().required("Country is required"),
+      address: Yup.string().required("Address is required"),
+    }),
+    onSubmit: (values) => {
+      dispatch(
+        addToast({
+          id: new Date().getTime(),
+          message: "Bank Details Added Successfully!",
+          severity: "success",
+        })
+      );
+      onNext();
+    },
+  });
   const handleCountrySelect = (e: any) => {
-    console.log("Selected Country:", e.value);
+    console.log("Selected Country:", e.value.label);
     // Handle country selection logic here
   };
 
@@ -37,12 +81,23 @@ const PersonalInformation: React.FC = () => {
     <div className="grid justify-content-center h-90vh mt-2">
       <div className="col-12 sm:col-8 md:col-5 flex flex-column">
         <h3 className="text-center">Personal Information</h3>
-
+<form onSubmit={personalInfoFormik.handleSubmit} className="flex flex-column flex-grow-1">
         <div className="mb-2">
           <FNInput
             type="text"
             name="name"
             label="Name"
+            value={personalInfoFormik.values.name}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.name &&
+                !!personalInfoFormik.errors.name
+              }
+              helpText={
+                personalInfoFormik.touched.name &&
+                personalInfoFormik.errors.name
+              }
             placeholder="Enter Your Name"
           />
         </div>
@@ -51,6 +106,17 @@ const PersonalInformation: React.FC = () => {
             type="text"
             name="email"
             label="Email"
+            value={personalInfoFormik.values.email}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.email &&
+                !!personalInfoFormik.errors.email
+              }
+              helpText={
+                personalInfoFormik.touched.email &&
+                personalInfoFormik.errors.email
+              }
             placeholder="Enter Your Email"
           />
         </div>
@@ -58,7 +124,22 @@ const PersonalInformation: React.FC = () => {
           <FNAutoComplete
             label="Country"
             suggestions={countryOptions}
-            onSelect={handleCountrySelect}
+      value={personalInfoFormik.values.country}
+            onSelect={(e) =>
+              personalInfoFormik.setFieldValue("country", e.value.label)
+            }
+            onBlur={() =>
+              personalInfoFormik.setFieldTouched("country", true)
+            }
+            field="label"
+            invalid={
+              personalInfoFormik.touched.country &&
+              !!personalInfoFormik.errors.country
+            }
+            helpText={
+              personalInfoFormik.touched.country &&
+              personalInfoFormik.errors.country
+            }
             placeholder="Select Country"
           />
         </div>
@@ -67,6 +148,22 @@ const PersonalInformation: React.FC = () => {
             suggestions={stateOptions}
             name="state"
             label="State"
+            value={personalInfoFormik.values.country}
+            onSelect={(e) =>
+              personalInfoFormik.setFieldValue("state", e.value.label)
+            }
+            onBlur={() =>
+              personalInfoFormik.setFieldTouched("state", true)
+            }
+            field="label"
+            invalid={
+              personalInfoFormik.touched.state &&
+              !!personalInfoFormik.errors.state
+            }
+            helpText={
+              personalInfoFormik.touched.state &&
+              personalInfoFormik.errors.state
+            }
             placeholder="Select State"
           />
         </div>
@@ -75,6 +172,22 @@ const PersonalInformation: React.FC = () => {
             suggestions={cityOptions}
             name="city"
             label="City"
+            value={personalInfoFormik.values.city}
+            onSelect={(e) =>
+              personalInfoFormik.setFieldValue("city", e.value.label)
+            }
+            onBlur={() =>
+              personalInfoFormik.setFieldTouched("city", true)
+            }
+            field="label"
+            invalid={
+              personalInfoFormik.touched.city &&
+              !!personalInfoFormik.errors.city
+            }
+            helpText={
+              personalInfoFormik.touched.city &&
+              personalInfoFormik.errors.city
+            }
             placeholder="Select City"
           />
         </div>
@@ -82,6 +195,17 @@ const PersonalInformation: React.FC = () => {
           <FNTextArea
             name="address"
             label="Address"
+            value={personalInfoFormik.values.address}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.address &&
+                !!personalInfoFormik.errors.address
+              }
+              helpText={
+                personalInfoFormik.touched.address &&
+                personalInfoFormik.errors.address
+              }
             placeholder="Enter Your Address"
           />
         </div>
@@ -89,6 +213,7 @@ const PersonalInformation: React.FC = () => {
         <div className="mt-auto">
           <FNButton label="Next" type="submit" className="w-full" />
         </div>
+        </form>
       </div>
     </div>
   );
