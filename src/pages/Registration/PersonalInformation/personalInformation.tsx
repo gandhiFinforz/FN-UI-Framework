@@ -55,7 +55,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
-      email: Yup.string().required("Email is required"),
+      email: Yup.string().required("Email is required").email("Invalid email address"),
       city: Yup.string().required("City is required"),
       state: Yup.string().required("State is required"),
       country: Yup.string().required("Country is required"),
@@ -211,7 +211,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
         </div>
 
         <div className="mt-auto">
-          <FNButton label="Next" type="submit" className="w-full" />
+          <FNButton label="Next" type="submit" className="w-full" disabled={!personalInfoFormik.isValid} />
         </div>
         </form>
       </div>

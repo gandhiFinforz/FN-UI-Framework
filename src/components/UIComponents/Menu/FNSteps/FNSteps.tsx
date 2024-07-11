@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   Steps as PrimeSteps,
   StepsProps as PrimeStepsProps,
@@ -41,7 +41,9 @@ const FNSteps: FC<StepsProps> = ({
 }) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(initialIndex);
-
+  useEffect(() => {
+    setActiveIndex(initialIndex);
+  }, [initialIndex]);
   const itemRenderer = (item: FNOptionStepsProps, itemIndex: number) => {
     const isActiveItem = activeIndex === itemIndex;
     const backgroundColor = isActiveItem

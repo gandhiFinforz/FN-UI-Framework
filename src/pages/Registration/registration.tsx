@@ -18,12 +18,14 @@ const mockStepsModel: FNOptionStepsProps[] = [
 const Registration: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
-  const handleStepChange = (event: StepsSelectEvent) => {
-    console.log("stepIndex", event.index);
-    setCurrentStep(event.index);
+  const handleStepChange = (event: StepsSelectEvent | { index: number }) => {
+    const stepIndex = event.index;
+    console.log("stepIndex", stepIndex);
+    setCurrentStep(stepIndex);
   };
+
   const handleNext = () => {
-    setCurrentStep(currentStep + 1);
+    handleStepChange({ index: currentStep + 1 });
   };
 
   return (
@@ -31,12 +33,11 @@ const Registration: React.FC = () => {
       <FNSteps
         model={mockStepsModel}
         initialIndex={currentStep}
-        activeIndex={currentStep}
         onSelect={handleStepChange}
       />
       {currentStep === 0 && <PersonalInformation onNext={handleNext} />}
-      {currentStep === 1 && <BankInformation onNext={handleNext}/>}
-      {currentStep === 2 && <DocumentUpload onNext={handleNext}/>}
+      {currentStep === 1 && <BankInformation onNext={handleNext} />}
+      {currentStep === 2 && <DocumentUpload onNext={handleNext} />}
       {currentStep === 3 && <SuccessMessage />}
     </div>
   );
