@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import { useNavigate } from "react-router-dom";
-import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
-import FNPhoneInput from "../../components/UIComponents/Form/FNPhoneInput/FNPhoneInput";
+import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
+import FNPhoneInput from "../../../components/UIComponents/Form/FNPhoneInput/FNPhoneInput";
 import { t } from "i18next";
 
-const OwnerLogin: React.FC = () => {
+const RequestOTP: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [showHelpText, setShowHelpText] = useState(false);
   const [loading, setStatus] = useState(false);
@@ -23,7 +23,7 @@ const OwnerLogin: React.FC = () => {
       setShowHelpText(true);
       setStatus(false);
     } else {
-      navigate("/verify-otp", { state: { phone } });
+      navigate("/owner-login/verify-otp", { state: { phone } });
       setStatus(false);
       setShowHelpText(false);
     }
@@ -99,4 +99,4 @@ const OwnerLogin: React.FC = () => {
   );
 };
 
-export default OwnerLogin;
+export default RequestOTP;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "react-phone-input-2/lib/style.css";
-import "./Style.css";
-import FNOtpInput from "../../components/UIComponents/Form/FNOtpInput/FNOtpInput";
+import "../Style.css";
+import FNOtpInput from "../../../components/UIComponents/Form/FNOtpInput/FNOtpInput";
 import { useLocation, useNavigate } from "react-router-dom";
-import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
+import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import { t } from "i18next";
 
 const VerifyOTP: React.FC = () => {
@@ -47,7 +47,7 @@ const VerifyOTP: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/owner-login");
+    navigate("/owner-login/request-otp");
   };
 
   return (

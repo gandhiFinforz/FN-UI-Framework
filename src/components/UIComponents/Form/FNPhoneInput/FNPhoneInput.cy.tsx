@@ -38,7 +38,7 @@ describe("<FNPhoneInput />", () => {
 
   it("enters phone number value correctly", () => {
     const phoneValue = "9876543210";
-    const formattedPhoneValue = "+98 765 432 10"; // Adjust this as needed
+    const formattedPhoneValue = "+98 765 432 10"; 
     mount(
       <I18nextProvider i18n={i18n}>
         <FNPhoneInput

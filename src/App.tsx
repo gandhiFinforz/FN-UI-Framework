@@ -41,9 +41,9 @@ import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
-import OwnerLogin from "./pages/OwnerLogin/Login";
-import VerifyOTP from "./pages/OwnerLogin/VerifyOTP";
-
+import RequestOTP from "./pages/OwnerLogin/RequestOtp/RequestOtp";
+import VerifyOTP from "./pages/OwnerLogin/VerifyOtp/VerifyOTP";
+import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
 setupIonicReact();
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -86,8 +86,10 @@ const App: React.FC = () => {
             </Route>
             <Route path="/" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
-            <Route path="/owner-login" element={<OwnerLogin />} />
-            <Route path="/verify-otp" element={<VerifyOTP />} />
+            <Route path="/owner-login" element={<OwnerLoginLayout />}>
+              <Route path="request-otp" element={<RequestOTP />} />
+              <Route path="verify-otp" element={<VerifyOTP />} />
+            </Route>
           </Routes>
         </Router>
       </IonApp>
