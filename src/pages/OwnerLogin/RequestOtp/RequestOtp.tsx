@@ -68,29 +68,32 @@ const RequestOTP: React.FC = () => {
           variant="outlined"
           showHelpText={showHelpText}
         />
-        <FNButton
-          onClick={handleContinue}
-          label={t("ownerLoginPage.otpRequestButtonLabel")}
-          type="submit"
-          className="w-full mt-3 p-3"
-          loading={loading}
-        />
 
-        <div
-          className="text-center opacity-60 line-height-2 font-medium text-sm mb-4 absolute bottom-0 left-0 w-full"
-          style={{ color: "#000" }}
-        >
-          <div>{t("ownerLoginPage.termsAndCondition")}</div>
-          <div>
-            <span className="underline mx-1">
-              {t("ownerLoginPage.termsService")}
-            </span>
-            <span className="underline mx-1">
-              {t("ownerLoginPage.privacyPolicy")}
-            </span>
-            <span className="underline mx-1">
-              {t("ownerLoginPage.contentPolicy")}
-            </span>
+        <div className="xl:mt-8 lg:mt-8 md:mt-8">
+          <FNButton
+            onClick={handleContinue}
+            label={t("ownerLoginPage.otpRequestButtonLabel")}
+            type="submit"
+            className="w-full mt-3 p-3"
+            loading={loading}
+          />
+
+          <div
+            className="text-center opacity-60 line-height-2 font-medium text-sm mb-4 absolute bottom-0 left-0 w-full"
+            style={{ color: "#000" }}
+          >
+            <div>{t("ownerLoginPage.termsAndCondition")}</div>
+            <div>
+              <span className="underline mx-1">
+                {t("ownerLoginPage.termsService")}
+              </span>
+              <span className="underline mx-1">
+                {t("ownerLoginPage.privacyPolicy")}
+              </span>
+              <span className="underline mx-1">
+                {t("ownerLoginPage.contentPolicy")}
+              </span>
+            </div>
           </div>
         </div>
       </div>
