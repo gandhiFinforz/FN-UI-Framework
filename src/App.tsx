@@ -41,8 +41,8 @@ import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
-import RequestOTP from "./pages/OwnerLogin/RequestOtp/RequestOtp";
-import VerifyOTP from "./pages/OwnerLogin/VerifyOtp/VerifyOTP";
+import RequestOTP from "./pages/OwnerLogin/RequestOTP/RequestOTP";
+import VerifyOTP from "./pages/OwnerLogin/VerifyOTP/VerifyOTP";
 import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
 setupIonicReact();
 const App: React.FC = () => {

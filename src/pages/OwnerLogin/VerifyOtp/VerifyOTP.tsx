@@ -11,6 +11,9 @@ const VerifyOTP: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [resendTimer, setResendTimer] = useState(30);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
+  const [loading, setStatus] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (location.state && location.state.phone) {
       setPhone(location.state.phone);
@@ -20,7 +23,6 @@ const VerifyOTP: React.FC = () => {
   const handleContinue = () => {
     setStatus(true);
   };
-  const [loading, setStatus] = useState(false);
 
   const handleResendOTP = () => {
     setResendTimer(30);
@@ -44,7 +46,6 @@ const VerifyOTP: React.FC = () => {
 
     return () => clearInterval(timer);
   }, [isResendDisabled]);
-  const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate("/owner-login/request-otp");
@@ -101,7 +102,7 @@ const VerifyOTP: React.FC = () => {
               ) : (
                 <span
                   onClick={handleResendOTP}
-                  className="font-semibold cursor-pointer	"
+                  className="font-semibold resend-btn cursor-pointer	"
                   style={{ color: "#01499d" }}
                 >
                   {t("ownerLoginPage.resendOTPLabel")}

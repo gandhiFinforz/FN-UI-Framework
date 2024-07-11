@@ -9,7 +9,6 @@ const RequestOTP: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [showHelpText, setShowHelpText] = useState(false);
   const [loading, setStatus] = useState(false);
-
   const navigate = useNavigate();
 
   const handleOnChange = (value: string) => {
