@@ -29,15 +29,16 @@ const RequestOTP: React.FC = () => {
   };
 
   return (
-    <div className="lg:grid xl:grid md:grid xl:grid flex lg:flex-row xl:flex-row md:flex-row flex-column h-screen bg-white">
+    <div className="lg:grid xl:grid md:grid xl:grid flex lg:flex-row xl:flex-row md:flex-row flex-column h-screen bg-white ">
       <div className="lg:col-6 xl:col-6  md:col-6 flex justify-content-center align-items-center">
         <img
           src="src/assets/img/property-landing.jpg"
           alt="Property"
-          className="max-w-full object-cover h-380px md:h-auto"
+          className="max-w-full object-cover h-full"
+          style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="lg:col-6 xl:col-6 md:col-6 flex flex-column p-3 md:p-5 mt-0 md:mt-6 flex-1 relative">
+      <div className="lg:col-6 xl:col-6 md:col-6 flex flex-column  p-3 md:p-5 mt-0 xl:mt-8 lg:mt-8 md:mt-8 flex-1 relative">
         <div
           className="text-center text-2xl font-semibold line-height-3 p-4"
           style={{ color: "#000" }}

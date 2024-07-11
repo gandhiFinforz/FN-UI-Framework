@@ -57,7 +57,7 @@ const VerifyOTP: React.FC = () => {
         <img
           src="src/assets/img/verify-otp.jpg"
           alt="Verify"
-          className="max-w-full object-cover md:h-auto"
+          className="max-w-full object-cover  h-full" 
         />
       </div>
 
@@ -70,11 +70,10 @@ const VerifyOTP: React.FC = () => {
           <div className="user-number mt-1 font-semibold">+{phone}</div>
         </div>
 
-        <div className="mx-auto">
+        <div className="xl:mx-auto lg:mx-auto md:mx-auto xl:mt-8 lg:mt-8 md:mt-8">
           <FNOtpInput name="otp" value="" style={{ gap: "0.6rem" }} />
-        </div>
 
-        <div className="xl:mt-8 lg:mt-8 md:mt-8">
+          <div className="xl:mt-8 lg:mt-8 md:mt-8">
           <FNButton
             onClick={handleContinue}
             label={t("ownerLoginPage.verifyButtonLabel")}
@@ -115,6 +114,9 @@ const VerifyOTP: React.FC = () => {
             </div>
           </div>
         </div>
+        </div>
+
+       
       </div>
     </div>
   );
