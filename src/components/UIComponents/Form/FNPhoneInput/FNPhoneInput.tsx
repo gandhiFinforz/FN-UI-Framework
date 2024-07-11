@@ -3,7 +3,8 @@ import PhoneInput, { PhoneInputProps } from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import { useTranslation } from "react-i18next";
 
-export interface FNPhoneInputProps extends PhoneInputProps {
+export interface FNPhoneInputProps extends PhoneInputProps { 
+  name?: string; 
   value: string;
   label?: string;
   invalid?: boolean;
