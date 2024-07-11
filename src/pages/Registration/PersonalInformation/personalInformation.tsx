@@ -34,8 +34,8 @@ const PersonalInformation: React.FC = () => {
   };
 
   return (
-    <div className="grid justify-content-between" style={{ height: "90vh" }}>
-      <div className="flex flex-column col-12 sm:col-8 md:col-6  p-3">
+    <div className="grid justify-content-center" style={{ height: "90vh" }}>
+      <div className="col-12 sm:col-8 md:col-6 flex flex-column">
         <h3 className="text-center">Personal Information</h3>
 
         <div className="mb-2">
