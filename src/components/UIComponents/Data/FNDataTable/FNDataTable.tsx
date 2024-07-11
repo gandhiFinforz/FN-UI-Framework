@@ -38,7 +38,7 @@ export interface FNDataTableProps {
   search?: boolean;
 }
 
-const FNDataTable: React.FC<FNDataTableProps> = ({
+function FNDataTable({
   alwaysShowPaginator = true,
   breakpoint = "960px",
   cellSelection = false,
@@ -69,7 +69,7 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
   header = null,
   filter = false,
   search = false,
-}) => {
+}) {
   const { t } = useTranslation();
   const [globalFilter, setGlobalFilter] = useState<string>("");
 
@@ -130,6 +130,6 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
       {children}
     </DataTable>
   );
-};
+}
 
 export default FNDataTable;

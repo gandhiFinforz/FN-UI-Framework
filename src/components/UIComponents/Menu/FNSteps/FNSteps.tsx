@@ -59,7 +59,11 @@ const FNSteps: FC<StepsProps> = ({
           color: textColor,
           marginTop: "-25px",
         }}
-        onClick={() => setActiveIndex(itemIndex)}
+        onClick={(e) => handleSelect({
+          index: itemIndex,
+          originalEvent: e as React.SyntheticEvent<Element, Event>,
+          item: item
+        })}
       >
         {item.icon ? <i className={`${item.icon} text-xl`} /> : itemIndex + 1}
       </span>

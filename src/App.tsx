@@ -41,6 +41,9 @@ import Layout from "./pages/Layout/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserTable from "./pages/DataTable/UserTable";
+import PersonalInformation from "./pages/Registration/PersonalInformation/personalInformation";
+import BankInformation from "./pages/Registration/BankInformation/bankInformation";
+import Registration from "./pages/Registration/registration";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -87,10 +90,27 @@ const App: React.FC = () => {
                   />
                 }
               />
+              <Route
+                path="/registration/personalInfo"
+                element={
+                  <ProtectedRoute
+                    component={PersonalInformation}
+                    title="Personal Info"
+                    breadcrumb={[{ label: "personalInfo", url: "/registration/personalInfo" }]}
+                    access={["admisn"]}
+                  />
+                }
+              />
             </Route>
             <Route path="/" element={<Login />} />
 
             <Route path="*" element={<ErrorPage />} />
+
+            <Route path="/personalInfo" element={<PersonalInformation />} />
+            <Route path="/bankInfo" element={<BankInformation />} />
+            <Route path="/registration" element={<Registration />} />
+            
+            
           </Routes>
         </Router>
       </IonApp>
