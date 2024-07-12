@@ -45,6 +45,7 @@ import BankInformation from "./pages/Registration/BankInformation/bankInformatio
 import Registration from "./pages/Registration/registration";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
+import Register from "./pages/Registration/Register";
 
 setupIonicReact();
 const App: React.FC = () => {
@@ -88,9 +89,13 @@ const App: React.FC = () => {
 
             <Route path="*" element={<ErrorPage />} />
 
-            <Route path="/personalInfo" element={<PersonalInformation />} />
-            <Route path="/bankInfo" element={<BankInformation />} />
-            <Route path="/registration" element={<Registration />} />
+            <Route path="/personalInfo" element={<PersonalInformation onNext={function (): void {
+              throw new Error("Function not implemented.");
+            } } />} />
+            <Route path="/bankInfo" element={<BankInformation onNext={function (): void {
+              throw new Error("Function not implemented.");
+            } } />} />
+            <Route path="/registration" element={<Register />} />
             
             
           </Routes>

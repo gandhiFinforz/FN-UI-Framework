@@ -7,11 +7,11 @@ interface BankProps {
 }
 const DocumentUpload: React.FC<BankProps> = ({onNext}) => {
   return (
-    <div className="grid justify-content-center h-90vh  mt-2">
-      <div className="col-12 sm:col-8 md:col-5 flex flex-column">
+    <div className="p-6 justify-content-center  mt-8 col-12 md:col-7">
+      <div>
         <h3 className="text-center">Document Upload</h3>
         <FNFileUpload name={""} mode={"advanced"} />
-        <div className="mt-auto">
+        <div className="mt-5">
           <FNButton label="Next" type="submit" className="w-full" onClick={onNext} />
         </div>
       </div>

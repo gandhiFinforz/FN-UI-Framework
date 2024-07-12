@@ -55,8 +55,8 @@ const BankInformation: React.FC<BankProps> = ({onNext}) => {
     },
   });
   return (
-    <div className="flex justify-content-center h-90vh mt-2">
-      <div className="col-12 sm:col-8 md:col-5 flex flex-column">
+    <div className="p-6 justify-content-center  mt-8 col-12 md:col-7">
+      <div>
         <h3 className="text-center">Bank Account</h3>
         <form onSubmit={bankFormik.handleSubmit} className="flex flex-column flex-grow-1">
           <div className="mb-2">
@@ -143,7 +143,7 @@ const BankInformation: React.FC<BankProps> = ({onNext}) => {
               placeholder="Select Account Type"
             />
           </div>
-          <div className="mt-auto">
+          <div className="mt-5">
             <FNButton label="Next" type="submit" className="w-full" />
           </div>
         </form>

@@ -1,19 +1,31 @@
 import React from "react";
-import check from "../../../assets/img/check.png";
+import step4 from "../../../assets/img/step4.png";
+import tick from "../../../assets/img/tick.png";
 import FNCard from "../../../components/UIComponents/Panel/FNCard/FNCard";
 
 const SuccessMessage: React.FC = () => {
   return (
-    <div className="grid p-4 justify-content-center">
-      <FNCard className="mt-3">
-        <div className="flex flex-column justify-content-between align-items-center mt-8 mb-8">
-          <img src={check} className="w-5 mt-8" />
+   
+    <div className="sm:col-12 md:col-6  ">
+        <div className='align-items-center flex h-screen justify-content-center'>
+        
+        <div>
+        <h2 className="text-center">registartion Completed</h2>
+
+        <img className=" mb-5 md:block hidden" src={tick}  />
+
+        <p className='font-bold p-3'>
+        registartion process completed successfully !..registartion process completed successfully !..
+        </p>
+       <img className="w-20rem mb-5 md:hidden" src={step4}  />
+      
+      
+       </div>
+       
+       
         </div>
-        <h3 className="text-center mt-auto">
-          Registration Completed Successfully !...
-        </h3>
-      </FNCard>
-    </div>
+        
+       </div>
   );
 };
 

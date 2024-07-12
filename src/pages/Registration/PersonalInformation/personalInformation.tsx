@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { addToast } from "../../../store/toastSlice";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 interface PersonalInfoFormValues {
   name: string;
   email: string;
@@ -44,6 +45,7 @@ const cityOptions = [
 
 const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const personalInfoFormik = useFormik<PersonalInfoFormValues>({
     initialValues: {
       name: "",
@@ -69,6 +71,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
           severity: "success",
         })
       );
+      // navigate("/bankInfo")
       onNext();
     },
   });
@@ -78,8 +81,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
   };
 
   return (
-    <div className="grid justify-content-center h-90vh mt-2">
-      <div className="col-12 sm:col-8 md:col-5 flex flex-column">
+    <div className="p-6 justify-content-center h-90vh mt-2 col-12 md:col-7">
+      <div>
         <h3 className="text-center">Personal Information</h3>
 <form onSubmit={personalInfoFormik.handleSubmit} className="flex flex-column flex-grow-1">
         <div className="mb-2">
