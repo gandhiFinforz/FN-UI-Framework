@@ -10,7 +10,14 @@ import { StepsSelectEvent } from "primereact/steps";
 import BankInformation from "./BankInformation/bankInformation";
 import DocumentUpload from "./DocumentUpload/documentUpload";
 import SuccessMessage from "./SuccessMessage/successMessage";
+import FNSteps, { FNOptionStepsProps } from "../../components/UIComponents/Menu/FNSteps/FNSteps";
 
+
+const mockStepsModel: FNOptionStepsProps[] = [
+  { label: "Step 1" },
+  { label: "Step 2" },
+  { label: "Step 3" },
+];
 const Register: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const handleStepChange = (event: StepsSelectEvent | { index: number }) => {
@@ -36,11 +43,23 @@ const Register: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="sm:col-12 md:col-6 md:align-items-center flex h-screen justify-content-center">
+
+      <div className="sm:col-12 md:col-6 h-screen">
+        <div className="mt-4">
+       { currentStep != 3 && <FNSteps
+        model={mockStepsModel}
+        initialIndex={currentStep}
+        onSelect={handleStepChange}
+      />}
+        </div>
+      
+        <div className="md:align-items-center flex justify-content-center">
         {currentStep === 0 && <PersonalInformation onNext={handleNext} />}
         {currentStep === 1 && <BankInformation onNext={handleNext} />}
         {currentStep === 2 && <DocumentUpload onNext={handleNext} />}
         {currentStep === 3 && <SuccessMessage />}
+        </div>
+        
       </div>
     </div>
   );
