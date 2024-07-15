@@ -44,8 +44,8 @@ const Register: React.FC = () => {
         </div>
       </div>
 
-      <div className="sm:col-12 md:col-6 h-screen">
-        <div className="mt-4">
+      <div className="sm:col-12 md:col-6 h-screen mt-2">
+        <div>
        { currentStep != 3 && <FNSteps
         model={mockStepsModel}
         initialIndex={currentStep}
