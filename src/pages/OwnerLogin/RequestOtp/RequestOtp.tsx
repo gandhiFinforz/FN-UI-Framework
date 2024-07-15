@@ -45,6 +45,7 @@ const RequestOTP: React.FC = () => {
         >
           {t("ownerLoginPage.title")}
         </div>
+        <div className="lg:mx-8 xl:mx-8 md:mx-8 ">
         <div className="flex align-items-center w-full my-3">
           <span className="line-through flex-1 border-bottom-1 border-300"></span>
           <span
@@ -69,6 +70,7 @@ const RequestOTP: React.FC = () => {
           variant="outlined"
           showHelpText={showHelpText}
         />
+        
 
         <div className="xl:mt-8 lg:mt-8 md:mt-8">
           <FNButton
@@ -96,6 +98,7 @@ const RequestOTP: React.FC = () => {
               </span>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
