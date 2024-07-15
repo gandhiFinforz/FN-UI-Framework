@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useFormik } from "formik";
 import FNAutoComplete from "../../../components/UIComponents/Form/FNAutoComplete/FNAutoComplete";
 import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
@@ -28,7 +28,7 @@ const accountType = [
   { label: "Current", value: "Current" },
 ];
 
-const BankInformation: React.FC<BankProps> = ({onNext}) => {
+const BankInformation: React.FC<BankProps> = ({ onNext }) => {
   const dispatch: AppDispatch = useDispatch();
   const bankFormik = useFormik<BankFormValues>({
     initialValues: {
@@ -55,30 +55,29 @@ const BankInformation: React.FC<BankProps> = ({onNext}) => {
     },
   });
   return (
-    <div className="p-6 justify-content-center  mt-8 col-12 md:col-7">
+    <div className="p-6 justify-content-center col-12 md:col-7">
       <div>
         <h3 className="text-center">Bank Account</h3>
-        <form onSubmit={bankFormik.handleSubmit} className="flex flex-column flex-grow-1">
+        <form
+          onSubmit={bankFormik.handleSubmit}
+          className="flex flex-column flex-grow-1"
+        >
           <div className="mb-2">
             <FNAutoComplete
               label="Select Bank"
               suggestions={bank}
               value={bankFormik.values.bankName}
-                    onSelect={(e) =>
-                      bankFormik.setFieldValue("bankName", e.value.label)
-                    }
-                    onBlur={() =>
-                      bankFormik.setFieldTouched("bankName", true)
-                    }
-                    field="label"
-                    invalid={
-                      bankFormik.touched.bankName &&
-                      !!bankFormik.errors.bankName
-                    }
-                    helpText={
-                      bankFormik.touched.bankName &&
-                      bankFormik.errors.bankName
-                    }
+              onSelect={(e) =>
+                bankFormik.setFieldValue("bankName", e.value.label)
+              }
+              onBlur={() => bankFormik.setFieldTouched("bankName", true)}
+              field="label"
+              invalid={
+                bankFormik.touched.bankName && !!bankFormik.errors.bankName
+              }
+              helpText={
+                bankFormik.touched.bankName && bankFormik.errors.bankName
+              }
               placeholder="Select Your Bank"
             />
           </div>
@@ -115,8 +114,7 @@ const BankInformation: React.FC<BankProps> = ({onNext}) => {
                 !!bankFormik.errors.accountName
               }
               helpText={
-                bankFormik.touched.accountName &&
-                bankFormik.errors.accountName
+                bankFormik.touched.accountName && bankFormik.errors.accountName
               }
             />
           </div>
@@ -125,21 +123,18 @@ const BankInformation: React.FC<BankProps> = ({onNext}) => {
               suggestions={accountType}
               label="Account Type"
               value={bankFormik.values.accountType}
-                    onSelect={(e) =>
-                      bankFormik.setFieldValue("accountType", e.value.label)
-                    }
-                    onBlur={() =>
-                      bankFormik.setFieldTouched("accountType", true)
-                    }
-                    field="label"
-                    invalid={
-                      bankFormik.touched.accountType &&
-                      !!bankFormik.errors.accountType
-                    }
-                    helpText={
-                      bankFormik.touched.accountType &&
-                      bankFormik.errors.accountType
-                    }
+              onSelect={(e) =>
+                bankFormik.setFieldValue("accountType", e.value.label)
+              }
+              onBlur={() => bankFormik.setFieldTouched("accountType", true)}
+              field="label"
+              invalid={
+                bankFormik.touched.accountType &&
+                !!bankFormik.errors.accountType
+              }
+              helpText={
+                bankFormik.touched.accountType && bankFormik.errors.accountType
+              }
               placeholder="Select Account Type"
             />
           </div>

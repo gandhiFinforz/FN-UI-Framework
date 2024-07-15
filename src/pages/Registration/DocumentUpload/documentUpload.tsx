@@ -5,14 +5,19 @@ import "./documentUpload.css";
 interface BankProps {
   onNext: () => void; // Callback function to handle next step
 }
-const DocumentUpload: React.FC<BankProps> = ({onNext}) => {
+const DocumentUpload: React.FC<BankProps> = ({ onNext }) => {
   return (
-    <div className="p-6 justify-content-center  mt-8 col-12 md:col-7">
+    <div className="p-6 justify-content-center col-12 md:col-7">
       <div>
         <h3 className="text-center">Document Upload</h3>
         <FNFileUpload name={""} mode={"advanced"} />
         <div className="mt-5">
-          <FNButton label="Next" type="submit" className="w-full" onClick={onNext} />
+          <FNButton
+            label="Next"
+            type="submit"
+            className="w-full"
+            onClick={onNext}
+          />
         </div>
       </div>
     </div>
