@@ -7,8 +7,8 @@ interface BankProps {
 }
 const DocumentUpload: React.FC<BankProps> = ({ onNext }) => {
   return (
-    <div className="p-6 md:p-0 justify-content-center col-12 md:col-7">
-       <div className="md:align-items-center flex h-screen text-center">
+    <div className="p-6 md:p-0 md:mt-5 justify-content-center col-12 md:col-7">
+       <div className="flex h-screen text-center">
       <div>
         <h3 className="text-center">Document Upload</h3>
         <FNFileUpload name={""} mode={"advanced"} />

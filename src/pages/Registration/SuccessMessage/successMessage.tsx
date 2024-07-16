@@ -11,7 +11,7 @@ const SuccessMessage: React.FC = () => {
         <div>
           <h2 className="text-center">Registartion Completed </h2>
 
-          <img className="w-4 mb-5 md:inline-block hidden" src={tick} />
+          <img className="w-4 mb-5 md:inline-block hidden" src={tick} alt="" />
 
           <img className="w-18rem mb-5 md:hidden" src={step4} />
           <p>
