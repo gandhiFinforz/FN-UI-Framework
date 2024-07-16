@@ -46,59 +46,58 @@ const RequestOTP: React.FC = () => {
           {t("ownerLoginPage.title")}
         </div>
         <div className="lg:mx-8 xl:mx-8 md:mx-8 ">
-        <div className="flex align-items-center w-full my-3">
-          <span className="line-through flex-1 border-bottom-1 border-300"></span>
-          <span
-            className="mx-2 opacity-60 font-medium"
-            style={{ color: "#000" }}
-          >
-            {t("ownerLoginPage.loginLabel")}
-          </span>
-          <span className="line-through flex-1 border-bottom-1 border-300"></span>
-        </div>
+          <div className="flex align-items-center w-full my-3">
+            <span className="line-through flex-1 border-bottom-1 border-300"></span>
+            <span
+              className="mx-2 opacity-60 font-medium"
+              style={{ color: "#000" }}
+            >
+              {t("ownerLoginPage.loginLabel")}
+            </span>
+            <span className="line-through flex-1 border-bottom-1 border-300"></span>
+          </div>
 
-        <FNPhoneInput
-          value={phone}
-          onChange={handleOnChange}
-          label={t("ownerLoginPage.otpRequestInputLabel")}
-          placeholder={t("ownerLoginPage.otpRequestInputPlaceholder")}
-          inputProps={{
-            required: true,
-            id: "phone-input",
-          }}
-          helpText={t("ownerLoginPage.phoneNumberInput")}
-          variant="outlined"
-          showHelpText={showHelpText}
-        />
-        
-
-        <div className="xl:mt-8 lg:mt-8 md:mt-8">
-          <FNButton
-            onClick={handleContinue}
-            label={t("ownerLoginPage.otpRequestButtonLabel")}
-            type="submit"
-            className="w-full mt-3 p-3"
-            loading={loading}
+          <FNPhoneInput
+            value={phone}
+            onChange={handleOnChange}
+            label={t("ownerLoginPage.otpRequestInputLabel")}
+            placeholder={t("ownerLoginPage.otpRequestInputPlaceholder")}
+            inputProps={{
+              required: true,
+              id: "phone-input",
+            }}
+            helpText={t("ownerLoginPage.phoneNumberInput")}
+            variant="outlined"
+            showHelpText={showHelpText}
           />
 
-          <div
-            className="text-center opacity-60 line-height-2 font-medium text-sm mb-4 absolute bottom-0 left-0 w-full"
-            style={{ color: "#000" }}
-          >
-            <div>{t("ownerLoginPage.termsAndCondition")}</div>
-            <div>
-              <span className="underline mx-1">
-                {t("ownerLoginPage.termsService")}
-              </span>
-              <span className="underline mx-1">
-                {t("ownerLoginPage.privacyPolicy")}
-              </span>
-              <span className="underline mx-1">
-                {t("ownerLoginPage.contentPolicy")}
-              </span>
+          <div className="xl:mt-8 lg:mt-8 md:mt-8">
+            <FNButton
+              onClick={handleContinue}
+              label={t("ownerLoginPage.otpRequestButtonLabel")}
+              type="submit"
+              className="w-full mt-3 p-3"
+              loading={loading}
+            />
+
+            <div
+              className="text-center opacity-60 line-height-2 font-medium text-sm mb-4 absolute bottom-0 left-0 w-full"
+              style={{ color: "#000" }}
+            >
+              <div>{t("ownerLoginPage.termsAndCondition")}</div>
+              <div>
+                <span className="underline mx-1">
+                  {t("ownerLoginPage.termsService")}
+                </span>
+                <span className="underline mx-1">
+                  {t("ownerLoginPage.privacyPolicy")}
+                </span>
+                <span className="underline mx-1">
+                  {t("ownerLoginPage.contentPolicy")}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
