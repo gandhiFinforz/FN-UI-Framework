@@ -2,7 +2,7 @@
   "loginPage": {
     "title": "Login Page",
     "userName": "Username",
-    "password": "Passsword",
+    "password": "Password",
     "buttonName": "Login",
     "changepassword": "Change Password",
     "logout": "Logout",
@@ -28,5 +28,28 @@
   },
   "fileUpload": {
     "label": "Drag and drop files to here to upload."
+  },
+  "personalInformation": {
+    "title": "Personal Information",
+    "placeHolder": {
+      "name": "Enter your Name",
+      "email": "Enter your Email",
+      "country": "Select Country",
+      "state": "Select State",
+      "city": "Select City",
+      "address": "Enter Your Address"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "invalidEmail": "Invalid email address",
+      "cityRequired": "City is required",
+      "stateRequired": "State is required",
+      "countryRequired": "Country is required",
+      "addressRequired": "Address is required"
+    },
+    "msg": {
+      "success":"Pesonal Details Added Successfully!"
+    }
   }
 }

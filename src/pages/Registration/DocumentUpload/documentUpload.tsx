@@ -1,7 +1,6 @@
 import React from "react";
 import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import FNFileUpload from "../../../components/UIComponents/Form/FNFileUpload/FNFileUpload";
-import "./documentUpload.css";
 interface BankProps {
   onNext: () => void; // Callback function to handle next step
 }

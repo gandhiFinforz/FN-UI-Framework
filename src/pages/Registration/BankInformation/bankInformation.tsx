@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import FNAutoComplete from "../../../components/UIComponents/Form/FNAutoComplete/FNAutoComplete";
 import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
-import "./bankInformation.css";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";

@@ -4,13 +4,14 @@ import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import FNInput from "../../../components/UIComponents/Form/FNInput/FNInput";
 import FNTextArea from "../../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import "primeflex/primeflex.css";
-import "./personalInformation.css";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { addToast } from "../../../store/toastSlice";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
+
 interface PersonalInfoFormValues {
   name: string;
   email: string;
@@ -19,9 +20,11 @@ interface PersonalInfoFormValues {
   city: string;
   address: string;
 }
+
 interface PersonalInformationProps {
   onNext: () => void; // Callback function to handle next step
 }
+
 const countryOptions = [
   { label: "India", value: "India" },
   { label: "USA", value: "USA" },
@@ -43,9 +46,7 @@ const cityOptions = [
   { label: "Coimbatore", value: "Coimbatore" },
 ];
 
-const PersonalInformation: React.FC<PersonalInformationProps> = ({
-  onNext,
-}) => {
+const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const personalInfoFormik = useFormik<PersonalInfoFormValues>({
@@ -58,36 +59,31 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
       address: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
+      name: Yup.string().required(t("personalInformation.validation.nameRequired")),
       email: Yup.string()
-        .required("Email is required")
-        .email("Invalid email address"),
-      city: Yup.string().required("City is required"),
-      state: Yup.string().required("State is required"),
-      country: Yup.string().required("Country is required"),
-      address: Yup.string().required("Address is required"),
+        .required(t("personalInformation.validation.emailRequired"))
+        .email(t("personalInformation.validation.invalidEmail")),
+      city: Yup.string().required(t("personalInformation.validation.cityRequired")),
+      state: Yup.string().required(t("personalInformation.validation.stateRequired")),
+      country: Yup.string().required(t("personalInformation.validation.countryRequired")),
+      address: Yup.string().required(t("personalInformation.validation.addressRequired")),
     }),
     onSubmit: (values) => {
       dispatch(
         addToast({
           id: new Date().getTime(),
-          message: "Bank Details Added Successfully!",
+          message: t("personalInformation.msg.success"),
           severity: "success",
         })
       );
-      // navigate("/bankInfo")
       onNext();
     },
   });
-  const handleCountrySelect = (e: any) => {
-    console.log("Selected Country:", e.value.label);
-    // Handle country selection logic here
-  };
 
   return (
     <div className="p-6 justify-content-center  mt-2 col-12 md:col-7">
       <div>
-        <h3 className="text-center">Personal Information</h3>
+        <h3 className="text-center">{t("personalInformation.title")}</h3>
         <form
           onSubmit={personalInfoFormik.handleSubmit}
           className="flex flex-column flex-grow-1"
@@ -108,7 +104,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.name &&
                 personalInfoFormik.errors.name
               }
-              placeholder="Enter Your Name"
+              placeholder={t("personalInformation.placeHolder.name")}
             />
           </div>
           <div className="mb-2">
@@ -127,7 +123,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.email &&
                 personalInfoFormik.errors.email
               }
-              placeholder="Enter Your Email"
+              placeholder={t("personalInformation.placeHolder.email")}
             />
           </div>
           <div className="mb-2">
@@ -148,7 +144,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.country &&
                 personalInfoFormik.errors.country
               }
-              placeholder="Select Country"
+              placeholder={t("personalInformation.placeHolder.country")}
             />
           </div>
           <div className="mb-2">
@@ -156,7 +152,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
               suggestions={stateOptions}
               name="state"
               label="State"
-              value={personalInfoFormik.values.country}
+              value={personalInfoFormik.values.state}
               onSelect={(e) =>
                 personalInfoFormik.setFieldValue("state", e.value.label)
               }
@@ -170,7 +166,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.state &&
                 personalInfoFormik.errors.state
               }
-              placeholder="Select State"
+              placeholder={t("personalInformation.placeHolder.state")}
             />
           </div>
           <div className="mb-2">
@@ -192,7 +188,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.city &&
                 personalInfoFormik.errors.city
               }
-              placeholder="Select City"
+              placeholder={t("personalInformation.placeHolder.city")}
             />
           </div>
           <div className="mb-2">
@@ -210,7 +206,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
                 personalInfoFormik.touched.address &&
                 personalInfoFormik.errors.address
               }
-              placeholder="Enter Your Address"
+              placeholder={t("personalInformation.placeHolder.address")}
             />
           </div>
 
