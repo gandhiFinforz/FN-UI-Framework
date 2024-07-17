@@ -32,24 +32,30 @@
   "personalInformation": {
     "title": "Personal Information",
     "placeHolder": {
-      "name": "Enter your Name",
+      "firstName": "Enter your First Name",
+      "lastName": "Enter your Last Name",
       "email": "Enter your Email",
       "country": "Select Country",
       "state": "Select State",
       "city": "Select City",
-      "address": "Enter Your Address"
+      "address": "Enter Your Address",
+      "pincode": "Enter Your Pincode"
     },
     "validation": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
       "nameRequired": "Name is required",
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email address",
       "cityRequired": "City is required",
       "stateRequired": "State is required",
       "countryRequired": "Country is required",
-      "addressRequired": "Address is required"
+      "addressRequired": "Address is required",
+      "pincodeRequired": "Pincode is required",
+      "invalidPincode": "Invalid pincode"
     },
     "msg": {
-      "success":"Pesonal Details Added Successfully!"
+      "success": "Personal Details Added Successfully!"
     }
   }
 }

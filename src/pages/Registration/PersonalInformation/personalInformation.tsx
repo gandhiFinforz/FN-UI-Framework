@@ -13,12 +13,15 @@ import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
 
 interface PersonalInfoFormValues {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  password: string,
   country: string;
   state: string;
   city: string;
   address: string;
+  pincode: string;
 }
 
 interface PersonalInformationProps {
@@ -51,22 +54,30 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
   const navigate = useNavigate();
   const personalInfoFormik = useFormik<PersonalInfoFormValues>({
     initialValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
+      password: "",
       city: "",
       state: "",
       country: "",
       address: "",
+      pincode: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required(t("personalInformation.validation.nameRequired")),
+      firstName: Yup.string().required(t("personalInformation.validation.firstNameRequired")),
+      lastName: Yup.string().required(t("personalInformation.validation.lastNameRequired")),
       email: Yup.string()
         .required(t("personalInformation.validation.emailRequired"))
         .email(t("personalInformation.validation.invalidEmail")),
+      password: Yup.string().required(t("personalInformation.validation.passwordRequired")),
       city: Yup.string().required(t("personalInformation.validation.cityRequired")),
       state: Yup.string().required(t("personalInformation.validation.stateRequired")),
       country: Yup.string().required(t("personalInformation.validation.countryRequired")),
       address: Yup.string().required(t("personalInformation.validation.addressRequired")),
+      pincode: Yup.string()
+        .required(t("personalInformation.validation.pincodeRequired"))
+        .matches(/^\d{6}$/, t("personalInformation.validation.invalidPincode")),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -81,33 +92,52 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
   });
 
   return (
-    <div className="p-6 justify-content-center  mt-2 col-12 md:col-7">
+    <div className="pl-6 pr-6 justify-content-center mt-2 col-12 md:col-7">
       <div>
         <h3 className="text-center">{t("personalInformation.title")}</h3>
         <form
           onSubmit={personalInfoFormik.handleSubmit}
           className="flex flex-column flex-grow-1"
         >
-          <div className="mb-2">
+          <div className="mb-1">
             <FNInput
               type="text"
-              name="name"
-              label="Name"
-              value={personalInfoFormik.values.name}
+              name="firstName"
+              label="First Name"
+              value={personalInfoFormik.values.firstName}
               onChange={personalInfoFormik.handleChange}
               onBlur={personalInfoFormik.handleBlur}
               invalid={
-                personalInfoFormik.touched.name &&
-                !!personalInfoFormik.errors.name
+                personalInfoFormik.touched.firstName &&
+                !!personalInfoFormik.errors.firstName
               }
               helpText={
-                personalInfoFormik.touched.name &&
-                personalInfoFormik.errors.name
+                personalInfoFormik.touched.firstName &&
+                personalInfoFormik.errors.firstName
               }
-              placeholder={t("personalInformation.placeHolder.name")}
+              placeholder={t("personalInformation.placeHolder.firstName")}
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-1">
+            <FNInput
+              type="text"
+              name="lastName"
+              label="Last Name"
+              value={personalInfoFormik.values.lastName}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.lastName &&
+                !!personalInfoFormik.errors.lastName
+              }
+              helpText={
+                personalInfoFormik.touched.lastName &&
+                personalInfoFormik.errors.lastName
+              }
+              placeholder={t("personalInformation.placeHolder.lastName")}
+            />
+          </div>
+          <div className="mb-1">
             <FNInput
               type="text"
               name="email"
@@ -126,7 +156,24 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
               placeholder={t("personalInformation.placeHolder.email")}
             />
           </div>
-          <div className="mb-2">
+          <FNInput
+              type="password"
+              name="password"
+              label="Password"
+              value={personalInfoFormik.values.password}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.password &&
+                !!personalInfoFormik.errors.password
+              }
+              helpText={
+                personalInfoFormik.touched.password &&
+                personalInfoFormik.errors.password
+              }
+              placeholder={t("personalInformation.placeHolder.password")}
+            />
+          <div className="mb-1">
             <FNAutoComplete
               label="Country"
               suggestions={countryOptions}
@@ -147,7 +194,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
               placeholder={t("personalInformation.placeHolder.country")}
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-1">
             <FNAutoComplete
               suggestions={stateOptions}
               name="state"
@@ -169,7 +216,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
               placeholder={t("personalInformation.placeHolder.state")}
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-1">
             <FNAutoComplete
               suggestions={cityOptions}
               name="city"
@@ -191,7 +238,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
               placeholder={t("personalInformation.placeHolder.city")}
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-1">
             <FNTextArea
               name="address"
               label="Address"
@@ -209,7 +256,25 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
               placeholder={t("personalInformation.placeHolder.address")}
             />
           </div>
-
+          <div className="mb-1">
+            <FNInput
+            type="number"
+              name="pincode"
+              label="Pincode"
+              value={personalInfoFormik.values.pincode}
+              onChange={personalInfoFormik.handleChange}
+              onBlur={personalInfoFormik.handleBlur}
+              invalid={
+                personalInfoFormik.touched.pincode &&
+                !!personalInfoFormik.errors.pincode
+              }
+              helpText={
+                personalInfoFormik.touched.pincode &&
+                personalInfoFormik.errors.pincode
+              }
+              placeholder={t("personalInformation.placeHolder.pincode")}
+            />
+          </div>
           <div className="mt-2">
             <FNButton
               label="Next"

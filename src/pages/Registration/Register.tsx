@@ -35,7 +35,7 @@ const Register: React.FC = () => {
             <h2 className="text-center text-white">
               Start Your Step {currentStep + 1}
             </h2>
-            <img className="w-29rem mb-5" src={step1} />
+            <img className="w-29rem mb-5" src={step1} alt="Personal Info Image"/>
             <p className="text-white p-3 font-bold">
               Begin your journey with us to discover your amazing application
               !...
@@ -44,14 +44,14 @@ const Register: React.FC = () => {
         </div>
       </div>
 
-      <div className="sm:col-12 md:col-6 h-screen mt-2">
-        <div>
+      <div className="sm:col-12 md:col-6 h-screen mt-2 overflow-x-auto">
+        {/* <div>
        { currentStep != 3 && <FNSteps
         model={mockStepsModel}
         initialIndex={currentStep}
         onSelect={handleStepChange}
       />}
-        </div>
+        </div> */}
       
         <div className="md:align-items-center flex justify-content-center">
         {currentStep === 0 && <PersonalInformation onNext={handleNext} />}
