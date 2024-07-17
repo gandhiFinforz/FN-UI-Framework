@@ -84,7 +84,8 @@ const App: React.FC = () => {
                 );
               })}
             </Route>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<RequestOTP />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/owner-login" element={<OwnerLoginLayout />}>
               <Route path="request-otp" element={<RequestOTP />} />

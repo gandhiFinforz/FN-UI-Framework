@@ -5,7 +5,7 @@ import FNOtpInput from "../../../components/UIComponents/Form/FNOtpInput/FNOtpIn
 import { useLocation, useNavigate } from "react-router-dom";
 import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import { t } from "i18next";
-
+import otpVerifyImage from '../../../assets/img/verify-otp.jpg'
 const VerifyOTP: React.FC = () => {
   const location = useLocation();
   const [phone, setPhone] = useState("");
@@ -55,7 +55,7 @@ const VerifyOTP: React.FC = () => {
     <div className="lg:grid xl:grid md:grid flex lg:flex-row xl:flex-row md:flex-row flex-column h-screen bg-white">
       <div className="lg:col-6 xl:col-6 md:col-6 flex justify-content-center align-items-center">
         <img
-          src="src/assets/img/verify-otp.jpg"
+          src={otpVerifyImage}
           alt="Verify"
           className="max-w-full object-cover  h-full"
         />
@@ -70,7 +70,7 @@ const VerifyOTP: React.FC = () => {
           <div className="user-number mt-1 font-semibold">+{phone}</div>
         </div>
 
-        <div className="xl:text-center lg:text-center md:text-center xl:mt-8 lg:mt-8 md:mt-8">
+        <div className="text-center xl:mt-8 lg:mt-8 md:mt-8">
           <FNOtpInput
             name="otp"
             value=""

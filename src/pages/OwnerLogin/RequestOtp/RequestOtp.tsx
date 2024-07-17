@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import FNButton from "../../../components/UIComponents/Form/FNButton/FNButton";
 import FNPhoneInput from "../../../components/UIComponents/Form/FNPhoneInput/FNPhoneInput";
 import { t } from "i18next";
+import otpRequestImage from "../../../assets/img/property-landing.jpg";
+import PhoneNumbers from "../PhoneNumbers";
 
 const RequestOTP: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [showHelpText, setShowHelpText] = useState(false);
   const [loading, setStatus] = useState(false);
   const navigate = useNavigate();
+  const [showPhoneComponent, setShowPhoneComponent] = useState(false);
 
   const handleOnChange = (value: string) => {
+    console.log("clcikkkk");
     setPhone(value);
     setShowHelpText(false);
   };
@@ -27,12 +31,25 @@ const RequestOTP: React.FC = () => {
       setShowHelpText(false);
     }
   };
+  const handleSelectNumber = (selectedNumber: string) => {
+    setPhone(selectedNumber);
+    setShowHelpText(false);
+    setStatus(false);
+  };
 
+  const handleSimDetection = () => {
+    if (!showPhoneComponent) {
+      setShowPhoneComponent(true);
+    }
+  };
   return (
     <div className="lg:grid xl:grid md:grid xl:grid flex lg:flex-row xl:flex-row md:flex-row flex-column h-screen bg-white ">
+      {showPhoneComponent && (
+        <PhoneNumbers onSelectNumber={handleSelectNumber} />
+      )}
       <div className="lg:col-6 xl:col-6  md:col-6 flex justify-content-center align-items-center">
         <img
-          src="src/assets/img/property-landing.jpg"
+          src={otpRequestImage}
           alt="Property"
           className="max-w-full object-cover h-full"
           style={{ objectFit: "cover" }}
@@ -46,7 +63,7 @@ const RequestOTP: React.FC = () => {
           {t("ownerLoginPage.title")}
         </div>
         <div className="lg:mx-8 xl:mx-8 md:mx-8 ">
-          <div className="flex align-items-center w-full my-3">
+          <div className="flex align-items-center w-full mt-3 mb-5">
             <span className="line-through flex-1 border-bottom-1 border-300"></span>
             <span
               className="mx-2 opacity-60 font-medium"
@@ -59,8 +76,8 @@ const RequestOTP: React.FC = () => {
 
           <FNPhoneInput
             value={phone}
+            onFocus={handleSimDetection}
             onChange={handleOnChange}
-            label={t("ownerLoginPage.otpRequestInputLabel")}
             placeholder={t("ownerLoginPage.otpRequestInputPlaceholder")}
             inputProps={{
               required: true,
