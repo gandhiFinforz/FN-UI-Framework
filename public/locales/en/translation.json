@@ -23,7 +23,9 @@
     "verificationHint": "We have sent a verification code to",
     "verifyButtonLabel": "Continue",
     "backButton": "Back",
-    "resendOTPLabel": "Resend OTP"
+    "resendOTPLabel": "Resend OTP",
+    "mobileSIMDetailsPopupHeader": "Continue With",
+    "mobileSIMDetailsPopupLabel": "NONE OF THE ABOVE"
   },
 
   "usersTable": {

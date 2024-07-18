@@ -42,7 +42,7 @@ const PhoneNumbers: React.FC<PhoneNumbersProps> = ({ onSelectNumber }) => {
   return (
     <>
       {visible && <FNDialog
-        header="Continue With"
+        header={t("ownerLoginPage.mobileSIMDetailsPopupHeader")}
         content={
           <div className="mt-4">
             {numbers.map((simCard, index) => (
@@ -60,7 +60,7 @@ const PhoneNumbers: React.FC<PhoneNumbersProps> = ({ onSelectNumber }) => {
         }
         footerButtons={[
           {
-            label: "NONE OF THE ABOVE",
+            label: t("ownerLoginPage.mobileSIMDetailsPopupLabel"),
             icon: "",
             className: "",
             onClick: () => setVisible(false),
