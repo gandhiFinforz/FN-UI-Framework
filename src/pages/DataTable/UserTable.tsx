@@ -11,21 +11,25 @@ import { t } from "i18next";
 import { urlConfig } from "../../services/Utils/ApiUrlConfig";
 
 const UserTable: React.FC = () => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([
+    { id: 1, firstName: "John", email: "john@example.com" },
+    { id: 2, firstName: "Jane", email: "jane@example.com" },
+    { id: 3, firstName: "Doe", email: "doe@example.com" },
+  ]);
   useTranslation();
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await ApiService.get<any[]>(urlConfig.userList);
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     try {
+  //       const response = await ApiService.get<any[]>(urlConfig.userList);
+  //       setUsers(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching users:", error);
+  //     }
+  //   };
 
-    fetchUsers();
-  }, []);
+  //   fetchUsers();
+  // }, []);
 
   // Define columns dynamically based on your API response
   const dynamicColumns = [
@@ -81,9 +85,9 @@ const UserTable: React.FC = () => {
       </div>
       {/* dialog component content end */}
 
-      <FNCard title="User Table">
+      {/* <FNCard title="User Table"> */}
         <FNDataTable {...dataTableProps} />
-      </FNCard>
+      {/* </FNCard> */}
     </div>
   );
 };
