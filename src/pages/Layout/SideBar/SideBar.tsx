@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TieredMenu } from "primereact/tieredmenu";
 import { filteredMenu } from "../../../services/MenuJSON";
-
+import '../../../Variables.css'
 interface SideBarProps {
   sidebarVisible: boolean;
 }
@@ -9,7 +9,7 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ sidebarVisible }) => {
   const [item, setItem] = useState(filteredMenu);
   return (
-    <div
+    <div 
       className={`fn-menu h-screen ${sidebarVisible ? "m-collapse" : "m-expand"}`}
     >
       <TieredMenu model={item} breakpoint="0px" />
