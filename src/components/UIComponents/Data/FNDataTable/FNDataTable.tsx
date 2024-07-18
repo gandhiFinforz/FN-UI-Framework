@@ -100,8 +100,10 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
         value.map((rowData) => (
           <FNCard key={rowData[dataKey]} className="mb-3 card-with-line">
             <div className="grid">
-              {dynamicColumns.map((col) => (
-                <div key={col.field} className={`${calculateColumnClass(dynamicColumns.length)} column-with-border`}>
+              {dynamicColumns.map((col,index) => (
+                <div key={col.field} className={`${calculateColumnClass(dynamicColumns.length)} ${
+                  index < dynamicColumns.length - 1 ? "column-with-border" : ""
+                }`}>
                   <strong>{rowData[col.field]}</strong> 
                 </div>
               ))}
