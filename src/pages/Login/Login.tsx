@@ -38,10 +38,11 @@ const Login: React.FC = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
-      dispatch(loginUser(values)).then((e) => {
-        console.log(e);
-        user && navigate("/dashboard");
-      });
+      // dispatch(loginUser(values)).then((e) => {
+      //   console.log(e);
+      //   user && navigate("/dashboard");
+      // });
+      user && navigate("/dashboard");
     },
   });
 
