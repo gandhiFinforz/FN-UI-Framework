@@ -10,14 +10,13 @@
 
   /* Sidebar Configuration */
   --sidebar-background-color: var(--blue-color-dark);
-  --sidebar-button-text-color: #fff;
+  --sidebar-button-text-color: var(--text-color);
   --sidebar-toggle-icon-color: #00829f;
   --button-padding: 6px;
   --button-font-weight: 600;
   --button-border-radius: 3px;
   --sidebar-width-expanded: 220px;
   --sidebar-width-collapsed: 80px;
-  --profile-background: #1d1b31;
   --scrollbar-width: 5px;
   --scrollbar-track-color: var(--blue-color-dark);
   --scrollbar-thumb-color: var(--blue-color-dark);
