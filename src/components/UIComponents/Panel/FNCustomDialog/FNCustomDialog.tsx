@@ -7,6 +7,9 @@ import "primeflex/primeflex.css";
 import "./FNCustomDialog.css";
 import { Menu } from "primereact/menu";
 import PersonalInformation from "../../../../pages/PersonalInformation/personalInformation";
+import SideBar from "../../../../pages/Layout/SideBar/SideBar";
+import { Sidebar } from "primereact/sidebar";
+import FNButton from "../../Form/FNButton/FNButton";
 
 export interface FNCustomDialogProps extends Omit<DialogProps, "visible" | "onHide"> {
   visible: boolean;
@@ -69,8 +72,19 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
   className,
   ...restProps
 }) => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-
+  const sidebarContent = (
+    <div className="p-4">
+      <ul className="list-none p-0">
+        {items.map((item, index) => (
+          <li key={index} className="flex items-center py-2">
+            <i className={`pi ${item.icon} mr-2`} />
+            <span>{item.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   return (
     <Dialog
       style={{ width: '80%', height: '80%' }}
@@ -82,9 +96,22 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
       <div className="grid h-screen">
         <div className="md:col-3 bg-clr">
           <Menu model={items} />
+          
+
         </div>
-        <div className="md:col-9 flex flex-col">
+        <div className="md:col-9">
+        <Sidebar
+          visible={sidebarVisible}
+          onHide={() => setSidebarVisible(false)}
+          className="md:w-1/4"
+        >
+          <Menu model={items} />
+        </Sidebar>
+        <FNButton icon="pi pi-arrow-right" onClick={() => setSidebarVisible(true)} label={""} />
+          <div className=" flex flex-col">
           <PersonalInformation onNext={() => { /* handle next step */ }} />
+
+          </div>
         </div>
       </div>
     </Dialog>

@@ -41,6 +41,17 @@
   /* border-radius: 10px; */
 }
 
-/* .p-menuitem-link {
-  transition: background-color none;
-} */
+
+.p-menuitem-link:active {
+  background-color: rgb(0, 130, 159) !important;
+  color: white !important;
+  /* border-radius: 10px; */
+}
+.p-sidebar-content
+{
+  background: #0c1e35;
+}
+.p-sidebar-header
+{
+  display: none;
+}
