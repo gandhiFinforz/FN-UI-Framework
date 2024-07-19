@@ -6,6 +6,7 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "./FNCustomDialog.css";
 import { Menu } from "primereact/menu";
+import PersonalInformation from "../../../../pages/PersonalInformation/personalInformation";
 
 export interface FNCustomDialogProps extends Omit<DialogProps, "visible" | "onHide"> {
   visible: boolean;
@@ -76,14 +77,14 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
       visible={visible}
       onHide={onHide}
       {...restProps}
+      className={className}
     >
-      <div className="grid">
-        <div className="md:col-3 bg-clr h-screen">
+      <div className="grid h-screen">
+        <div className="md:col-3 bg-clr">
           <Menu model={items} />
         </div>
-        <div className="md:col-9">
-          <h2>Personal Information Add</h2>
-          
+        <div className="md:col-9 flex flex-col">
+          <PersonalInformation onNext={() => { /* handle next step */ }} />
         </div>
       </div>
     </Dialog>
