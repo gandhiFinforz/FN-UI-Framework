@@ -5,10 +5,10 @@
   --text-color: #000; /* Default text color */
   --primary-text-color: #f0f0f0; /* Primary text color */
   
-  --menu-blue: #0c1e35; /* Menu background color */
-  --selector-blue: #6870fa; /* Selector color */
+  --blue: #0c1e35; /* Menu background color */
+  --primary-blue: #185ad4; /* Selector color */
   
-  --primary-yellow: #fbc02d; /* Primary yellow color */
+  --yellow: rgb(215 154 0); /* Primary yellow color */
 }
 
 /* Usage examples */
@@ -22,4 +22,4 @@ body {
 */
 
 /* Inline style example */
-/* <div style={{ backgroundColor: 'var(--menu-blue)', color: 'var(--text-color)' }}></div> */
+/* <div style={{ backgroundColor: 'var(--blue)', color: 'var(--text-color)' }}></div> */
