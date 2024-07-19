@@ -45,6 +45,8 @@ import RequestOTP from "./pages/OwnerLogin/RequestOTP/RequestOTP";
 import VerifyOTP from "./pages/OwnerLogin/VerifyOTP/VerifyOTP";
 import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
 import Dashboard from "./pages/Dashboard";
+// common theme
+import './theme/variables.css'
 setupIonicReact();
 const App: React.FC = () => {
   const { t } = useTranslation();
