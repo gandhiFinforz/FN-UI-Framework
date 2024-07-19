@@ -1,4 +1,37 @@
-.column-with-border {
-    border-right: 1px solid #d3d3d3; /* Adjust the color and width of the border as needed */
-    padding-right: 1rem; /* Optional: Add padding for better spacing */
-  }
+.p-datatable-table {
+  border-spacing: 0px 10px !important;
+  border-radius: 5;
+}
+.border
+{
+  border-right: 1px solid #dddd ;
+  line-height: 1.5
+}
+/* Add border radius to the first and last cells of each row */
+ .p-datatable-tbody > tr > td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.p-datatable-tbody > tr > td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: none;
+}
+
+.p-datatable-tbody > tr{
+  background: none;
+}
+.p-datatable-tbody > tr >td{
+  background: white;
+}
+.p-datatable-thead > tr > th {
+  background-color: transparent !important; /* Remove the background color */
+  border: none;
+}
+
+.p-datatable-header
+{
+  background-color: transparent !important; /* Remove the background color */
+  border: none;
+}

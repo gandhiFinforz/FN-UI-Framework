@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { DataTable, DataTableProps } from "primereact/datatable";
+import { Column } from "primereact/column";
 import { useTranslation } from "react-i18next";
 import { InputText } from "primereact/inputtext";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
-import FNCard from "../../Panel/FNCard/FNCard";
 import "./FNDataTable.css";
 export interface FNDataTableProps {
   alwaysShowPaginator?: boolean;
@@ -38,7 +39,7 @@ export interface FNDataTableProps {
   search?: boolean;
 }
 
-const FNDataTable: React.FC<FNDataTableProps> = ({
+function FNDataTable({
   alwaysShowPaginator = true,
   breakpoint = "960px",
   cellSelection = false,
@@ -50,7 +51,7 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
   compareSelectionBy = "deepEquals",
   contextMenuSelection = null,
   currentPageReportTemplate = "({currentPage} of {totalPages})",
-  dataKey = "id",
+  dataKey = "",
   dragSelection = false,
   editingRows = null,
   editMode = "cell",
@@ -69,13 +70,13 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
   header = null,
   filter = false,
   search = false,
-}) => {
+}) {
   const { t } = useTranslation();
   const [globalFilter, setGlobalFilter] = useState<string>("");
 
   const renderHeader = () => {
     return (
-      <div className="flex justify-content-end mb-3">
+      <div className="flex justify-content-start bg-none border-none">
         <IconField iconPosition="left">
           <InputIcon className="pi pi-search" />
           <InputText
@@ -88,33 +89,47 @@ const FNDataTable: React.FC<FNDataTableProps> = ({
     );
   };
 
-  const calculateColumnClass = (numColumns: number) => {
-    const colWidth = Math.floor(12 / numColumns);
-    return `col-12 md:col-${colWidth}`;
-  };
-
   return (
-    <>
-      {search && renderHeader()}
-      {value && value.length > 0 ? (
-        value.map((rowData) => (
-          <FNCard key={rowData[dataKey]} className="mb-3 card-with-line">
-            <div className="grid">
-              {dynamicColumns.map((col,index) => (
-                <div key={col.field} className={`${calculateColumnClass(dynamicColumns.length)} ${
-                  index < dynamicColumns.length - 1 ? "column-with-border" : ""
-                }`}>
-                  <strong>{rowData[col.field]}</strong> 
-                </div>
-              ))}
-            </div>
-          </FNCard>
-        ))
-      ) : (
-        <div>{t(emptyMessage)}</div>
-      )}
-    </>
+    <DataTable
+      value={value}
+      paginator={alwaysShowPaginator}
+      breakpoint={breakpoint}
+      cellSelection={cellSelection}
+      checkIcon={checkIcon}
+      className={className}
+      collapsedRowIcon={collapsedRowIcon}
+      columnResizeMode={columnResizeMode}
+      compareSelectionBy={compareSelectionBy}
+      contextMenuSelection={contextMenuSelection}
+      currentPageReportTemplate={currentPageReportTemplate}
+      dataKey={dataKey}
+      dragSelection={dragSelection}
+      editingRows={editingRows}
+      editMode={editMode}
+      emptyMessage={t(emptyMessage)}
+      expandableRowGroups={expandableRowGroups}
+      expandedRowIcon={expandedRowIcon}
+      expandedRows={expandedRows}
+      exportFilename={exportFilename}
+      filterClearIcon={filterClearIcon}
+      filterDelay={filterDelay}
+      rows={rows}
+      globalFilter={globalFilter}
+      globalFilterFields={globalFilterFields}
+      header={search ? renderHeader() : null}
+    >
+      {dynamicColumns.map((col: any) => (
+      <Column className="border"
+          sortable={sortable}
+          key={col.field}
+          field={col.field}
+          header={t(col.header)}
+          filter={filter}
+          filterPlaceholder={`Search ${t(col.header).toLowerCase()}`} />
+      ))}
+      {children}
+    </DataTable>
   );
-};
+}
 
 export default FNDataTable;

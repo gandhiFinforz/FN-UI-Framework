@@ -1,0 +1,46 @@
+.p-dialog .p-dialog-header {
+  display: none;
+}
+.p-dialog .p-dialog-content
+{
+  padding: 0;
+}
+.p-menu
+{
+  border: none;
+  background: none;
+  width: 100%;
+}
+.p-menu .p-menuitem > .p-menuitem-content > a >span
+{
+  color: #ffffff;
+}
+.bg-clr
+{
+  background: #0c1e35;
+}
+.p-menu ul
+{
+  color: #ffffff;
+  padding: 10px;
+  background: none;
+
+}
+.icon-bg
+{
+  font-size: 32px;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+
+.p-menuitem-link:hover {
+  background-color: rgb(0, 130, 159) !important;
+  color: white !important;
+  /* border-radius: 10px; */
+}
+
+/* .p-menuitem-link {
+  transition: background-color none;
+} */

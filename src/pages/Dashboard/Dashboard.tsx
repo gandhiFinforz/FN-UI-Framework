@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "primeflex/primeflex.css";
 import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import UserTable from "../DataTable/UserTable";
+import NewUserDialog from "../../components/UIComponents/Panel/FNCustomDialog/FNCustomDialog";
+import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
+import FNCustomDialog from "../../components/UIComponents/Panel/FNCustomDialog/FNCustomDialog";
 
 const Dashboard: React.FC = () => {
+  const [visible, setVisible] = useState(false);
 
+  const openDialog = () => {
+    setVisible(true);
+  };
+
+  const closeDialog = () => {
+    setVisible(false);
+  };
   return (
     <>
       <div className="grid mb-4">
@@ -74,6 +85,8 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+      <FNButton label={"open Dialog"} onClick={() => openDialog()}></FNButton>
+      <FNCustomDialog visible={visible} onHide={closeDialog} />
       <UserTable/>
     </>
   );
