@@ -4,6 +4,7 @@
 .p-dialog .p-dialog-content
 {
   padding: 0;
+  overflow: hidden;
 }
 .p-menu
 {
@@ -54,4 +55,29 @@
 .p-sidebar-header
 {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .p-dialog-mask
+{
+  display: block !important;
+  width: 100%;
+  height: 100%;
+}
+
+}
+
+.p-dialog
+{
+  width: 80%;
+  height: 80%;
+}
+@media only screen and (max-width: 600px) {
+
+.p-dialog
+{
+  width: 100%;
+  height: 100%;
+  max-height: fit-content;
+}
 }

@@ -87,14 +87,13 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
   const [sidebarVisible, setSidebarVisible] = useState(true);
   return (
     <Dialog
-      style={{ width: '80%', height: '80%' }}
       visible={visible}
       onHide={onHide}
       {...restProps}
-      className={className}
+      className=""
     >
       <div className="grid h-screen">
-        <div className="md:col-3 bg-clr">
+        <div className="md:col-3 bg-clr md:block hidden">
           <Menu model={items} />
           
 
@@ -107,7 +106,7 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
         >
           <Menu model={items} />
         </Sidebar>
-        <FNButton icon="pi pi-arrow-right" onClick={() => setSidebarVisible(true)} label={""} />
+        <FNButton className="md:hidden p-2" icon="pi pi-fw pi-bars layout-menuitem-icon" onClick={() => setSidebarVisible(true)} label={""} />
           <div className=" flex flex-col">
           <PersonalInformation onNext={() => { /* handle next step */ }} />
 
