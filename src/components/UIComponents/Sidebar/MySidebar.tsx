@@ -140,7 +140,7 @@ const MySidebar: React.FC = () => {
             top: "80px",
             fontSize: "var(--icon-size)",
             background: "var(--sidebar-toggle-icon-color)",
-            left: "210px",
+            left: "208px",
             borderRadius: "50%",
             cursor: "pointer",
             position: "absolute",
@@ -205,7 +205,7 @@ const MySidebar: React.FC = () => {
         <ul className="nav-links">
           {menuItems.map((item, index) => (
             <li key={index} className={`parent-li ${activeItem === item.title ? "active" : ""}`}
-            onClick={() => handleItemClick(item.title)}>
+            onClick={() => handleItemClick(item.title)} style={{ marginBottom: item.title === "Reports" ? "20px" : "0" }}>
               {item.subItems ? (
                 <div
                   className="iocn-link"
