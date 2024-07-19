@@ -1,0 +1,25 @@
+:root {
+  --bg-color: #f0f0f0; /* Default background color */
+  --primary-bg-color: #f1f5f9; /* Primary background color */
+  
+  --text-color: #000; /* Default text color */
+  --primary-text-color: #f0f0f0; /* Primary text color */
+  
+  --blue: #0c1e35; /* Menu background color */
+  --primary-blue: #rgb(0, 130, 159); /* Selector color */
+  
+  --yellow: rgb(215 154 0); /* Primary yellow color */
+}
+
+/* Usage examples */
+
+/* Applying background color and text color to the body */
+/*
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+*/
+
+/* Inline style example */
+/* <div style={{ backgroundColor: 'var(--blue)', color: 'var(--text-color)' }}></div> */

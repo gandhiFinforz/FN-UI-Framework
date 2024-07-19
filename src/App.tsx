@@ -41,7 +41,10 @@ import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
-
+import RequestOTP from "./pages/OwnerLogin/RequestOTP/RequestOTP";
+import VerifyOTP from "./pages/OwnerLogin/VerifyOTP/VerifyOTP";
+import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
+import Dashboard from "./pages/Dashboard";
 setupIonicReact();
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -66,27 +69,33 @@ const App: React.FC = () => {
             {/* Routes that should include the header and footer */}
             <Route element={<Layout />}>
               {filteredRouteData.map((m, i) => {
-                return <Route
-                key={`route-index-${i}`}
-                  path={m.url}
-                  element={
-                    <ProtectedRoute
-                      component={m.component ? m.component : ErrorPage}
-                      title={m.label}
-                      breadcrumb={m.breadcrumb}
-                      access={m.access}
-                    />
-                  }
-                />
+                return (
+                  <Route
+                    key={`route-index-${i}`}
+                    path={m.url}
+                    element={
+                      <ProtectedRoute
+                        component={m.component ? m.component : ErrorPage}
+                        title={m.label}
+                        breadcrumb={m.breadcrumb}
+                        access={m.access}
+                      />
+                    }
+                  />
+                );
               })}
             </Route>
+            {/* <Route path="/" element={<RequestOTP />} /> */}
             <Route path="/" element={<Login />} />
-
             <Route path="*" element={<ErrorPage />} />
+            <Route path="/owner-login" element={<OwnerLoginLayout />}>
+            <Route path="request-otp" element={<RequestOTP />} />
+            <Route path="verify-otp" element={<VerifyOTP />} />
+            </Route>
           </Routes>
         </Router>
       </IonApp>
-     
+
       <ToastService />
     </Suspense>
   );
