@@ -22,8 +22,8 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import "./style.css";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import "./Style.css";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 // Define menu configuration
 const menuItems = [
   {
@@ -126,7 +126,7 @@ const MySidebar: React.FC = () => {
 
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const handleItemClick = (title: string) => {
-    console.log(title)
+    console.log(title);
     setActiveItem(title);
   };
 
@@ -191,8 +191,9 @@ const MySidebar: React.FC = () => {
               textAlign: "center",
               justifyContent: "center",
               color: "#fff",
-              backgroundColor:" rgb(215 154 0)",
-              padding: "6px", borderRadius:'3px',
+              backgroundColor: " rgb(215 154 0)",
+              padding: "6px",
+              borderRadius: "3px",
               border: "none",
               fontWeight: 600,
             }}
@@ -204,8 +205,12 @@ const MySidebar: React.FC = () => {
 
         <ul className="nav-links">
           {menuItems.map((item, index) => (
-            <li key={index} className={`parent-li ${activeItem === item.title ? "active" : ""}`}
-            onClick={() => handleItemClick(item.title)} style={{ marginBottom: item.title === "Reports" ? "20px" : "0" }}>
+            <li
+              key={index}
+              className={`parent-li ${activeItem === item.title ? "active" : ""}`}
+              onClick={() => handleItemClick(item.title)}
+              style={{ marginBottom: item.title === "Reports" ? "20px" : "0" }}
+            >
               {item.subItems ? (
                 <div
                   className="iocn-link"
@@ -217,9 +222,15 @@ const MySidebar: React.FC = () => {
                   </a>
                   <IconButton className="link-btn">
                     {currentMenu === item.title ? (
-                      <KeyboardArrowDownIcon className="iconSVG" style={{fontSize: '16px'}} />
+                      <KeyboardArrowDownIcon
+                        className="iconSVG"
+                        style={{ fontSize: "16px" }}
+                      />
                     ) : (
-                      <KeyboardArrowRightIcon className="iconSVG" style={{fontSize: '16px'}} />
+                      <KeyboardArrowRightIcon
+                        className="iconSVG"
+                        style={{ fontSize: "16px" }}
+                      />
                     )}
                   </IconButton>
                 </div>
