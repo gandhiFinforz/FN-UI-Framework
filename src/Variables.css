@@ -6,7 +6,7 @@
   --primary-text-color: #f0f0f0; /* Primary text color */
   
   --blue: #0c1e35; /* Menu background color */
-  --primary-blue: #185ad4; /* Selector color */
+  --primary-blue: #rgb(0, 130, 159); /* Selector color */
   
   --yellow: rgb(215 154 0); /* Primary yellow color */
 }
