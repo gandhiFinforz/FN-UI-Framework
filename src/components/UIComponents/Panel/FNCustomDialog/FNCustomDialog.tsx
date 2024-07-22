@@ -13,6 +13,7 @@ import { t } from "i18next";
 import ContactInformation from "../../../../pages/ContactInformation/contactInformation";
 import { IonCol, IonRow } from "@ionic/react";
 import { MenuItem } from "primereact/menuitem";
+import Address from "../../../../pages/Address/address";
 
 export interface FNCustomDialogProps
   extends Omit<DialogProps, "visible" | "onHide"> {
@@ -85,6 +86,14 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
       case "Contact Information":
         return (
           <ContactInformation
+            onNext={() => {
+              /* handle next step */
+            }}
+          />
+        );
+        case "Address":
+        return (
+          <Address
             onNext={() => {
               /* handle next step */
             }}

@@ -60,7 +60,7 @@ const FNInput: FC<FNInputProps> = ({
     const { t } = useTranslation();
     return (
         <div className={label ? 'flex flex-column gap-1 ' : ''}>
-            {label ? <label className='mt-2'>{t(label)}</label> :''}
+            {label ? <label>{t(label)}</label> :''}
             <InputText
                 type={type}
                 className={ `${className} p-inputtext-${size}`}

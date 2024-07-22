@@ -159,7 +159,7 @@ const FNAutoComplete: FC<FNAutoCompleteProps> = ({
 
   return (
     <div className={label ? 'flex flex-column gap-1 ' : ''}>
-      {label ? <label className='mt-2'>{t(label)}</label> : ''}
+      {label ? <label>{t(label)}</label> : ''}
       <AutoComplete
         {...props}
         appendTo={appendTo}

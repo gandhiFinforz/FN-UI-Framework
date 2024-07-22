@@ -29,6 +29,24 @@
   "fileUpload": {
     "label": "Drag and drop files to here to upload."
   },
+  "address": {
+    "placeHolder": {
+      "street1": "Enter Street 1",
+      "street2": "Enter Street 2",
+      "city": "Enter City",
+      "state": "Enter State",
+      "country": "Select Country",
+      "pinCode": "Enter Pin Code"
+    },
+    "validation": {
+      "street1Required": "Street 1 is required",
+      "street2Required": "Street 2 is required",
+      "cityRequired": "City is required",
+      "stateRequired": "State is required",
+      "countryRequired": "Country is required",
+      "pinCodeRequired": "Pin Code is required"
+    }
+  },
   "personalInformation": {
     "title": "Personal Information",
     "placeHolder": {
@@ -63,6 +81,7 @@
       "invalidPincode": "Invalid pincode",
       "userTypeRequired": "User type is required"
     },
+    
     "msg": {
       "success": "Personal Details Added Successfully!"
     }

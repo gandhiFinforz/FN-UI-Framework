@@ -118,90 +118,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
         </IonCol>
         </IonRow>
         <IonRow>
-        < IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="firstName"
-            label="First Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.firstName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.firstName &&
-              !!personalInfoFormik.errors.firstName
-            }
-            helpText={
-              personalInfoFormik.touched.firstName &&
-              personalInfoFormik.errors.firstName
-            }
-            placeholder={t("personalInformation.placeHolder.firstName")}
-          />
-        </IonCol>
         <IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="lastName"
-            label="Last Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.lastName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.lastName &&
-              !!personalInfoFormik.errors.lastName
-            }
-            helpText={
-              personalInfoFormik.touched.lastName &&
-              personalInfoFormik.errors.lastName
-            }
-            placeholder={t("personalInformation.placeHolder.lastName")}
-          />
-        </IonCol>
-        </IonRow> <IonRow>
-        < IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="firstName"
-            label="First Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.firstName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.firstName &&
-              !!personalInfoFormik.errors.firstName
-            }
-            helpText={
-              personalInfoFormik.touched.firstName &&
-              personalInfoFormik.errors.firstName
-            }
-            placeholder={t("personalInformation.placeHolder.firstName")}
-          />
-        </IonCol>
-        <IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="lastName"
-            label="Last Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.lastName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.lastName &&
-              !!personalInfoFormik.errors.lastName
-            }
-            helpText={
-              personalInfoFormik.touched.lastName &&
-              personalInfoFormik.errors.lastName
-            }
-            placeholder={t("personalInformation.placeHolder.lastName")}
-          />
-        </IonCol>
-        </IonRow>
-{/*         
-        <div className="col-12 md:col-6">
           <FNInput
             type="text"
             name="company"
@@ -220,8 +137,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.company")}
           />
-        </div>
-        <div className="col-12 md:col-6">
+        </IonCol>
+        <IonCol className="col-12 md:col-6">
           <FNInput
             type="text"
             name="jobTitle"
@@ -240,8 +157,10 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.jobTitle")}
           />
-        </div>
-        <div className="col-12 md:col-6">
+        </IonCol>
+</IonRow>
+<IonRow>
+        <IonCol className="col-12 md:col-6">
           <FNInput
             type="text"
             name="email"
@@ -259,8 +178,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.email")}
           />
-        </div>
-        <div className="col-12 md:col-6">
+        </IonCol>
+        <IonCol className="col-12 md:col-6">
           <FNAutoComplete
             label="User Type"
             suggestions={userTypeOptions}
@@ -281,8 +200,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.userType")}
           />
-        </div> */}
-        
+        </IonCol>
+        </IonRow>
         <div className="mt-5 col-12 btn-b">
           <div className="flex justify-content-end">
             <FNButton
