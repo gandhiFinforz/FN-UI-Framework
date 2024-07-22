@@ -131,73 +131,24 @@ const MySidebar: React.FC = () => {
 
   return (
     <div>
-      {isSidebarOpen && (
-        <KeyboardArrowLeftIcon
-          onClick={toggleSidebar}
-          style={{
-            zIndex: 9999,
-            top: "80px",
-            fontSize: "var(--icon-size)",
-            background: "var(--sidebar-toggle-icon-color)",
-            left: "208px",
-            borderRadius: "50%",
-            cursor: "pointer",
-            position: "absolute",
-          }}
-        />
-      )}
-
-      {!isSidebarOpen && (
+      {isSidebarOpen ? (
+        <KeyboardArrowLeftIcon onClick={toggleSidebar} className="arrow-left" />
+      ) : (
         <KeyboardArrowRightIcon
           onClick={toggleSidebar}
-          style={{
-            zIndex: 9999,
-            top: "80px",
-            fontSize: "var(--icon-size)",
-            background: "var(--sidebar-toggle-icon-color)",
-            left: "68px",
-            borderRadius: "50%",
-            cursor: "pointer",
-            position: "absolute",
-          }}
+          className="arrow-right"
         />
       )}
 
       <div className={`sidebar ${isSidebarOpen ? "open" : "close"}`}>
         {!isSidebarOpen && (
-          <button
-            style={{
-              margin: "30px 7% 20px 7%",
-              width: "86%",
-              color: "var(--sidebar-button-text-color)",
-              backgroundColor: "var(--yellow-color)",
-              padding: "var(--button-padding)",
-              borderRadius: "var(--button-border-radius)",
-              border: "none",
-              fontWeight: "var(--button-font-weight)",
-            }}
-          >
-            <AddIcon style={{ fontSize: "28px" }} />
+          <button className="button-collapsed">
+            <AddIcon className="add-icon" />
           </button>
         )}
         {isSidebarOpen && (
-          <button
-            style={{
-              display: "flex",
-              margin: "30px 5% 20px 5%",
-              alignItems: "center",
-              width: "90%",
-              textAlign: "center",
-              justifyContent: "center",
-              color: "#fff",
-              backgroundColor: " rgb(215 154 0)",
-              padding: "6px",
-              borderRadius: "3px",
-              border: "none",
-              fontWeight: 600,
-            }}
-          >
-            <AddIcon style={{ marginRight: "8px" }} />
+          <button className="button-expanded">
+            <AddIcon className="create-new-icon" />
             Create New
           </button>
         )}
