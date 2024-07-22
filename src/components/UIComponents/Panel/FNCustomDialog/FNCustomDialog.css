@@ -4,7 +4,7 @@
 .p-dialog .p-dialog-content
 {
   padding: 0;
-  overflow: hidden;
+  border-radius: 8px;
 }
 .p-menu
 {
@@ -15,6 +15,7 @@
 .p-menu .p-menuitem > .p-menuitem-content > a >span
 {
   color: #ffffff;
+  font-weight: 600;
 }
 .bg-clr
 {
@@ -23,7 +24,7 @@
 .p-menu ul
 {
   color: #ffffff;
-  padding: 10px;
+  /* padding: 10px; */
   background: none;
 
 }
@@ -31,7 +32,7 @@
 {
   font-size: 32px;
   border: 1px solid white;
-  padding: 5px;
+  padding: 4px;
   border-radius: 10px;
 }
 
@@ -69,8 +70,9 @@
 
 .p-dialog
 {
-  width: 80%;
-  height: 80%;
+  width: 55%;
+  height: 100%;
+  border-radius: 8px;
 }
 @media only screen and (max-width: 600px) {
 
@@ -80,4 +82,20 @@
   height: 100%;
   max-height: fit-content;
 }
+}
+.p-header{
+  font-size: 20px;
+  font-weight: 600;
+}
+.p-menu-separator
+{
+  opacity: 0.3;
+  margin-top: 10px;
+}
+.close-icon
+{
+  background: #2196f3;
+  border-radius: 20px;
+  color: white;
+  font-size: 25px;
 }

@@ -7,64 +7,18 @@ import "primeflex/primeflex.css";
 import "./FNCustomDialog.css";
 import { Menu } from "primereact/menu";
 import PersonalInformation from "../../../../pages/PersonalInformation/personalInformation";
-import SideBar from "../../../../pages/Layout/SideBar/SideBar";
 import { Sidebar } from "primereact/sidebar";
 import FNButton from "../../Form/FNButton/FNButton";
+import { t } from "i18next";
+import ContactInformation from "../../../../pages/ContactInformation/contactInformation";
+import { IonCol, IonRow } from "@ionic/react";
 
-export interface FNCustomDialogProps extends Omit<DialogProps, "visible" | "onHide"> {
+export interface FNCustomDialogProps
+  extends Omit<DialogProps, "visible" | "onHide"> {
   visible: boolean;
   onHide: () => void;
   className?: string;
 }
-
-const defaultTabs = [
-  {
-    header: "Tab 1",
-    content: <p>Content for Tab 1</p>,
-  },
-  {
-    header: "Tab 2",
-    content: <p>Content for Tab 2</p>,
-  },
-  {
-    header: "Tab 3",
-    content: <p>Content for Tab 3</p>,
-  },
-];
-
-const items = [
-  {
-    template: () => {
-      return (
-        <span className="inline-flex align-items-center gap-1 px-2 py-2">
-          <i className="pi pi-user-plus mr-2 icon-bg"></i>
-          <span className="font-medium text-xl font-semibold">
-            New User
-          </span>
-        </span>
-      );
-    }
-  },
-  {
-    separator: true
-  },
-  {
-    label: 'Personal Info',
-    icon: 'pi pi-palette',
-  },
-  {
-    label: 'Contact Info',
-    icon: 'pi pi-link',
-  },
-  {
-    label: 'Address',
-    icon: 'pi pi-home',
-  },
-  {
-    label: 'Bank Account',
-    icon: 'pi pi-home',
-  },
-];
 
 const FNCustomDialog: FC<FNCustomDialogProps> = ({
   visible,
@@ -72,47 +26,113 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
   className,
   ...restProps
 }) => {
-  const sidebarContent = (
-    <div className="p-4">
-      <ul className="list-none p-0">
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center py-2">
-            <i className={`pi ${item.icon} mr-2`} />
-            <span>{item.label}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [currentPage, setCurrentPage] = useState("Personal Information"); // State variable for current page
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+
+  const items = [
+    {
+      template: () => {
+        return (
+          <span className="inline-flex align-items-center gap-1">
+            <i className="pi pi-user-plus mr-2 icon-bg"></i>
+            <span className="font-medium text-xl font-semibold">New User</span>
+          </span>
+        );
+      },
+    },
+    {
+      separator: true,
+    },
+    {
+      label: "Personal Info",
+      icon: "pi pi-palette",
+      command: () => setCurrentPage("Personal Information"), // Set the page to Personal Info
+    },
+    {
+      label: "Contact Info",
+      icon: "pi pi-link",
+      command: () => setCurrentPage("Contact Information"), // Set the page to Contact Info
+    },
+    {
+      label: "Address",
+      icon: "pi pi-home",
+      command: () => setCurrentPage("Address"), // Set the page to Contact Info
+    },
+    {
+      label: "Bank Account",
+      icon: "pi pi-home",
+    },
+  ];
+
+  // Function to render the content based on the current page
+  const renderContent = () => {
+    switch (currentPage) {
+      case "Personal Information":
+        return (
+          <PersonalInformation
+            onNext={() => {
+              /* handle next step */
+            }}
+          />
+        );
+      case "Contact Information":
+        return (
+          <ContactInformation
+            onNext={() => {
+              /* handle next step */
+            }}
+          />
+        );
+      default:
+        return (
+          <PersonalInformation
+            onNext={() => {
+              /* handle next step */
+            }}
+          />
+        );
+    }
+  };
+
   return (
     <Dialog
       visible={visible}
       onHide={onHide}
       {...restProps}
-      className=""
+      className={className}
     >
-      <div className="grid h-screen">
-        <div className="md:col-3 bg-clr md:block hidden">
+      <IonRow className="h-full">
+        <IonCol className="md:col-3 bg-clr h-full md:block hidden">
           <Menu model={items} />
-          
-
-        </div>
-        <div className="md:col-9">
-        <Sidebar
-          visible={sidebarVisible}
-          onHide={() => setSidebarVisible(false)}
-          className="md:w-1/4"
-        >
-          <Menu model={items} />
-        </Sidebar>
-        <FNButton className="md:hidden p-2" icon="pi pi-fw pi-bars layout-menuitem-icon" onClick={() => setSidebarVisible(true)} label={""} />
-          <div className=" flex flex-col">
-          <PersonalInformation onNext={() => { /* handle next step */ }} />
-
+        </IonCol>
+        <IonCol className="md:col-9">
+          <Sidebar
+            visible={sidebarVisible}
+            onHide={() => setSidebarVisible(false)}
+            className="md:w-1/4"
+          >
+            <Menu model={items} />
+          </Sidebar>
+          <div className="flex items-center justify-content-between">
+            <FNButton
+              className="md:hidden p-2"
+              icon="pi pi-fw pi-bars layout-menuitem-icon"
+              onClick={() => setSidebarVisible(true)}
+              label=""
+            />
+            <div className="p-2">
+              <span className="p-header">{currentPage}</span>
+            </div>
+            <div className="mt-2">
+              <i
+                className="pi pi-times-circle close-icon cursor-pointer"
+                onClick={onHide}
+              ></i>
+            </div>
           </div>
-        </div>
-      </div>
+          {renderContent()}
+        </IonCol>
+      </IonRow>
     </Dialog>
   );
 };

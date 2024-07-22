@@ -11,7 +11,7 @@ import { addToast } from "../../store/toastSlice";
 import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
 import FNTextArea from "../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
-import { IonRow ,IonCol} from "@ionic/react";
+
 interface PersonalInfoFormValues {
   firstName: string;
   lastName: string;
@@ -32,7 +32,7 @@ const userTypeOptions = [
   { label: "Tenant", value: "Tenant" },
 ];
 
-const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
+const ContactInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -70,13 +70,13 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
   const alphabetRegexPattern = /^[a-zA-Z\s]*$/;
 
   return (
-    
+    <div className="pl-6 pr-6 mt-2">
+      {/* <h3 className="text-center">{t("personalInformation.title")}</h3> */}
       <form
         onSubmit={personalInfoFormik.handleSubmit}
-        
+        className="grid"
       >
-        <IonRow>
-        < IonCol className="col-12 md:col-6">
+        <div className="mb-1 col-12 md:col-6">
           <FNInput
             type="text"
             name="firstName"
@@ -95,8 +95,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.firstName")}
           />
-        </IonCol>
-        <IonCol className="col-12 md:col-6">
+        </div>
+        <div className="mb-1 col-12 md:col-6">
           <FNInput
             type="text"
             name="lastName"
@@ -115,93 +115,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.lastName")}
           />
-        </IonCol>
-        </IonRow>
-        <IonRow>
-        < IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="firstName"
-            label="First Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.firstName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.firstName &&
-              !!personalInfoFormik.errors.firstName
-            }
-            helpText={
-              personalInfoFormik.touched.firstName &&
-              personalInfoFormik.errors.firstName
-            }
-            placeholder={t("personalInformation.placeHolder.firstName")}
-          />
-        </IonCol>
-        <IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="lastName"
-            label="Last Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.lastName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.lastName &&
-              !!personalInfoFormik.errors.lastName
-            }
-            helpText={
-              personalInfoFormik.touched.lastName &&
-              personalInfoFormik.errors.lastName
-            }
-            placeholder={t("personalInformation.placeHolder.lastName")}
-          />
-        </IonCol>
-        </IonRow> <IonRow>
-        < IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="firstName"
-            label="First Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.firstName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.firstName &&
-              !!personalInfoFormik.errors.firstName
-            }
-            helpText={
-              personalInfoFormik.touched.firstName &&
-              personalInfoFormik.errors.firstName
-            }
-            placeholder={t("personalInformation.placeHolder.firstName")}
-          />
-        </IonCol>
-        <IonCol className="col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="lastName"
-            label="Last Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.lastName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.lastName &&
-              !!personalInfoFormik.errors.lastName
-            }
-            helpText={
-              personalInfoFormik.touched.lastName &&
-              personalInfoFormik.errors.lastName
-            }
-            placeholder={t("personalInformation.placeHolder.lastName")}
-          />
-        </IonCol>
-        </IonRow>
-{/*         
-        <div className="col-12 md:col-6">
+        </div>
+        <div className="mb-1 col-12 md:col-6">
           <FNInput
             type="text"
             name="company"
@@ -221,7 +136,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             placeholder={t("personalInformation.placeHolder.company")}
           />
         </div>
-        <div className="col-12 md:col-6">
+        <div className="mb-1 col-12 md:col-6">
           <FNInput
             type="text"
             name="jobTitle"
@@ -241,7 +156,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             placeholder={t("personalInformation.placeHolder.jobTitle")}
           />
         </div>
-        <div className="col-12 md:col-6">
+        <div className="mb-1 col-12 md:col-6">
           <FNInput
             type="text"
             name="email"
@@ -260,7 +175,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             placeholder={t("personalInformation.placeHolder.email")}
           />
         </div>
-        <div className="col-12 md:col-6">
+        <div className="mb-1 col-12 md:col-6">
           <FNAutoComplete
             label="User Type"
             suggestions={userTypeOptions}
@@ -281,9 +196,9 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
             }
             placeholder={t("personalInformation.placeHolder.userType")}
           />
-        </div> */}
+        </div>
         
-        <div className="mt-5 col-12 btn-b">
+        <div className="mt-5 col-12">
           <div className="flex justify-content-end">
             <FNButton
               label="Cancel"
@@ -300,7 +215,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
           </div>
         </div>
       </form>
+    </div>
   );
 };
 
-export default PersonalInformation;
+export default ContactInformation;
