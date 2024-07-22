@@ -3,9 +3,7 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
-import FNCard from '../../UIComponents/Panel/FNCard/FNCard';
 import FNInput from '../../UIComponents/Form/FNInput/FNInput';
-import FNButton from '../../UIComponents/Form/FNButton/FNButton';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import useDebounce from './useDebounce'; // Import debounce hook
@@ -56,7 +54,7 @@ const FNTopbarSearch: React.FC<SidebarProps> = ({ items }) => {
                 <div className=" global-search-bar">
                     <form onSubmit={searchFormik.handleSubmit} className="grid">
                         <div className="p-col-fixed">
-                            <div className="">
+                            <div className="mx-4">
                                 <FNInput
                                     type="text"
                                     name="search"
@@ -66,6 +64,7 @@ const FNTopbarSearch: React.FC<SidebarProps> = ({ items }) => {
                                     placeholder="Search"
                                     onChange={handleSearchChange}
                                 />
+                                
                             </div>
                             <div>
                                 <ul>
