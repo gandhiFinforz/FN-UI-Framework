@@ -12,6 +12,7 @@ import FNButton from "../../Form/FNButton/FNButton";
 import { t } from "i18next";
 import ContactInformation from "../../../../pages/ContactInformation/contactInformation";
 import { IonCol, IonRow } from "@ionic/react";
+import { MenuItem } from "primereact/menuitem";
 
 export interface FNCustomDialogProps
   extends Omit<DialogProps, "visible" | "onHide"> {
@@ -29,41 +30,47 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
   const [currentPage, setCurrentPage] = useState("Personal Information"); // State variable for current page
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
-  const items = [
+  const items: MenuItem[] = [
     {
       template: () => {
         return (
           <span className="inline-flex align-items-center gap-1">
             <i className="pi pi-user-plus mr-2 icon-bg"></i>
-            <span className="font-medium text-xl font-semibold">New User</span>
+            <span className="font-medium text-xl font-semibold">
+              New User
+            </span>
           </span>
         );
-      },
+      }
     },
     {
-      separator: true,
+      separator: true
     },
     {
-      label: "Personal Info",
-      icon: "pi pi-palette",
-      command: () => setCurrentPage("Personal Information"), // Set the page to Personal Info
+      label: 'Personal Info',
+      icon: 'pi pi-palette',
+      command: () => setCurrentPage('Personal Information'),
+      className: currentPage === 'Personal Information' ? 'p-focus' : '' // Add active class if current page
     },
     {
-      label: "Contact Info",
-      icon: "pi pi-link",
-      command: () => setCurrentPage("Contact Information"), // Set the page to Contact Info
+      label: 'Contact Info',
+      icon: 'pi pi-link',
+      command: () => setCurrentPage('Contact Information'),
+      className: currentPage === 'Contact Information' ? 'p-focus' : '' // Add active class if current page
     },
     {
-      label: "Address",
-      icon: "pi pi-home",
-      command: () => setCurrentPage("Address"), // Set the page to Contact Info
+      label: 'Address',
+      icon: 'pi pi-home',
+      command: () => setCurrentPage('Address'),
+      className: currentPage === 'Address' ? 'p-focus' : '' // Add active class if current page
     },
     {
-      label: "Bank Account",
-      icon: "pi pi-home",
+      label: 'Bank Account',
+      icon: 'pi pi-home',
+      command: () => setCurrentPage('Bank Account'),
+      className: currentPage === 'Bank Account' ? 'p-focus' : '' // Add active class if current page
     },
   ];
-
   // Function to render the content based on the current page
   const renderContent = () => {
     switch (currentPage) {

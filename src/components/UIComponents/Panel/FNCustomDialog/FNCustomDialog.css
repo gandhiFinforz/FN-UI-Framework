@@ -9,7 +9,7 @@
 .p-menu
 {
   border: none;
-  background: none;
+  background: #0c1e35;
   width: 100%;
 }
 .p-menu .p-menuitem > .p-menuitem-content > a >span
@@ -24,7 +24,6 @@
 .p-menu ul
 {
   color: #ffffff;
-  /* padding: 10px; */
   background: none;
 
 }
@@ -40,14 +39,13 @@
 .p-menuitem-link:hover {
   background-color: rgb(0, 130, 159) !important;
   color: white !important;
-  /* border-radius: 10px; */
+  border-radius: 5px;
 }
 
 
 .p-menuitem-link:active {
   background-color: rgb(0, 130, 159) !important;
   color: white !important;
-  /* border-radius: 10px; */
 }
 .p-sidebar-content
 {
@@ -98,4 +96,17 @@
   border-radius: 20px;
   color: white;
   font-size: 25px;
+}
+/* .active-menu-item .p-menuitem-link {
+  background-color: rgb(0, 130, 159) !important;
+  color: white !important;
+} */
+.p-menu .p-menuitem:not(.p-highlight):not(.p-disabled).p-focus > .p-menuitem-content
+{
+  background-color: rgb(0, 130, 159) !important;
+  border-radius:5px;
+}
+.p-menu .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover
+{
+  background: none;
 }
