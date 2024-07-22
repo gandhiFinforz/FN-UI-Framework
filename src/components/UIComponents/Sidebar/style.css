@@ -24,6 +24,7 @@
 .sidebar .nav-links {
   height: 100%;
   padding: 0 !important;
+  margin: 0;
   overflow: auto;
 }
 .sidebar.close .nav-links {
