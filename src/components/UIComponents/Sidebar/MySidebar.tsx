@@ -167,7 +167,7 @@ const MySidebar: React.FC = () => {
               key={index}
               className={`parent-li ${activeItem === item.title ? "active" : ""}`}
               onClick={() => handleItemClick(item.title)}
-              style={{ marginBottom: item.title === "Reports" ? "20px" : "0" }}
+              style={{ marginBottom: item.title === "Reports" ? "25px" : "0" }}
             >
               {item.subItems ? (
                 <div
