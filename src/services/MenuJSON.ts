@@ -2,7 +2,7 @@ import { Badge } from "primereact/badge";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import UserTable from "../pages/DataTable/UserTable";
 import FormComponents from "../pages/Form/FormComponents";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export interface Breadcrumb {
   label?: string;
@@ -42,6 +42,14 @@ const menuJson: Menu[] = [
     breadcrumb: [{ label: "Dashboard", url: "/dashboard" }],
   },
   {
+    label: "Today Event",
+    icon: "pi pi-home",
+    url: "/today-event",
+    access: ["admin"],
+    component: Dashboard,
+    breadcrumb: [{ label: "Today Event", url: "/today-event" }],
+  },
+  {
     label: "Data",
     icon: "pi pi-database",
     access: ["admin"],
@@ -79,7 +87,7 @@ const menuJson: Menu[] = [
   },
   {
     separator: true,
-    access: ["admin"]
+    access: ["admin"],
   },
   {
     label: "Share",
@@ -123,7 +131,7 @@ function filterMenuByAccess(menu: Menu[], role: string): Menu[] {
 function filterRouteData(menu: Menu[], accessRole: string) {
   const result: Menu[] = [];
 
-  menu.forEach(item => {
+  menu.forEach((item) => {
     if (item.access && item.access.includes(accessRole)) {
       if (item.url && item.component && item.breadcrumb) {
         result.push(item);

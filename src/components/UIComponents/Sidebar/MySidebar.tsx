@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Box, IconButton, Typography } from "@mui/material";
-
 import {
   HomeOutlined as HomeOutlinedIcon,
   CalendarTodayOutlined as CalendarTodayOutlinedIcon,
@@ -22,92 +22,92 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import "./Style.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-// Define menu configuration
+import "./Style.css";
+
 const menuItems = [
   {
     title: "Overview",
     icon: <HomeOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/dashboard",
   },
   {
     title: "Calendar",
     icon: <CalendarTodayOutlinedIcon className="iconSVG" />,
     subItems: [
-      { title: "Today Event", link: "#" },
-      { title: "All Event", link: "#" },
+      { title: "Today Event", link: "/today-event" },
+      { title: "All Event", link: "/all-events" },
     ],
   },
   {
     title: "Rentals",
     icon: <ApartmentOutlinedIcon className="iconSVG" />,
     subItems: [
-      { title: "Posts", link: "#" },
-      { title: "Web Design", link: "#" },
-      { title: "Login Form", link: "#" },
-      { title: "Card Design", link: "#" },
+      { title: "Posts", link: "/posts" },
+      { title: "Web Design", link: "/web-design" },
+      { title: "Login Form", link: "/login-form" },
+      { title: "Card Design", link: "/card-design" },
     ],
   },
   {
     title: "Leasing",
     icon: <BusinessOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/leasing",
   },
   {
     title: "Peoples",
     icon: <PeopleOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/peoples",
   },
   {
     title: "Tasks & Maintenance",
     icon: <AssignmentTurnedInOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/tasks-maintenance",
   },
   {
     title: "Accounting",
     icon: <AccountBalanceOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/accounting",
   },
   {
     title: "Communication",
     icon: <ChatOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/communication",
   },
   {
     title: "Notes",
     icon: <NoteOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/notes",
   },
   {
     title: "Files",
     icon: <FolderOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/files",
   },
   {
     title: "Reports",
     icon: <AssessmentOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/reports",
   },
   {
     title: "Notifications",
     icon: <NotificationsOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/notifications",
   },
   {
     title: "Get Started",
     icon: <PlayCircleOutlineOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/get-started",
   },
   {
     title: "Get Help",
     icon: <HelpOutlineIcon className="iconSVG" />,
-    link: "#",
+    link: "/get-help",
   },
   {
     title: "Setting",
     icon: <SettingsOutlinedIcon className="iconSVG" />,
-    link: "#",
+    link: "/settings",
   },
 ];
 
@@ -115,6 +115,7 @@ const MySidebar: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [currentMenu, setCurrentMenu] = useState<string | null>(null);
   const [showCollapseIcon, setShowCollapseIcon] = useState(true);
+  const [activeItem, setActiveItem] = useState<string | null>(null);
 
   const handleMenuToggle = (menu: string) => {
     setCurrentMenu((prevMenu) => (prevMenu === menu ? null : menu));
@@ -124,9 +125,7 @@ const MySidebar: React.FC = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const [activeItem, setActiveItem] = useState<string | null>(null);
   const handleItemClick = (title: string) => {
-    console.log(title);
     setActiveItem(title);
   };
 
@@ -216,10 +215,10 @@ const MySidebar: React.FC = () => {
                   className="iocn-link"
                   onClick={() => handleMenuToggle(item.title)}
                 >
-                  <a href="#">
+                  <Link to="">
                     {item.icon}
                     <span className="link_name">{item.title}</span>
-                  </a>
+                  </Link>
                   <IconButton className="link-btn">
                     {currentMenu === item.title ? (
                       <KeyboardArrowDownIcon
@@ -235,10 +234,10 @@ const MySidebar: React.FC = () => {
                   </IconButton>
                 </div>
               ) : (
-                <a href={item.link}>
+                <Link to={item.link}>
                   {item.icon}
                   <span className="link_name">{item.title}</span>
-                </a>
+                </Link>
               )}
               {item.subItems && (
                 <ul
@@ -246,7 +245,7 @@ const MySidebar: React.FC = () => {
                 >
                   {item.subItems.map((subItem, subIndex) => (
                     <li key={subIndex}>
-                      <a href={subItem.link}>{subItem.title}</a>
+                      <Link to={subItem.link}>{subItem.title}</Link>
                     </li>
                   ))}
                 </ul>

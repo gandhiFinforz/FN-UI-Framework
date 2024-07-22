@@ -46,7 +46,7 @@ import VerifyOTP from "./pages/OwnerLogin/VerifyOTP/VerifyOTP";
 import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
 import Dashboard from "./pages/Dashboard";
 // common theme
-import './theme/variables.css'
+import "./theme/variables.css";
 setupIonicReact();
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -91,8 +91,8 @@ const App: React.FC = () => {
             <Route path="/" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/owner-login" element={<OwnerLoginLayout />}>
-            <Route path="request-otp" element={<RequestOTP />} />
-            <Route path="verify-otp" element={<VerifyOTP />} />
+              <Route path="request-otp" element={<RequestOTP />} />
+              <Route path="verify-otp" element={<VerifyOTP />} />
             </Route>
           </Routes>
         </Router>
