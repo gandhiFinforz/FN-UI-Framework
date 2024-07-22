@@ -12,6 +12,7 @@ import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
 import FNTextArea from "../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
 import { IonRow ,IonCol} from "@ionic/react";
+import FNFileUpload from "../../components/UIComponents/Form/FNFileUpload/FNFileUpload";
 interface PersonalInfoFormValues {
   firstName: string;
   lastName: string;
@@ -75,6 +76,13 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
         onSubmit={personalInfoFormik.handleSubmit}
         
       >
+        {/* <IonRow>
+          <IonCol>
+            <FNFileUpload name={""} mode={"basic"}></FNFileUpload>
+          </IonCol>
+        </IonRow> */}
+<div className="custom-hr mt-2 mb-2" ></div>
+
         <IonRow>
         < IonCol className="col-12 md:col-6">
           <FNInput
@@ -159,6 +167,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
           />
         </IonCol>
 </IonRow>
+<div className="custom-hr mt-2 mb-2" ></div>
 <IonRow>
         <IonCol className="col-12 md:col-6">
           <FNInput
@@ -202,6 +211,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
           />
         </IonCol>
         </IonRow>
+        
         <div className="mt-5 col-12 btn-b">
           <div className="flex justify-content-end">
             <FNButton
