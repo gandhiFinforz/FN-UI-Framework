@@ -11,13 +11,15 @@ import { addToast } from "../../store/toastSlice";
 import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
 import FNTextArea from "../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
-
+import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
+import { IonCol, IonRow } from "@ionic/react";
+import "./contactInformation.css";
 interface PersonalInfoFormValues {
-  firstName: string;
-  lastName: string;
+  phone: string;
+  mobile: string;
   email: string;
   userType: string;
-  company: string;
+  emailType: string;
   jobTitle: string;
 }
 
@@ -25,35 +27,31 @@ interface PersonalInformationProps {
   onNext: () => void; // Callback function to handle next step
 }
 
-const userTypeOptions = [
-  { label: "Owner", value: "Owner" },
-  { label: "Community", value: "Community" },
-  { label: "Admin User", value: "Admin User" },
-  { label: "Tenant", value: "Tenant" },
+const emailType = [
+  { label: "Primary", value: "Primary" },
+  { label: "Secondary", value: "Secondary" },
 ];
 
 const ContactInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const personalInfoFormik = useFormik<PersonalInfoFormValues>({
+  const contactInfoFormik = useFormik<PersonalInfoFormValues>({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      phone: "",
+      mobile: "",
       email: "",
-      company: "",
+      emailType: "",
       userType: "",
       jobTitle: ""
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required(t("personalInformation.validation.firstNameRequired")),
-      lastName: Yup.string().required(t("personalInformation.validation.lastNameRequired")),
+      phone: Yup.string().required(t("personalInformation.validation.phoneRequired")),
+      mobile: Yup.string().required(t("personalInformation.validation.mobileRequired")),
       email: Yup.string()
         .required(t("personalInformation.validation.emailRequired"))
         .email(t("personalInformation.validation.invalidEmail")),
-      company: Yup.string().required(t("personalInformation.validation.companyRequired")),
-      userType: Yup.string().required(t("personalInformation.validation.userTypeRequired")),
-      jobTitle: Yup.string().required(t("personalInformation.validation.jobTitleRequired")),
+      emailType: Yup.string().required(t("personalInformation.validation.emailTypeRequired")),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -67,155 +65,127 @@ const ContactInformation: React.FC<PersonalInformationProps> = ({ onNext }) => {
     },
   });
 
-  const alphabetRegexPattern = /^[a-zA-Z\s]*$/;
 
   return (
-    <div className="pl-6 pr-6 mt-2">
-      {/* <h3 className="text-center">{t("personalInformation.title")}</h3> */}
       <form
-        onSubmit={personalInfoFormik.handleSubmit}
-        className="grid"
+        onSubmit={contactInfoFormik.handleSubmit} className="p-2"
       >
-        <div className="mb-1 col-12 md:col-6">
+       
+        <FNCard className="bg-gray-100 mb-4 ">
+        <span className="p-header">Phone</span>
+        <div className="custom-hr mt-2 mb-2" ></div>
+         <IonRow>
+         <IonCol className="col-12 md:col-6">
           <FNInput
-            type="text"
-            name="firstName"
-            label="First Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.firstName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
+            type="number"
+            name="mobile"
+            label="Mobile Number"
+            placeholder="Enter Mobile Number"
+            value={contactInfoFormik.values.mobile}
+            onChange={contactInfoFormik.handleChange}
+            onBlur={contactInfoFormik.handleBlur}
             invalid={
-              personalInfoFormik.touched.firstName &&
-              !!personalInfoFormik.errors.firstName
+              contactInfoFormik.touched.phone && !!contactInfoFormik.errors.mobile
             }
             helpText={
-              personalInfoFormik.touched.firstName &&
-              personalInfoFormik.errors.firstName
+              contactInfoFormik.touched.phone && contactInfoFormik.errors.mobile
             }
-            placeholder={t("personalInformation.placeHolder.firstName")}
           />
-        </div>
-        <div className="mb-1 col-12 md:col-6">
+        </IonCol>
+        <IonCol className="col-12 md:col-6">
           <FNInput
-            type="text"
-            name="lastName"
-            label="Last Name"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.lastName}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
+            type="number"
+            name="phone"
+            label="Phone Number"
+            placeholder="Enter Phone Number"
+            value={contactInfoFormik.values.phone}
+            onChange={contactInfoFormik.handleChange}
+            onBlur={contactInfoFormik.handleBlur}
             invalid={
-              personalInfoFormik.touched.lastName &&
-              !!personalInfoFormik.errors.lastName
+              contactInfoFormik.touched.phone && !!contactInfoFormik.errors.phone
             }
             helpText={
-              personalInfoFormik.touched.lastName &&
-              personalInfoFormik.errors.lastName
+              contactInfoFormik.touched.phone && contactInfoFormik.errors.phone
             }
-            placeholder={t("personalInformation.placeHolder.lastName")}
           />
-        </div>
-        <div className="mb-1 col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="company"
-            label="Company"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.company}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
+        </IonCol>
+         </IonRow>
+         <IonRow className="mt-1 cursor-pointer">
+          <IonCol className="col-12 md:col-6 add-input-txt">
+          <i
+                className="pi pi-plus-circle cursor-pointer pr-1 font-bold"
+              ></i>
+         <span>Add Another</span> 
+          </IonCol>
+          </IonRow>
+        </FNCard>
+        <FNCard className="bg-gray-100 ">
+        <span className="p-header">Email</span>
+        <div className="custom-hr mt-2 mb-2" ></div>
+<IonRow>
+        <IonCol className="col-12 md:col-6">
+          <FNAutoComplete
+            label="Select Email Type"
+            suggestions={emailType}
+            value={contactInfoFormik.values.emailType}
+            dropdown
+            onSelect={(e) =>
+              contactInfoFormik.setFieldValue("emailType", e.value.label)
+            }
+            onBlur={() => contactInfoFormik.setFieldTouched("emailType", true)}
+            field="label"
             invalid={
-              personalInfoFormik.touched.company &&
-              !!personalInfoFormik.errors.company
+              contactInfoFormik.touched.emailType && !!contactInfoFormik.errors.emailType
             }
-            helpText={
-              personalInfoFormik.touched.company &&
-              personalInfoFormik.errors.company
-            }
-            placeholder={t("personalInformation.placeHolder.company")}
+            helpText={contactInfoFormik.touched.emailType && contactInfoFormik.errors.emailType}
+            placeholder="Select Email Type"
           />
-        </div>
-        <div className="mb-1 col-12 md:col-6">
-          <FNInput
-            type="text"
-            name="jobTitle"
-            label="Job Title"
-            keyfilter={alphabetRegexPattern}
-            value={personalInfoFormik.values.jobTitle}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
-            invalid={
-              personalInfoFormik.touched.jobTitle &&
-              !!personalInfoFormik.errors.jobTitle
-            }
-            helpText={
-              personalInfoFormik.touched.jobTitle &&
-              personalInfoFormik.errors.jobTitle
-            }
-            placeholder={t("personalInformation.placeHolder.jobTitle")}
-          />
-        </div>
-        <div className="mb-1 col-12 md:col-6">
-          <FNInput
+        </IonCol>
+       <IonCol className="col-12 md:col-6">
+       <FNInput
             type="text"
             name="email"
             label="Email"
-            value={personalInfoFormik.values.email}
-            onChange={personalInfoFormik.handleChange}
-            onBlur={personalInfoFormik.handleBlur}
+            value={contactInfoFormik.values.email}
+            onChange={contactInfoFormik.handleChange}
+            onBlur={contactInfoFormik.handleBlur}
             invalid={
-              personalInfoFormik.touched.email &&
-              !!personalInfoFormik.errors.email
+              contactInfoFormik.touched.email &&
+              !!contactInfoFormik.errors.email
             }
             helpText={
-              personalInfoFormik.touched.email &&
-              personalInfoFormik.errors.email
+              contactInfoFormik.touched.email &&
+              contactInfoFormik.errors.email
             }
             placeholder={t("personalInformation.placeHolder.email")}
           />
-        </div>
-        <div className="mb-1 col-12 md:col-6">
-          <FNAutoComplete
-            label="User Type"
-            suggestions={userTypeOptions}
-            value={personalInfoFormik.values.userType}
-            dropdown
-            onSelect={(e: { value: { label: any; }; }) =>
-              personalInfoFormik.setFieldValue("userType", e.value.label)
-            }
-            onBlur={() => personalInfoFormik.setFieldTouched("userType", true)}
-            field="label"
-            invalid={
-              personalInfoFormik.touched.userType &&
-              !!personalInfoFormik.errors.userType
-            }
-            helpText={
-              personalInfoFormik.touched.userType &&
-              personalInfoFormik.errors.userType
-            }
-            placeholder={t("personalInformation.placeHolder.userType")}
-          />
-        </div>
-        
-        <div className="mt-5 col-12">
+       </IonCol>
+      </IonRow>
+      <IonRow className="mt-1 cursor-pointer">
+          <IonCol className="col-12 md:col-6 add-input-txt">
+          <i
+                className="pi pi-plus-circle cursor-pointer pr-1 font-bold"
+              ></i>
+         <span>Add Another</span> 
+          </IonCol>
+          </IonRow>
+       </FNCard>
+        <div className="mt-5 col-12 btn-b">
           <div className="flex justify-content-end">
             <FNButton
               label="Cancel"
               type="button"
               className="w-full md:w-auto mr-3"
-              onClick={() => navigate('/')} // or your desired route
             />
             <FNButton
               label="Save"
               type="submit"
               className="w-full md:w-auto"
-              disabled={!personalInfoFormik.isValid}
+              disabled={!contactInfoFormik.isValid}
             />
           </div>
         </div>
       </form>
-    </div>
   );
 };
 

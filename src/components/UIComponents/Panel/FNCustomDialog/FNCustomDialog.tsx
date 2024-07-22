@@ -14,6 +14,7 @@ import ContactInformation from "../../../../pages/ContactInformation/contactInfo
 import { IonCol, IonRow } from "@ionic/react";
 import { MenuItem } from "primereact/menuitem";
 import Address from "../../../../pages/Address/address";
+import BankInformation from "../../../../pages/BankInformation/bankInformation";
 
 export interface FNCustomDialogProps
   extends Omit<DialogProps, "visible" | "onHide"> {
@@ -99,6 +100,15 @@ const FNCustomDialog: FC<FNCustomDialogProps> = ({
             }}
           />
         );
+        case "Bank Account":
+          return (
+            <BankInformation
+              onNext={() => {
+                /* handle next step */
+              }}
+            />
+          );
+        
       default:
         return (
           <PersonalInformation

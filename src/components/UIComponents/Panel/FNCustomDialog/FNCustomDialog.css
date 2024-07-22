@@ -110,3 +110,14 @@
 {
   background: none;
 }
+.custom-hr {
+  border-bottom: 2px solid #f3eded; /* Change the color and width */
+}
+.add-input-txt
+{
+  color: rgb(0, 130, 159);
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: underline;
+
+}
