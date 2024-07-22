@@ -10,7 +10,7 @@
   z-index: 100;
   transition: all 0.5s ease;
   color: var(--primary-text-color);
-  margin: 0;
+  margin: 0 !important;
 
   overflow-y: scroll;
 }
@@ -293,17 +293,17 @@
 }
 
 .arrow-left {
-  top: 65px;
+  top: 42px;
   left: 210px;
 }
 
 .arrow-right {
-  top: 80px;
+  top: 42px;
   left: 70px;
 }
 
 .button-collapsed {
-  margin: 30px 7% 20px 7%;
+  margin: 20px 7% 0px 7%;
   width: 86%;
   color: var(--sidebar-button-text-color);
   background-color: var(--yellow-color);
@@ -315,7 +315,7 @@
 
 .button-expanded {
   display: flex;
-  margin: 30px 5% 20px 5%;
+  margin: 20px 5% 15px 5%;
   align-items: center;
   width: 90%;
   text-align: center;
@@ -334,6 +334,24 @@
 
 .create-new-icon {
   margin-right: 8px;
+}
+
+.org-logo-container{
+  text-align: center;
+}
+
+.org-logo{
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px 0px 15px;
+  
+}
+
+.org-logo-collapsed{
+
+  width: 40%;
+    height: 40%;
+    margin-top: 20px;
 }
 
 @media (max-width: 420px) {

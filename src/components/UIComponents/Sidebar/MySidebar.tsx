@@ -25,6 +25,8 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./Style.css";
 
+import OrgLogoFull from "../../../assets/img/FF-logo.png";
+import OrgLogoSymbol from "../../../assets/img/FF-logoSymbol.png";
 const menuItems = [
   {
     title: "Overview",
@@ -141,6 +143,12 @@ const MySidebar: React.FC = () => {
       )}
 
       <div className={`sidebar ${isSidebarOpen ? "open" : "close"}`}>
+        <div className="org-logo-container">
+        {isSidebarOpen && <img src={OrgLogoFull} className="org-logo" alt="Organization Logo" /> }
+        {!isSidebarOpen && <img src={OrgLogoSymbol} className="org-logo-collapsed" alt="Organization Logo" /> }
+
+        </div>
+
         {!isSidebarOpen && (
           <button className="button-collapsed">
             <AddIcon className="add-icon" />
