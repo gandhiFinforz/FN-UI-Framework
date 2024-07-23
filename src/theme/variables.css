@@ -1,2 +1,24 @@
-/* For information on how to create your own theme, please see:
-http://ionicframework.com/docs/theming/ */
+:root {
+  /* Common Styles */
+  --background-color: #fff;
+  --primary-text-color: #fff;
+  --secondary-text-color: #000;
+  --yellow-color: rgb(215, 154, 0);
+  --blue-color-dark: #0c1e35;
+  --blue-color-light: #185ad4;
+  --icon-size: 22px;
+
+  /* Sidebar Configuration */
+  --sidebar-background-color: var(--blue-color-dark);
+  --sidebar-button-text-color: var(--primary-text-color);
+  --sidebar-toggle-icon-color: #00829f;
+  --button-padding: 6px;
+  --button-font-weight: 600;
+  --button-border-radius: 3px;
+  --sidebar-width-expanded: 220px;
+  --sidebar-width-collapsed: 80px;
+  --scrollbar-width: 5px;
+  --scrollbar-track-color: var(--blue-color-dark);
+  --scrollbar-thumb-color: var(--blue-color-dark);
+  --scrollbar-thumb-hover-color: #293778;
+}

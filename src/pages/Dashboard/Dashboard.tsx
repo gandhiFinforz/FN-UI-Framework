@@ -3,11 +3,21 @@ import { useTranslation } from "react-i18next";
 import "primeflex/primeflex.css";
 import FNCard from "../../components/UIComponents/Panel/FNCard/FNCard";
 import UserTable from "../DataTable/UserTable";
+import FNTopbarSearch from "../../components/CustomComponents/TopBarSearch/FNTopbarSearch";
 
 const Dashboard: React.FC = () => {
-
+  const items: string[] = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Another Item',
+    'More Items',
+];
   return (
     <>
+   <div className="global-search">
+   <FNTopbarSearch items={items}  />
+   </div>
       <div className="grid mb-4">
         <div className="col-12 md:col-6 lg:col-3">
           <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">

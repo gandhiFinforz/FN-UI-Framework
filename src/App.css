@@ -34,3 +34,7 @@ input.p-autocomplete-input.p-inputtext {
   height: 2.5rem;
   width: 2.5rem;
 }
+
+.p-sidebar-top .p-sidebar {
+  height:auto;
+}
