@@ -1,11 +1,10 @@
 import React, { useRef, useState } from "react";
-import { IonButton, IonImg, IonInput, IonLabel, IonItem, IonIcon } from "@ionic/react";
-import "./avatarUpload.css"; // Add custom styling if needed
-import FNButton from "../FNButton/FNButton";
-import { cloudUploadOutline } from 'ionicons/icons';
+import {  IonImg,  IonItem } from "@ionic/react";
+import avatar from "../../../../assets/img/amyelsner.png"
+import "./FNAvatarUpload.css"; // Add custom styling if needed
 const AvatarUpload: React.FC = () => {
   
-  const [preview, setPreview] = useState<string | undefined>("https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png");
+  const [preview, setPreview] = useState<string | undefined>(avatar);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

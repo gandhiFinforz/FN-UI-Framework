@@ -11,7 +11,7 @@ import { addToast } from "../../store/toastSlice";
 import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
 import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
 import { IonRow ,IonCol} from "@ionic/react";
-import AvatarUpload from "../../components/UIComponents/Form/FNCustomFileUpload/FNCustomFileUpload";
+import AvatarUpload from "../../components/UIComponents/Form/FNCustomFileUpload/FNAvatarUpload";
 interface PersonalInfoFormValues {
   firstName: string;
   lastName: string;
