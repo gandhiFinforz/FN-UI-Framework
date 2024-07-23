@@ -9,11 +9,9 @@ import FNAutoComplete from "../../components/UIComponents/Form/FNAutoComplete/FN
 import { AppDispatch } from "../../store/store";
 import { addToast } from "../../store/toastSlice";
 import FNInput from "../../components/UIComponents/Form/FNInput/FNInput";
-import FNTextArea from "../../components/UIComponents/Form/FNTextArea/FNTextArea";
 import FNButton from "../../components/UIComponents/Form/FNButton/FNButton";
 import { IonRow ,IonCol} from "@ionic/react";
-import FNFileUpload from "../../components/UIComponents/Form/FNFileUpload/FNFileUpload";
-import CustomFileUpload from "../../components/UIComponents/Form/FNCustomFileUpload/FNCustomFileUpload";
+import AvatarUpload from "../../components/UIComponents/Form/FNCustomFileUpload/FNCustomFileUpload";
 interface PersonalInfoFormValues {
   firstName: string;
   lastName: string;
@@ -79,7 +77,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ onNext }) => 
       >
         <IonRow>
           <IonCol>
-          <CustomFileUpload></CustomFileUpload>
+          <AvatarUpload></AvatarUpload>
           </IonCol>
         </IonRow>
 <div className="custom-hr mt-2 mb-2" ></div>

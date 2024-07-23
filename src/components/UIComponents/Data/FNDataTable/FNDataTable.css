@@ -4,7 +4,7 @@
 }
 .border
 {
-  border-right: 1px solid #dddd ;
+  border-right: 1px solid #f2f2f2 ;
   line-height: 1.5
 }
 /* Add border radius to the first and last cells of each row */
