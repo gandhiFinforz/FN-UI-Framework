@@ -41,12 +41,12 @@ import Layout from "./pages/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { filteredRouteData } from "./services/MenuJSON";
 import ToastService from "./services/Toaster/ToasterService";
-import RequestOTP from "./pages/OwnerLogin/RequestOTP/RequestOTP";
-import VerifyOTP from "./pages/OwnerLogin/VerifyOTP/VerifyOTP";
 import OwnerLoginLayout from "./pages/OwnerLogin/OwnerLoginLayout";
 import Dashboard from "./pages/Dashboard";
 // common theme
 import "./theme/variables.css";
+import VerifyOTP from "./pages/OwnerLogin/VerifyOtp/VerifyOTP";
+import RequestOTP from "./pages/OwnerLogin/RequestOtp/RequestOtp";
 setupIonicReact();
 const App: React.FC = () => {
   const { t } = useTranslation();
