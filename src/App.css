@@ -27,11 +27,14 @@ a {
 }
 
 input.p-autocomplete-input.p-inputtext {
-    width: 100%;
+  width: 100%;
 }
-.btn-b
-{
-  position: absolute;
-  bottom: 10px;
-  right: 3px;
+
+.p-inputotp-input {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.p-sidebar-top .p-sidebar {
+  height:auto;
 }

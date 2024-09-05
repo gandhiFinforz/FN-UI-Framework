@@ -18,6 +18,7 @@ export interface FNDialogProps extends Omit<DialogProps, "visible" | "onHide"> {
   visible: boolean;
   onHide: () => void;
   className?: string;
+  parentClassName?: string;
 }
 
 const FNDialog: FC<FNDialogProps> = ({
@@ -27,10 +28,11 @@ const FNDialog: FC<FNDialogProps> = ({
   visible,
   onHide,
   className,
+  parentClassName,
   ...restProps
 }) => {
   const footerContent = (
-    <div>
+    <div className={parentClassName}>
       {footerButtons.map((button, index) => (
         <Button
           key={index}

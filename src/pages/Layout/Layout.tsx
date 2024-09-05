@@ -4,18 +4,20 @@ import SideBar from "./SideBar/SideBar";
 import { BrowserRouter, Outlet } from "react-router-dom";
 import "./Layout.scss";
 import { Header } from "./Header/Header";
+  import MySidebar from "../../components/UIComponents/Sidebar/MySidebar";
 const Layout: React.FC = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
   return (
     <>
-      <Header
+      {/* <Header
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
-      />
+      /> */}
 
       <div className="flex bg-primary-50 h-screen overflow-y-auto">
-        <SideBar sidebarVisible={sidebarVisible} />
+        {/* <SideBar sidebarVisible={sidebarVisible} /> */}
+        <MySidebar />
         <div className="w-full mt-3 ml-2 px-3">
           <Outlet />
         </div>

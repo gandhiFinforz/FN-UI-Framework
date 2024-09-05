@@ -28,8 +28,8 @@ const UserTable: React.FC = () => {
   //     }
   //   };
 
-  //   fetchUsers();
-  // }, []);
+    // fetchUsers();
+  }, []);
 
   // Define columns dynamically based on your API response
   const dynamicColumns = [

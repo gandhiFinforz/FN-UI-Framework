@@ -8,6 +8,26 @@
     "logout": "Logout",
     "checkboxLabel": "Remember Me"
   },
+
+  "ownerLoginPage": {
+    "title": "India's #1 Property and Utilities Management App",
+    "loginLabel": "Log in or sign up",
+    "otpRequestInputLabel": "Phone Number",
+    "otpRequestInputPlaceholder": "Enter Mobile Number",
+    "phoneNumberInput": "Please enter a valid phone number",
+    "otpRequestButtonLabel": "Request OTP",
+    "termsAndCondition": "By continuing, you agree to our",
+    "termsService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "contentPolicy": "Content Policy",
+    "verificationHint": "We have sent a verification code to",
+    "verifyButtonLabel": "Continue",
+    "backButton": "Back",
+    "resendOTPLabel": "Resend OTP",
+    "mobileSIMDetailsPopupHeader": "Continue With",
+    "mobileSIMDetailsPopupLabel": "NONE OF THE ABOVE"
+  },
+
   "usersTable": {
     "title": "Users List"
   },
